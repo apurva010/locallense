@@ -36,7 +36,8 @@ class Routes {
         );
       case AppRoutes.basicDetailsScreen:
         return getRoute(
-          widget: const BasicDetailsScreen().withProvider(BasicDetailsStore()),
+          widget: const BasicDetailsScreen()
+              .withProvider(BasicDetailsStore()..getUserData()),
         );
 
       case AppRoutes.loginScreen:

@@ -13,9 +13,7 @@ class CommonValidator {
   }
 
   static String? nameValidator(String? value) {
-    if (value.isNullOrBlank ||
-        !value!.isValidEmail ||
-        value.length < Constants.emailMinLength) {
+    if (value.isNullOrBlank) {
       return 'Please enter name';
     }
     return null;
