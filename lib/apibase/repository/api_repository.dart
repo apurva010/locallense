@@ -39,6 +39,7 @@ class APIRepository {
     );
   }
 
+  // ignore: unused_element
   Future<ApiResult<T>> _apiCall<T>(ApiCallback<T> request) async {
     if (!networkService.hasConnection) {
       await checkOrThrowNoInternetError();

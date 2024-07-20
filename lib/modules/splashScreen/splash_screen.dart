@@ -34,8 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: Colors.white,
-      child: Assets.images.splash.image(
+      color: const Color(0xffF9FAFB),
+      child: Assets.icon.icon.image(
         height: context.screenSize.height,
         width: context.screenSize.width,
       ),
