@@ -5,6 +5,8 @@ import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_screen.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_store.dart';
+import 'package:locallense/modules/profile/complete_your_profile/select_preferences/select_preference_store.dart';
+import 'package:locallense/modules/profile/complete_your_profile/select_preferences/select_your_preference.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_screen.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_store.dart';
 
@@ -40,6 +42,11 @@ class Routes {
       case AppRoutes.loginScreen:
         return getRoute(
           widget: const LoginScreen().withProvider(LoginScreenStore()),
+        );
+      case AppRoutes.selectPreference:
+        return getRoute(
+          widget: const SelectYourPreference()
+              .withProvider(SelectPreferenceStore()),
         );
 
       case AppRoutes.userActivityUpload:

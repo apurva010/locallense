@@ -6,6 +6,8 @@ class AppRoutes {
   static const String loginScreen = '/loginScreen';
   static const String basicDetailsScreen = '/basicDetailsScreen';
   static const String userActivityUpload = '/userActivityUpload';
+
+  static const String selectPreference = '/selectPreference';
 }
 
 class ApiErrorStrings {

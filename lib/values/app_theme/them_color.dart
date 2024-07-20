@@ -12,6 +12,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     this.unFilledProgressColor,
     this.textFieldLabelColor,
     this.appbarBackgroundColor,
+    this.preferenceChipBorderColor,
   });
 
   factory ThemeColor.light() => ThemeColor(
@@ -24,6 +25,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         unFilledProgressColor: AppColors.unFilledProgressColor,
         textFieldLabelColor: AppColors.textFieldLabelColor,
         appbarBackgroundColor: AppColors.whiteColor,
+        preferenceChipBorderColor: AppColors.preferenceChipBorderColor,
       );
 
   factory ThemeColor.dark() => ThemeColor(
@@ -33,11 +35,15 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         whiteColor: AppColors.whiteColor,
         unFilledProgressColor: AppColors.unFilledProgressColor,
         textFieldLabelColor: AppColors.textFieldLabelColor,
+        scaffoldBackGroundColor: AppColors.blackColor,
+        naturalBorderColor: AppColors.neutrals11,
+        preferenceChipBorderColor: AppColors.preferenceChipBorderColor,
       );
 
   final Color? primaryColor;
   final Color? primaryColor2;
   final Color? secondaryColor1;
+  final Color? preferenceChipBorderColor;
   final Color? scaffoldBackGroundColor;
   final Color? naturalBorderColor;
   final Color? unFilledProgressColor;
@@ -54,6 +60,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     Color? whiteColor,
     Color? unFilledProgressColor,
     Color? textFieldLabelColor,
+    Color? preferenceChipBorderColor,
   }) {
     return ThemeColor(
       primaryColor: primaryColor ?? this.primaryColor,
@@ -63,6 +70,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
       unFilledProgressColor:
           unFilledProgressColor ?? this.unFilledProgressColor,
       textFieldLabelColor: textFieldLabelColor ?? this.textFieldLabelColor,
+      preferenceChipBorderColor:
+          preferenceChipBorderColor ?? this.preferenceChipBorderColor,
     );
   }
 
@@ -103,6 +112,11 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
       textFieldLabelColor: Color.lerp(
         textFieldLabelColor,
         other.textFieldLabelColor,
+        t,
+      ),
+      preferenceChipBorderColor: Color.lerp(
+        preferenceChipBorderColor,
+        other.preferenceChipBorderColor,
         t,
       ),
     );
