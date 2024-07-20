@@ -36,9 +36,7 @@ class HomeBottomNavBar extends StatelessObserverWidget {
         store.selectTab(HomeTabs.values[index]);
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      backgroundColor: Colors.transparent,
-      selectedItemColor: AppColors.primaryColor2,
-      unselectedItemColor: AppColors.whiteColor,
+      backgroundColor: AppColors.whiteColor,
       selectedFontSize: 0,
       unselectedFontSize: 0,
       type: BottomNavigationBarType.fixed,
@@ -57,16 +55,28 @@ class HomeBottomNavBar extends StatelessObserverWidget {
       tiles.add(
         BottomNavigationBarItem(
           icon: SizedBox(
-            height: 72,
+            height: 84,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 22),
-              child: LLSvgPicture(
-                tab.icon,
-                color: selectedTab == tab
-                    ? AppColors.neutrals3
-                    : AppColors.neutrals4,
-                height: 28,
-                width: 28,
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+                children: [
+                  LLSvgPicture(
+                    tab.icon(isFilled: selectedTab == tab),
+                    color: selectedTab == tab
+                        ? AppColors.neutrals1
+                        : AppColors.neutrals4,
+                    height: 28,
+                    width: 28,
+                  ),
+                  Text(
+                    tab.title,
+                    style: context.textStyleTheme.bodyXSmallMedium?.copyWith(
+                      color: selectedTab == tab
+                          ? AppColors.neutrals1
+                          : AppColors.neutrals4,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

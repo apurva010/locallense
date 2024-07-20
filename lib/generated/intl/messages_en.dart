@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "We couldn’t connect. Please check your internet connection and try again"),
         "continueWithGoogle":
             MessageLookupByLibrary.simpleMessage("Continue with Google"),
+        "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "errorUserIsSignedOut": MessageLookupByLibrary.simpleMessage(
             "Session expired. Please sign in again."),
         "forbiddenExceptionMsg": MessageLookupByLibrary.simpleMessage(
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong with the data format"),
         "gatewayTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The request took too long to complete. Please try again later"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "internalServerErrorExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We are experiencing technical difficulties. Please try again later."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -59,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The page you requested could not be found."),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Privacy Policy."),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "receiveTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We didn’t receive a response. Please try again."),
         "requestCancelledExceptionMsg": MessageLookupByLibrary.simpleMessage(

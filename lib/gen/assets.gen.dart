@@ -35,8 +35,16 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/home.svg
   SvgGenImage get home => const SvgGenImage('assets/vectors/home.svg');
 
+  /// File path: assets/vectors/home_filled.svg
+  SvgGenImage get homeFilled =>
+      const SvgGenImage('assets/vectors/home_filled.svg');
+
   /// File path: assets/vectors/location.svg
   SvgGenImage get location => const SvgGenImage('assets/vectors/location.svg');
+
+  /// File path: assets/vectors/location_filled.svg
+  SvgGenImage get locationFilled =>
+      const SvgGenImage('assets/vectors/location_filled.svg');
 
   /// File path: assets/vectors/login_screen.svg
   SvgGenImage get loginScreen =>
@@ -49,9 +57,22 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/vectors/profile.svg');
 
+  /// File path: assets/vectors/profile_filled.svg
+  SvgGenImage get profileFilled =>
+      const SvgGenImage('assets/vectors/profile_filled.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [googleIcon, home, location, loginScreen, placeholderIcon, profile];
+  List<SvgGenImage> get values => [
+        googleIcon,
+        home,
+        homeFilled,
+        location,
+        locationFilled,
+        loginScreen,
+        placeholderIcon,
+        profile,
+        profileFilled
+      ];
 }
 
 class Assets {

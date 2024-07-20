@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:locallense/apibase/repository/auth_repository.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/services/secure_storage.dart';
 import 'package:locallense/services/shared_prefs.dart';
@@ -31,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> navigationPage() async {
-    final currentUser = await AuthRepository.instance.googleSignIn.isSignedIn();
+    final currentUser = await authRepository.googleSignIn.isSignedIn();
     final isLoggedIn = await SharedPrefs.getSharedProperty(
       keyEnum: SharedPrefsKeys.isLoggedIn,
     ) as bool?;
