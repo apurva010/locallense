@@ -1,5 +1,7 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:locallense/utils/common_widgets/ll_toast.dart';
 import 'package:logging/logging.dart';
 
 /// allows to set system icon theme (light | dark)
@@ -29,3 +31,45 @@ String enumToString(Object o) => o.toString().split('.').last;
 
 T enumFromString<T>(String key, List<T> values) =>
     values.firstWhere((v) => key == enumToString(v!));
+
+void showErrorToast(
+  String msg, {
+  int duration = 3,
+  bool showToastIcon = false,
+  String? actionText,
+  VoidCallback? onActionTap,
+}) {
+  BotToast.showCustomNotification(
+    toastBuilder: (cancel) {
+      return LLToast(
+        toastMessage: msg,
+        toastType: ToastType.failure,
+        showToastIcon: showToastIcon,
+        onActionTap: onActionTap,
+        actionText: actionText,
+      );
+    },
+    duration: Duration(seconds: duration),
+  );
+}
+
+void showSuccessToast(
+  String msg, {
+  int duration = 3,
+  bool showToastIcon = false,
+  String? actionText,
+  VoidCallback? onActionTap,
+}) {
+  BotToast.showCustomNotification(
+    toastBuilder: (cancel) {
+      return LLToast(
+        toastMessage: msg,
+        toastType: ToastType.success,
+        showToastIcon: showToastIcon,
+        onActionTap: onActionTap,
+        actionText: actionText,
+      );
+    },
+    duration: Duration(seconds: duration),
+  );
+}

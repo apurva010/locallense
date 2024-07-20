@@ -98,7 +98,9 @@ abstract class _UserActivityUploadStore with Store {
     }
   }
 
-  void skipToNextScreen() {}
+  void skipToNextScreen() {
+    authRepository.navigateToHomeScreen();
+  }
 
   Future<void> uploadUserActivity() async {
     userActivityFile = await FilePicker.platform.pickFiles(

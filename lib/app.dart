@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -38,8 +39,10 @@ class _LocalLensAppState extends State<LocalLensApp> {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: themeStore.themeMode,
+          builder: BotToastInit(),
           navigatorObservers: [
             LLNavigationObserver(),
+            BotToastNavigatorObserver(),
           ],
           supportedLocales: Str.delegate.supportedLocales,
           localizationsDelegates: const [
