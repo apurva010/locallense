@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/gen/assets.gen.dart';
@@ -18,70 +19,28 @@ class ProfileSection extends StatelessWidget {
     return Column(
       children: [
         Center(
-          child: Stack(
-            children: [
-              InkWell(
-                onTap: store.pickProfilePic,
-                splashFactory: NoSplash.splashFactory,
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                child: SizedBox(
-                  height: 100,
-                  width: 100,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(
-                        100,
-                      ),
-                    ),
-                    child: Observer(
-                      builder: (context) {
-                        if (store.profileState.isLoading) {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              color: context.themeColor.primaryColor2,
-                            ),
-                          );
-                        }
-
-                        return store.profilePicture != null
-                            ? Image.file(
-                                store.profilePicture!,
-                                fit: BoxFit.fill,
-                              )
-                            : Assets.images.user.image();
-                      },
-                    ),
-                  ),
+          child: SizedBox(
+            height: 100,
+            width: 100,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(
+                  100,
                 ),
               ),
-              Positioned(
-                right: 1,
-                bottom: 2,
-                child: Container(
-                  height: 26,
-                  width: 28,
-                  decoration: BoxDecoration(
-                    color: context.themeColor.primaryColor2,
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(
-                        30,
-                      ),
-                    ),
-                  ),
-                  child: IconButton(
-                    onPressed: store.pickProfilePic,
-                    splashRadius: 1,
-                    padding: const EdgeInsets.all(2),
-                    icon: const Icon(
-                      Icons.edit,
-                      size: 18,
-                    ),
-                    color: context.themeColor.whiteColor,
-                  ),
-                ),
+              child: Observer(
+                builder: (context) {
+                  return store.profilePicture != null
+                      ? CachedNetworkImage(
+                          imageUrl: store.profilePicture!,
+                          fit: BoxFit.fill,
+                          errorWidget: (context, url, error) =>
+                              Assets.images.user.image(),
+                        )
+                      : Assets.images.user.image();
+                },
               ),
-            ],
+            ),
           ),
         ),
         const SizedBox(
@@ -91,31 +50,36 @@ class ProfileSection extends StatelessWidget {
           key: store.formKey,
           child: Column(
             children: [
-              const LocalLensTextFormField(
+              LocalLensTextFormField(
                 borderRadius: 10,
-                label: 'Full name',
+                label: 'First Name',
+                controller: store.firstNameController,
                 maxLength: Constants.maxLengthOfName,
                 validator: CommonValidator.nameValidator,
               ),
               const SizedBox(
                 height: 16,
               ),
-              const LocalLensTextFormField(
+              LocalLensTextFormField(
                 borderRadius: 10,
-                label: 'Email',
-                maxLength: Constants.maxLengthOfEmail,
-                validator: CommonValidator.emailValidator,
+                label: 'Last Name',
+                controller: store.lastNameController,
+                maxLength: Constants.maxLengthOfName,
+                validator: CommonValidator.nameValidator,
               ),
               const SizedBox(
                 height: 16,
               ),
               LocalLensTextFormField(
                 borderRadius: 10,
-                label: 'Date of birth',
-                controller: store.datePickerController,
-                validator: CommonValidator.dateOfBirthValidator,
-                readOnly: true,
-                onTap: () => store.onTapFunction(context: context),
+                label: 'Email',
+                maxLength: Constants.maxLengthOfEmail,
+                initialText: store.emailAddress,
+                validator: CommonValidator.emailValidator,
+                enabled: false,
+              ),
+              const SizedBox(
+                height: 16,
               ),
             ],
           ),

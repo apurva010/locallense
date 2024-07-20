@@ -1,8 +1,7 @@
 class Constants {
   const Constants._();
 
-  static const baseUrl =
-      'http://ec2-13-202-25-238.ap-south-1.compute.amazonaws.com:4000/';
+  static const baseUrl = 'https://locallense.azurewebsites.net/';
 
   static const String empty = '';
   static const String forwardSlash = '/';
