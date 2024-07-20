@@ -2,6 +2,7 @@ class AppRoutes {
   const AppRoutes._();
 
   static const String txtAfterSplash = '/AfterSplash';
+  static const String loginScreen = '/loginScreen';
 }
 
 class ApiErrorStrings {

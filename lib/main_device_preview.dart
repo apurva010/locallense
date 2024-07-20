@@ -1,5 +1,7 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:locallense/firebase_options.dart';
 
 import 'app_config.dart';
 import 'flavors/flavor.dart';
@@ -11,6 +13,9 @@ import 'values/constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await SharedPrefs.initialise();
   setAppOrientation();
   setupLogging();
