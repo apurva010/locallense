@@ -44,9 +44,10 @@ class Routes {
           widget: const LoginScreen().withProvider(LoginScreenStore()),
         );
       case AppRoutes.selectPreference:
+        final perferences = settings.arguments! as List<String>;
         return getRoute(
           widget: const SelectYourPreference()
-              .withProvider(SelectPreferenceStore()),
+              .withProvider(SelectPreferenceStore(perferences)),
         );
 
       case AppRoutes.userActivityUpload:

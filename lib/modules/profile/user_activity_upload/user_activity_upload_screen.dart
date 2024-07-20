@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/gen/assets.gen.dart';
 import 'package:locallense/modules/profile/complete_your_profile/widgets/process_header_widget.dart';
@@ -36,15 +37,19 @@ class _UserActivityUploadScreenState extends State<UserActivityUploadScreen> {
             ),
           ),
           Expanded(
-            child: LLEmptyListPlaceHolder(
-              state: store.state,
-              svgPlaceholder: Assets.vectors.userActivityUpload.path,
-              emptyTitle: str.uploadActivityFileTxt,
-              buttonIcon: const Icon(Icons.add),
-              buttonText: 'Upload File now',
-              buttonType: ButtonType.secondaryButton,
-              imagePadding: const EdgeInsets.symmetric(horizontal: 64),
-              onButtonClick: store.uploadUserActivity,
+            child: Observer(
+              builder: (context) => LLEmptyListPlaceHolder(
+                state: store.fileState,
+                svgPlaceholder: Assets.vectors.userActivityUpload.path,
+                errorTitle: str.uploadActivityFileTxt,
+                emptyTitle: 'We have received your activities and can start '
+                    "processing it. Click 'Continue' to process",
+                buttonIcon: const Icon(Icons.add),
+                buttonText: 'Upload File now',
+                buttonType: ButtonType.secondaryButton,
+                imagePadding: const EdgeInsets.symmetric(horizontal: 64),
+                onButtonClick: store.uploadUserActivity,
+              ),
             ),
           ),
           Padding(
