@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:locallense/app_global_variables.dart';
 
 import 'modules/splashScreen/splash_screen.dart';
 import 'routes.dart';
@@ -11,8 +12,19 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
 NavigatorState get navigator => navigatorKey.currentState!;
 
-class LocalLensApp extends StatelessWidget {
+class LocalLensApp extends StatefulWidget {
   const LocalLensApp({super.key});
+
+  @override
+  State<LocalLensApp> createState() => _LocalLensAppState();
+}
+
+class _LocalLensAppState extends State<LocalLensApp> {
+  @override
+  void initState() {
+    networkService.initialize();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
