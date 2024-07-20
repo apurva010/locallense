@@ -43,7 +43,7 @@ abstract class _BasicDetailsStore extends NetworkStateStore with Store {
       if (formKey.currentState?.validate() ?? false) {
         networkState = NetworkState.loading;
         unawaited(
-          navigation.pushReplacementNamed(AppRoutes.userActivityUpload),
+          navigation.pushNamed(AppRoutes.userActivityUpload),
         );
       }
     } catch (e, s) {

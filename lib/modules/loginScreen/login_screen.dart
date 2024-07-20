@@ -91,6 +91,9 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 26),
               child: RichText(
                 textAlign: TextAlign.center,
+                strutStyle: const StrutStyle(
+                  height: 1.2,
+                ),
                 text: TextSpan(
                   text: str.byLoggingInOrRegisteringYouAgreeToOur,
                   style: textTheme.bodySmallRegular?.copyWith(

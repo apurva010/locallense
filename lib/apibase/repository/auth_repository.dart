@@ -29,7 +29,7 @@ class AuthRepository {
   Future<void> navigateAfterAuthSuccess() async {
     appSession.isInsideApp = true;
     await navigation.pushNamedAndRemoveUntil(
-      AppRoutes.homeScreen,
+      AppRoutes.basicDetailsScreen,
       (route) => false,
     );
   }

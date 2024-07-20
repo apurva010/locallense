@@ -13,7 +13,7 @@ enum NetworkState {
   bool get isFailed => this == NetworkState.error;
 }
 
-enum SharedPrefsKeys { isLoggedIn }
+enum SharedPrefsKeys { isLoggedIn, userData }
 
 enum SecureStorageKeys { kAccessToken }
 

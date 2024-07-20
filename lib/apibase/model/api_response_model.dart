@@ -6,7 +6,7 @@ part 'api_response_model.g.dart';
 @Freezed(genericArgumentFactories: true, fromJson: true)
 class APIResponse<T> with _$APIResponse<T> {
   const factory APIResponse({
-    @JsonKey(name: 'statusCode') required int code,
+    @JsonKey(name: 'status') required int code,
     T? data,
     String? message,
   }) = _APIResponse;
