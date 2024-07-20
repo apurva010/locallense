@@ -3,6 +3,8 @@ import 'package:locallense/modules/home/home_screen.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
+import 'package:locallense/modules/profile/complete_your_profile/basic_details_screen.dart';
+import 'package:locallense/modules/profile/complete_your_profile/basic_details_store.dart';
 
 import '../../values/strings.dart';
 import '../common_widgets/invalid_route.dart';
@@ -27,6 +29,10 @@ class Routes {
       case AppRoutes.homeScreen:
         return getRoute(
           widget: const HomeScreen().withProvider(HomeScreenStore()),
+        );
+      case AppRoutes.basicDetailsScreen:
+        return getRoute(
+          widget: const BasicDetailsScreen().withProvider(BasicDetailsStore()),
         );
 
       case AppRoutes.loginScreen:

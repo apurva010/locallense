@@ -8,6 +8,9 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     this.secondaryColor1,
     this.scaffoldBackGroundColor,
     this.naturalBorderColor,
+    this.whiteColor,
+    this.unFilledProgressColor,
+    this.textFieldLabelColor,
   });
 
   factory ThemeColor.light() => ThemeColor(
@@ -16,14 +19,18 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         secondaryColor1: AppColors.secondaryColor1,
         scaffoldBackGroundColor: AppColors.whiteColor,
         naturalBorderColor: AppColors.neutrals11,
+        whiteColor: AppColors.whiteColor,
+        unFilledProgressColor: AppColors.unFilledProgressColor,
+        textFieldLabelColor: AppColors.textFieldLabelColor,
       );
 
   factory ThemeColor.dark() => ThemeColor(
         primaryColor: AppColors.primaryColor,
         primaryColor2: AppColors.primaryColor2,
         secondaryColor1: AppColors.secondaryColor1,
-        scaffoldBackGroundColor: AppColors.blackColor,
-        naturalBorderColor: AppColors.neutrals11,
+        whiteColor: AppColors.whiteColor,
+        unFilledProgressColor: AppColors.unFilledProgressColor,
+        textFieldLabelColor: AppColors.textFieldLabelColor,
       );
 
   final Color? primaryColor;
@@ -31,17 +38,28 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
   final Color? secondaryColor1;
   final Color? scaffoldBackGroundColor;
   final Color? naturalBorderColor;
+  final Color? unFilledProgressColor;
+  final Color? textFieldLabelColor;
+
+  final Color? whiteColor;
 
   @override
   ThemeExtension<ThemeColor> copyWith({
     Color? primaryColor,
     Color? primaryColor2,
     Color? secondaryColor1,
+    Color? whiteColor,
+    Color? unFilledProgressColor,
+    Color? textFieldLabelColor,
   }) {
     return ThemeColor(
       primaryColor: primaryColor ?? this.primaryColor,
       primaryColor2: primaryColor2 ?? this.primaryColor2,
       secondaryColor1: secondaryColor1 ?? this.secondaryColor1,
+      whiteColor: whiteColor ?? this.whiteColor,
+      unFilledProgressColor:
+          unFilledProgressColor ?? this.unFilledProgressColor,
+      textFieldLabelColor: textFieldLabelColor ?? this.textFieldLabelColor,
     );
   }
 
@@ -67,6 +85,21 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
       secondaryColor1: Color.lerp(
         secondaryColor1,
         other.secondaryColor1,
+        t,
+      ),
+      whiteColor: Color.lerp(
+        whiteColor,
+        other.whiteColor,
+        t,
+      ),
+      unFilledProgressColor: Color.lerp(
+        unFilledProgressColor,
+        other.unFilledProgressColor,
+        t,
+      ),
+      textFieldLabelColor: Color.lerp(
+        textFieldLabelColor,
+        other.textFieldLabelColor,
         t,
       ),
     );

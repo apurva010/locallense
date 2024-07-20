@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:locallense/values/app_theme/text_style_theme.dart';
 import 'package:locallense/values/app_theme/them_color.dart';
+import 'package:locallense/values/constants.dart';
 import 'package:provider/provider.dart';
 
 import '../flavors/flavor.dart';
@@ -107,6 +108,11 @@ extension StringExtension on String {
   void copyToClipboard() => Clipboard.setData(
         ClipboardData(text: this),
       );
+
+  bool get isValidEmail => RegExp(
+        Constants.emailRegex,
+        caseSensitive: false,
+      ).hasMatch(this);
 }
 
 ///Extension on nullable strings
