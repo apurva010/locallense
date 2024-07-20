@@ -439,6 +439,46 @@ class Str {
       args: [],
     );
   }
+
+  /// `Select your preferences`
+  String get selectYourPreferences {
+    return Intl.message(
+      'Select your preferences',
+      name: 'selectYourPreferences',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preferences`
+  String get preferences {
+    return Intl.message(
+      'Preferences',
+      name: 'preferences',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete your profile`
+  String get completeYourProfile {
+    return Intl.message(
+      'Complete your profile',
+      name: 'completeYourProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete`
+  String get complete {
+    return Intl.message(
+      'Complete',
+      name: 'complete',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Str> {

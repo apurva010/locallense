@@ -31,7 +31,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "byLoggingInOrRegisteringYouAgreeToOur":
             MessageLookupByLibrary.simpleMessage(
                 "By logging in or registering, you agree to our"),
+        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "completeProfileTitle":
+            MessageLookupByLibrary.simpleMessage("Complete your profile"),
+        "completeYourProfile":
             MessageLookupByLibrary.simpleMessage("Complete your profile"),
         "conflictExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The request could not be completed due to a conflict."),
@@ -62,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "notFoundExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The page you requested could not be found."),
+        "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Privacy Policy."),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
@@ -71,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Action you requested was cancelled."),
         "requestTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Request took too long to reach the server. Please try again later."),
+        "selectYourPreferences":
+            MessageLookupByLibrary.simpleMessage("Select your preferences"),
         "sendTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "It took too long to send your request. Please try again."),
         "serviceUnavailableExceptionMsg": MessageLookupByLibrary.simpleMessage(

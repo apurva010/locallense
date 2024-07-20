@@ -37,5 +37,9 @@
   "uploadActivityText": "Upload your activity",
   "completeProfileTitle": "Complete your profile",
   "continueTxt": "Continue",
-  "skipForNow": "Skip for now"
+  "skipForNow": "Skip for now",
+  "selectYourPreferences": "Select your preferences",
+  "preferences": "Preferences",
+  "completeYourProfile": "Complete your profile",
+  "complete": "Complete"
 }
