@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/home/utils/home_bottom_nav_bar.dart';
+import 'package:locallense/utils/common_widgets/ll_pop_scope.dart';
 import 'package:locallense/utils/extensions.dart';
-import 'package:locallense/utils/ll_pop_scope.dart';
 
 class HomeScreen extends StatefulObserverWidget {
   const HomeScreen({super.key});

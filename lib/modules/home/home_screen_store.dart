@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:locallense/app_global_variables.dart';
-import 'package:locallense/modules/home/discover/discover_screen.dart';
 import 'package:locallense/modules/home/map/map_screen.dart';
+import 'package:locallense/modules/home/map/map_screen_store.dart';
 import 'package:locallense/modules/home/utils/home_navigator_page.dart';
 import 'package:locallense/modules/home/utils/home_utils.dart';
+import 'package:locallense/utils/extensions.dart';
 import 'package:mobx/mobx.dart';
 
 import 'profile/profile_screen.dart';
@@ -29,14 +30,10 @@ abstract class _HomeScreenStore with Store {
     screens = [
       HomeNavigatorPage(
         navigatorKey: homeKeyManager.keys[0],
-        child: const MapScreen(),
+        child: const MapScreen().withProvider(MapScreenStore()),
       ),
       HomeNavigatorPage(
         navigatorKey: homeKeyManager.keys[1],
-        child: const DiscoverScreen(),
-      ),
-      HomeNavigatorPage(
-        navigatorKey: homeKeyManager.keys[2],
         child: const ProfileScreen(),
       ),
     ];
