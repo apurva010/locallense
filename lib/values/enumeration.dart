@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:locallense/gen/assets.gen.dart';
+
 enum NetworkState {
   idle,
   loading,
@@ -28,4 +32,40 @@ enum ButtonType {
 enum SnackBarType {
   success,
   error;
+}
+
+enum PrefType {
+  restaurant,
+  cafe,
+  shoppingCenter,
+  museum,
+  hospital,
+  pg;
+
+  String get title => switch (this) {
+        hospital => 'Hospital',
+        restaurant => 'Restaurant',
+        cafe => 'Cafes',
+        shoppingCenter => 'Shopping Center',
+        museum => 'Museum',
+        pg => 'PGs',
+      };
+
+  String get icon => switch (this) {
+        hospital => Assets.vectors.hospital.path,
+        restaurant => Assets.vectors.restaurant.path,
+        cafe => Assets.vectors.cafe.path,
+        shoppingCenter => Assets.vectors.shoppingCenter.path,
+        museum => Assets.vectors.museum.path,
+        pg => Assets.vectors.pg.path,
+      };
+
+  Color get iconColor => switch (this) {
+        hospital => const Color(0xff48BC65),
+        restaurant => const Color(0xff1A3064),
+        cafe => const Color(0xff9757D7),
+        shoppingCenter => const Color(0xff588157),
+        museum => const Color(0xffF77F00),
+        pg => const Color(0xff2FA2B9),
+      };
 }

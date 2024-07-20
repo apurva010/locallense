@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/home/utils/home_utils.dart';
+import 'package:locallense/utils/common_widgets/ll_pop_scope.dart';
 import 'package:locallense/utils/extensions.dart';
-import 'package:locallense/utils/ll_pop_scope.dart';
 import 'package:locallense/utils/navigation/routes.dart';
 
 class HomeNavigatorPage extends StatelessWidget {

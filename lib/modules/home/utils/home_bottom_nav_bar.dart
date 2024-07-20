@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/home/utils/home_utils.dart';
+import 'package:locallense/utils/common_widgets/ll_svg_picture.dart';
 import 'package:locallense/utils/extensions.dart';
-import 'package:locallense/utils/ll_svg_picture.dart';
 import 'package:locallense/values/app_colors.dart';
 import 'package:locallense/values/constants.dart';
 
@@ -55,7 +55,7 @@ class HomeBottomNavBar extends StatelessObserverWidget {
       tiles.add(
         BottomNavigationBarItem(
           icon: SizedBox(
-            height: 84,
+            height: 76,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Column(

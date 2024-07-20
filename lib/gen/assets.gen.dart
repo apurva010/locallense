@@ -24,15 +24,28 @@ class $AssetsImagesGen {
   /// File path: assets/images/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
 
+  /// File path: assets/images/splash_logo.png
+  AssetGenImage get splashLogo =>
+      const AssetGenImage('assets/images/splash_logo.png');
+
   /// File path: assets/images/user.png
   AssetGenImage get user => const AssetGenImage('assets/images/user.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [icon, profile, splash, user];
+  List<AssetGenImage> get values => [icon, profile, splash, splashLogo, user];
 }
 
 class $AssetsVectorsGen {
   const $AssetsVectorsGen();
+
+  /// File path: assets/vectors/cafe.svg
+  SvgGenImage get cafe => const SvgGenImage('assets/vectors/cafe.svg');
+
+  /// File path: assets/vectors/clock.svg
+  SvgGenImage get clock => const SvgGenImage('assets/vectors/clock.svg');
+
+  /// File path: assets/vectors/close.svg
+  SvgGenImage get close => const SvgGenImage('assets/vectors/close.svg');
 
   /// File path: assets/vectors/google_icon.svg
   SvgGenImage get googleIcon =>
@@ -45,6 +58,9 @@ class $AssetsVectorsGen {
   SvgGenImage get homeFilled =>
       const SvgGenImage('assets/vectors/home_filled.svg');
 
+  /// File path: assets/vectors/hospital.svg
+  SvgGenImage get hospital => const SvgGenImage('assets/vectors/hospital.svg');
+
   /// File path: assets/vectors/location.svg
   SvgGenImage get location => const SvgGenImage('assets/vectors/location.svg');
 
@@ -55,6 +71,15 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/login_screen.svg
   SvgGenImage get loginScreen =>
       const SvgGenImage('assets/vectors/login_screen.svg');
+
+  /// File path: assets/vectors/museum.svg
+  SvgGenImage get museum => const SvgGenImage('assets/vectors/museum.svg');
+
+  /// File path: assets/vectors/pg.svg
+  SvgGenImage get pg => const SvgGenImage('assets/vectors/pg.svg');
+
+  /// File path: assets/vectors/pin_bg.svg
+  SvgGenImage get pinBg => const SvgGenImage('assets/vectors/pin_bg.svg');
 
   /// File path: assets/vectors/placeholder_icon.svg
   SvgGenImage get placeholderIcon =>
@@ -67,21 +92,47 @@ class $AssetsVectorsGen {
   SvgGenImage get profileFilled =>
       const SvgGenImage('assets/vectors/profile_filled.svg');
 
+  /// File path: assets/vectors/restaurant.svg
+  SvgGenImage get restaurant =>
+      const SvgGenImage('assets/vectors/restaurant.svg');
+
+  /// File path: assets/vectors/shopping_center.svg
+  SvgGenImage get shoppingCenter =>
+      const SvgGenImage('assets/vectors/shopping_center.svg');
+
+  /// File path: assets/vectors/splash_logo.svg
+  SvgGenImage get splashLogo =>
+      const SvgGenImage('assets/vectors/splash_logo.svg');
+
+  /// File path: assets/vectors/star.svg
+  SvgGenImage get star => const SvgGenImage('assets/vectors/star.svg');
+
   /// File path: assets/vectors/user_activity_upload.svg
   SvgGenImage get userActivityUpload =>
       const SvgGenImage('assets/vectors/user_activity_upload.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        cafe,
+        clock,
+        close,
         googleIcon,
         home,
         homeFilled,
+        hospital,
         location,
         locationFilled,
         loginScreen,
+        museum,
+        pg,
+        pinBg,
         placeholderIcon,
         profile,
         profileFilled,
+        restaurant,
+        shoppingCenter,
+        splashLogo,
+        star,
         userActivityUpload
       ];
 }
