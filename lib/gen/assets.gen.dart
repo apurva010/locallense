@@ -3,12 +3,12 @@
 ///  FlutterGen
 /// *****************************************************
 
+import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -18,11 +18,17 @@ class $AssetsImagesGen {
   /// File path: assets/images/icon.png
   AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
 
+  /// File path: assets/images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
+
   /// File path: assets/images/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
 
+  /// File path: assets/images/user.png
+  AssetGenImage get user => const AssetGenImage('assets/images/user.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [icon, splash];
+  List<AssetGenImage> get values => [profile, icon, splash, user];
 }
 
 class $AssetsVectorsGen {

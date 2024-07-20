@@ -4,6 +4,7 @@ class AppRoutes {
   static const String forwardSlash = '/';
   static const String homeScreen = '/homeScreen';
   static const String loginScreen = '/loginScreen';
+  static const String basicDetailsScreen = '/basicDetailsScreen';
 }
 
 class ApiErrorStrings {

@@ -7,6 +7,8 @@ class AppColors {
   static const Color secondaryColor1 = Color(0XFF4BC9F0);
   static const Color primaryColor2 = Color(0XFF1A3064);
 
+  static const Color unFilledProgressColor = Color(0XFFE6E8EC);
+
   static const Color whiteColor = Color(0XFFFFFFFF);
   static const Color blackColor = Color(0XFF000000);
   static const Color neutrals1 = Color(0XFF111827);
@@ -35,4 +37,7 @@ class AppColors {
   static const Color primaryButtonTextColor = Color(0XFFFCFCFD);
 
   static const Color neutrals11 = Color(0xFFC3C2D1);
+
+  static const Color textFieldLabelColor = Color(0XFF353945);
+  static const Color textFieldColor = Color(0XFFF4F5F6);
 }

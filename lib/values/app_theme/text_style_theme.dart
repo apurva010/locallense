@@ -98,14 +98,14 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
           color: AppColors.bodyMediumRegular,
         ),
         bodyXLargeSemiBold: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
           color: AppColors.bodyXLargeSemiBold,
         ),
         bodyMediumSemiBold: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
-          color: AppColors.bodyXLargeSemiBold,
+          color: AppColors.bodyMediumSemiBold,
         ),
         bodyXSmallMedium: const TextStyle(
           fontSize: 10,
