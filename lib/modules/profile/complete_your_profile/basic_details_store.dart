@@ -1,10 +1,13 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/utils/network/network_state_store.dart';
 import 'package:locallense/values/enumeration.dart';
+import 'package:locallense/values/strings.dart';
 import 'package:mobx/mobx.dart';
 
 part 'basic_details_store.g.dart';
@@ -39,6 +42,9 @@ abstract class _BasicDetailsStore extends NetworkStateStore with Store {
     try {
       if (formKey.currentState?.validate() ?? false) {
         networkState = NetworkState.loading;
+        unawaited(
+          navigation.pushReplacementNamed(AppRoutes.userActivityUpload),
+        );
       }
     } catch (e, s) {
       networkState = NetworkState.error;

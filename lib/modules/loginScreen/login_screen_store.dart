@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/services/secure_storage.dart';
 import 'package:locallense/services/shared_prefs.dart';

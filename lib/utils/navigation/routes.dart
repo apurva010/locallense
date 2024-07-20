@@ -5,6 +5,8 @@ import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_screen.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_store.dart';
+import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_screen.dart';
+import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_store.dart';
 
 import '../../values/strings.dart';
 import '../common_widgets/invalid_route.dart';
@@ -38,6 +40,13 @@ class Routes {
       case AppRoutes.loginScreen:
         return getRoute(
           widget: const LoginScreen().withProvider(LoginScreenStore()),
+        );
+
+      case AppRoutes.userActivityUpload:
+        return getRoute(
+          widget: const UserActivityUploadScreen().withProvider(
+            UserActivityUploadStore(),
+          ),
         );
 
       /// An invalid route. User shouldn't see this, it's for debugging purpose
