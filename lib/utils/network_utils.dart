@@ -31,15 +31,15 @@ class NetworkService {
   }
 
   //flutter_connectivity's listener
-  void _connectionChange(ConnectivityResult result) {
+  void _connectionChange(List<ConnectivityResult> result) {
     _checkConnection(result);
   }
 
   //The test to actually see if there is a connection
-  Future<bool> _checkConnection(ConnectivityResult result) async {
+  Future<bool> _checkConnection(List<ConnectivityResult> result) async {
     final previousConnection = hasConnection;
 
-    if (result.isNull || result == ConnectivityResult.none) {
+    if (result.isNullOrEmpty || result.first == ConnectivityResult.none) {
       hasConnection = false;
       connectionChangeController.add(hasConnection);
       return hasConnection;
