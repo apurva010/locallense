@@ -11,6 +11,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     this.whiteColor,
     this.unFilledProgressColor,
     this.textFieldLabelColor,
+    this.appbarBackgroundColor,
   });
 
   factory ThemeColor.light() => ThemeColor(
@@ -22,6 +23,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         whiteColor: AppColors.whiteColor,
         unFilledProgressColor: AppColors.unFilledProgressColor,
         textFieldLabelColor: AppColors.textFieldLabelColor,
+        appbarBackgroundColor: AppColors.whiteColor,
       );
 
   factory ThemeColor.dark() => ThemeColor(
@@ -40,6 +42,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
   final Color? naturalBorderColor;
   final Color? unFilledProgressColor;
   final Color? textFieldLabelColor;
+  final Color? appbarBackgroundColor;
 
   final Color? whiteColor;
 

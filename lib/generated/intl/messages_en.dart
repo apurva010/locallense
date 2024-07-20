@@ -31,10 +31,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "byLoggingInOrRegisteringYouAgreeToOur":
             MessageLookupByLibrary.simpleMessage(
                 "By logging in or registering, you agree to our"),
+        "completeProfileTitle":
+            MessageLookupByLibrary.simpleMessage("Complete your profile"),
         "conflictExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The request could not be completed due to a conflict."),
         "connectionTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We couldn’t connect. Please check your internet connection and try again"),
+        "continueTxt": MessageLookupByLibrary.simpleMessage("Continue"),
         "continueWithGoogle":
             MessageLookupByLibrary.simpleMessage("Continue with Google"),
         "discover": MessageLookupByLibrary.simpleMessage("Discover"),
@@ -76,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your session expired due to password change. Please login again"),
         "signInToYourAccount":
             MessageLookupByLibrary.simpleMessage("Sign in to your account"),
+        "skipForNow": MessageLookupByLibrary.simpleMessage("Skip for now"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "termsConditions":
@@ -84,6 +88,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "You are not authorized to access this resource. please sign in."),
         "unexpectedErrorExceptionMsg":
             MessageLookupByLibrary.simpleMessage("Unexpected error occurred"),
+        "uploadActivityFileTxt": MessageLookupByLibrary.simpleMessage(
+            "Upload your my activity file that will help us to know better about your preferences"),
+        "uploadActivityText":
+            MessageLookupByLibrary.simpleMessage("Upload your activity"),
         "userDeletedExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Your account has been deleted. If this was unintended, please contact the admin.")
       };

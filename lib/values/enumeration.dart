@@ -19,7 +19,8 @@ enum SecureStorageKeys { kAccessToken }
 
 enum ButtonType {
   primaryButton,
-  secondaryButton;
+  secondaryButton,
+  textOnly;
 
   bool get isPrimaryBtn => this == ButtonType.primaryButton;
 }

@@ -32,5 +32,10 @@
   "signInToYourAccount": "Sign in to your account",
   "home": "Home",
   "discover": "Discover",
-  "profile": "Profile"
+  "profile": "Profile",
+  "uploadActivityFileTxt": "Upload your my activity file that will help us to know better about your preferences",
+  "uploadActivityText": "Upload your activity",
+  "completeProfileTitle": "Complete your profile",
+  "continueTxt": "Continue",
+  "skipForNow": "Skip for now"
 }

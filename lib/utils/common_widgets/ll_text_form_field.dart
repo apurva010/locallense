@@ -55,7 +55,7 @@ class LocalLensTextFormField extends StatelessWidget {
   final bool autocorrect;
   final Widget? suffixIcon;
   final String? label;
-  final Function(String?)? onChange;
+  final void Function(String?)? onChange;
   final String? Function(String?)? validator;
   final String? initialText;
   final TextInputAction? textInputAction;
@@ -86,7 +86,6 @@ class LocalLensTextFormField extends StatelessWidget {
         ),
       ),
     );
-    final textTheme = Theme.of(context).textTheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

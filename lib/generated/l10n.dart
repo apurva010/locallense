@@ -389,6 +389,56 @@ class Str {
       args: [],
     );
   }
+
+  /// `Upload your my activity file that will help us to know better about your preferences`
+  String get uploadActivityFileTxt {
+    return Intl.message(
+      'Upload your my activity file that will help us to know better about your preferences',
+      name: 'uploadActivityFileTxt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload your activity`
+  String get uploadActivityText {
+    return Intl.message(
+      'Upload your activity',
+      name: 'uploadActivityText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete your profile`
+  String get completeProfileTitle {
+    return Intl.message(
+      'Complete your profile',
+      name: 'completeProfileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueTxt {
+    return Intl.message(
+      'Continue',
+      name: 'continueTxt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip for now`
+  String get skipForNow {
+    return Intl.message(
+      'Skip for now',
+      name: 'skipForNow',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Str> {

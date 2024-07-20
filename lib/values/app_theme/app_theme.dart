@@ -9,6 +9,7 @@ class AppTheme {
     highlightColor: Colors.transparent,
     splashColor: Colors.transparent,
     splashFactory: NoSplash.splashFactory,
+    scaffoldBackgroundColor: AppColors.whiteColor,
     extensions: [
       ThemeColor.light(),
       TextStyleTheme.light(),

@@ -76,12 +76,9 @@ class LocalLensButton extends StatelessWidget {
             padding: buttonInnerPadding ??
                 const EdgeInsets.symmetric(horizontal: 20),
             elevation: 0,
-            backgroundColor: buttonType.isPrimaryBtn
-                ? buttonColor ?? AppColors.primaryColor2
-                : AppColors.whiteColor,
-            disabledBackgroundColor: buttonType.isPrimaryBtn
-                ? buttonColor ?? Colors.grey
-                : AppColors.whiteColor,
+            backgroundColor: _getBackgroundColor(buttonType),
+            disabledBackgroundColor: _getDisabledColor(buttonType),
+            shadowColor: Colors.transparent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 20),
               side: BorderSide(
@@ -115,16 +112,7 @@ class LocalLensButton extends StatelessWidget {
                               child: Text(
                                 btnText ?? '',
                                 style: textStyle?.copyWith(height: 0) ??
-                                    (buttonType.isPrimaryBtn
-                                        ? context
-                                            .textStyleTheme.primaryButtonText
-                                        : context
-                                            .textStyleTheme.primaryButtonText
-                                            ?.copyWith(
-                                            color: fontColor ??
-                                                AppColors.secondaryColor1,
-                                            height: 0,
-                                          )),
+                                    _getButtonTextStyle(buttonType, context),
                                 maxLines: 1,
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
@@ -148,12 +136,53 @@ class LocalLensButton extends StatelessWidget {
     );
   }
 
+  Color _getBackgroundColor(ButtonType type) {
+    switch (type) {
+      case ButtonType.primaryButton:
+        return buttonColor ?? AppColors.primaryColor2;
+      case ButtonType.secondaryButton:
+        return AppColors.whiteColor;
+      case ButtonType.textOnly:
+        return Colors.transparent;
+    }
+  }
+
+  Color _getDisabledColor(ButtonType type) {
+    switch (type) {
+      case ButtonType.primaryButton:
+        return buttonColor ?? Colors.grey;
+      case ButtonType.secondaryButton:
+        return AppColors.whiteColor;
+      case ButtonType.textOnly:
+        return Colors.transparent;
+    }
+  }
+
+  TextStyle? _getButtonTextStyle(ButtonType type, BuildContext context) {
+    switch (type) {
+      case ButtonType.primaryButton:
+        return context.textStyleTheme.primaryButtonText;
+      case ButtonType.secondaryButton:
+      case ButtonType.textOnly:
+        return context.textStyleTheme.primaryButtonText?.copyWith(
+          color: fontColor ?? AppColors.primaryColor2,
+          height: 0,
+        );
+    }
+  }
+
   Color _getBorderColor() {
     if (showBorder) {
       return borderColor ?? AppColors.primaryColor2;
-    } else if (!buttonType.isPrimaryBtn) {
-      return AppColors.secondaryColor1;
+    } else {
+      switch (buttonType) {
+        case ButtonType.primaryButton:
+          return Colors.transparent;
+        case ButtonType.secondaryButton:
+          return AppColors.primaryColor2;
+        case ButtonType.textOnly:
+          return Colors.transparent;
+      }
     }
-    return Colors.transparent;
   }
 }
