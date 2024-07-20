@@ -24,6 +24,7 @@ class _LocalLensAppState extends State<LocalLensApp> {
   void initState() {
     networkService.initialize();
     authRepository.initGoogleSignIn();
+    apiRepository.initialise();
     super.initState();
   }
 

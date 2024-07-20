@@ -1,7 +1,8 @@
 class Constants {
   const Constants._();
 
-  static const baseUrl = 'https://simform.com';
+  static const baseUrl =
+      'http://ec2-13-202-25-238.ap-south-1.compute.amazonaws.com:4000/';
 
   static const String empty = '';
   static const String forwardSlash = '/';

@@ -1,8 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:locallense/apibase/repository/api_repository.dart';
 import 'package:locallense/app_global_variables.dart';
+import 'package:locallense/model/response/user/user_data_res.dart';
 import 'package:locallense/services/secure_storage.dart';
 import 'package:locallense/services/shared_prefs.dart';
+import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:mobx/mobx.dart';
 
@@ -26,25 +30,48 @@ abstract class _LoginScreenStore with Store {
         return false;
       }
 
-      await SharedPrefs.setSharedProperty(
-        value: true,
-        keyEnum: SharedPrefsKeys.isLoggedIn,
-      );
-      await authRepository.navigateAfterAuthSuccess();
+      final apiToken = await APIRepository.instance
+          .sendGoogleLoginToken(
+            googleAuth!.idToken!,
+          )
+          .getResult();
 
-      // TODO(Sahil): Add Token
       await SecureStorage.setValue(
         key: SecureStorageKeys.kAccessToken,
-        value: 'token',
+        value: apiToken.accessToken,
       );
-      await SharedPrefs.setSharedProperty(
-        keyEnum: SharedPrefsKeys.isLoggedIn,
-        value: true,
-      );
+
+      final userData = await APIRepository.instance.getUserData().getResult();
+
+      await _storeUserData(userData);
+
+      unawaited(authRepository.navigateAfterAuthSuccess());
+
       return true;
     } catch (e) {
       // TODO(Sahil): Show SnakBar
       return false;
+    } finally {
+      isGoogleLoginLoading = false;
     }
+  }
+
+  Future<void> _storeUserData(UserDataRes userdata) async {
+    await SharedPrefs.setSharedProperty(
+      value: jsonEncode(
+        userdata.toJson(),
+      ),
+      keyEnum: SharedPrefsKeys.userData,
+    );
+
+    await SharedPrefs.setSharedProperty(
+      value: true,
+      keyEnum: SharedPrefsKeys.isLoggedIn,
+    );
+
+    await SharedPrefs.setSharedProperty(
+      keyEnum: SharedPrefsKeys.isLoggedIn,
+      value: true,
+    );
   }
 }

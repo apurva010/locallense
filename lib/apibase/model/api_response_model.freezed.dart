@@ -21,7 +21,7 @@ APIResponse<T> _$APIResponseFromJson<T>(
 
 /// @nodoc
 mixin _$APIResponse<T> {
-  @JsonKey(name: 'statusCode')
+  @JsonKey(name: 'status')
   int get code => throw _privateConstructorUsedError;
   T? get data => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $APIResponseCopyWith<T, $Res> {
           APIResponse<T> value, $Res Function(APIResponse<T>) then) =
       _$APIResponseCopyWithImpl<T, $Res, APIResponse<T>>;
   @useResult
-  $Res call({@JsonKey(name: 'statusCode') int code, T? data, String? message});
+  $Res call({@JsonKey(name: 'status') int code, T? data, String? message});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ abstract class _$$APIResponseImplCopyWith<T, $Res>
       __$$APIResponseImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'statusCode') int code, T? data, String? message});
+  $Res call({@JsonKey(name: 'status') int code, T? data, String? message});
 }
 
 /// @nodoc
@@ -121,16 +121,14 @@ class __$$APIResponseImplCopyWithImpl<T, $Res>
 @JsonSerializable(createToJson: false, genericArgumentFactories: true)
 class _$APIResponseImpl<T> implements _APIResponse<T> {
   const _$APIResponseImpl(
-      {@JsonKey(name: 'statusCode') required this.code,
-      this.data,
-      this.message});
+      {@JsonKey(name: 'status') required this.code, this.data, this.message});
 
   factory _$APIResponseImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$$APIResponseImplFromJson(json, fromJsonT);
 
   @override
-  @JsonKey(name: 'statusCode')
+  @JsonKey(name: 'status')
   final int code;
   @override
   final T? data;
@@ -167,7 +165,7 @@ class _$APIResponseImpl<T> implements _APIResponse<T> {
 
 abstract class _APIResponse<T> implements APIResponse<T> {
   const factory _APIResponse(
-      {@JsonKey(name: 'statusCode') required final int code,
+      {@JsonKey(name: 'status') required final int code,
       final T? data,
       final String? message}) = _$APIResponseImpl<T>;
 
@@ -176,7 +174,7 @@ abstract class _APIResponse<T> implements APIResponse<T> {
       _$APIResponseImpl<T>.fromJson;
 
   @override
-  @JsonKey(name: 'statusCode')
+  @JsonKey(name: 'status')
   int get code;
   @override
   T? get data;

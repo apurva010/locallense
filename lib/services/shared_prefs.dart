@@ -13,17 +13,19 @@ class SharedPrefs {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  /// Provides saved shared preferences value based on enum key
+  /// Provides saved shared place_type value based on enum key
   static dynamic getSharedProperty({
     required SharedPrefsKeys keyEnum,
   }) {
     return switch (keyEnum) {
       SharedPrefsKeys.isLoggedIn =>
         _prefs.getBool(SharedPrefsKeys.isLoggedIn.name),
+      SharedPrefsKeys.userData =>
+        _prefs.getString(SharedPrefsKeys.userData.name),
     };
   }
 
-  /// Sets value to provided key as key-value pair in shared preferences
+  /// Sets value to provided key as key-value pair in shared place_type
   static Future<bool> setSharedProperty({
     required dynamic value,
     required SharedPrefsKeys keyEnum,

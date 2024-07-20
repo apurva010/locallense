@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:locallense/apibase/error_manager/network_exception.dart';
+import 'package:locallense/apibase/model/api_result.dart';
 import 'package:locallense/values/app_theme/text_style_theme.dart';
 import 'package:locallense/values/app_theme/them_color.dart';
 import 'package:locallense/values/constants.dart';
 import 'package:provider/provider.dart';
 
+import '../app_global_variables.dart';
 import '../flavors/flavor.dart';
 import '../flavors/flavor_config.dart';
 
@@ -122,4 +125,28 @@ extension NullableStringExtension on String? {
 
   ///checks if string is not null and not empty.
   bool get isNotNullAndNotEmpty => this != null && (this?.isNotEmpty ?? false);
+}
+
+extension APIResultExtenstion<T> on Future<ApiResult<T>> {
+  Future<T> getResult() async {
+    final data = await this;
+    return data.when(
+      success: (response, _) {
+        if (response != null) {
+          return response;
+        } else {
+          throw NetworkExceptions.defaultError(str.noDataFound);
+        }
+      },
+      failure: (exception) => throw exception,
+    );
+  }
+
+  Future<String?> getResultWithoutData() async {
+    final data = await this;
+    return data.when(
+      success: (_, message) => message,
+      failure: (exception) => throw exception,
+    );
+  }
 }

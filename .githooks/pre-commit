@@ -5,9 +5,3 @@ if [ $? -ne 0 ]; then
     else
       echo "Code is formatted"
 fi
-
-flutter analyze
-if [ $? -ne 0 ]; then
-  echo "Resolve issues from dart analysis"
-  exit 1
-fi

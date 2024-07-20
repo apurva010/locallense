@@ -22,14 +22,14 @@ class HeaderInterceptor extends Interceptor {
     if (internet) {
       final token = await checkToken();
       if (token?.isNotEmpty ?? false) {
-        options.headers.putIfAbsent('Authorization', () => token);
+        options.headers.putIfAbsent('Authorization', () => 'Bearer $token');
       }
       _logger.printSuccessLog(
         apiMethod: options.method,
         responseBody: options.data.toString(),
         parameters: options.queryParameters,
         url: '${options.baseUrl}${options.path}',
-        token: options.headers['Authentication'].toString(),
+        token: options.headers['Authorization'].toString(),
       );
     } else {
       // TODO(username): Show no internet dialog or toast here.
@@ -48,7 +48,7 @@ class HeaderInterceptor extends Interceptor {
     _logger.printSuccessLog(
       apiMethod: response.requestOptions.method,
       responseBody: response.data.toString(),
-      parameters: response.requestOptions.data as Object,
+      parameters: response.requestOptions.data as Object?,
       url: '${response.realUri.scheme}://${response.realUri.authority}'
           '${response.realUri.path}',
       token: response.headers.value('Authentication') ?? '',
@@ -64,14 +64,14 @@ class HeaderInterceptor extends Interceptor {
   ) {
     if (err.response != null) {
       _logger.printErrorLog(
-        responseBody: err.response!.data.toString(),
-        parameters: err.response!.requestOptions.data as Object,
+        responseBody: err.response?.data.toString(),
+        parameters: err.response?.requestOptions.data as Object?,
         url:
-            '${err.response!.realUri.scheme}://${err.response!.realUri.authority}'
-            '${err.response!.realUri.path}',
-        token: err.response!.headers.value('Authentication') ?? '',
-        errorString: err.response!.statusMessage ?? 'No message found',
-        statusCode: err.response!.statusCode ?? -1,
+            '${err.response?.realUri.scheme}://${err.response!.realUri.authority}'
+            '${err.response?.realUri.path}',
+        token: err.response?.headers.value('Authentication') ?? '',
+        errorString: err.response?.statusMessage ?? 'No message found',
+        statusCode: err.response?.statusCode ?? -1,
       );
     }
 
