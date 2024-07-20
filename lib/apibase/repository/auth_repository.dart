@@ -34,6 +34,14 @@ class AuthRepository {
     );
   }
 
+  Future<void> navigateToHomeScreen() async {
+    appSession.isInsideApp = true;
+    await navigation.pushNamedAndRemoveUntil(
+      AppRoutes.homeScreen,
+      (route) => false,
+    );
+  }
+
   Future<void> logOut() async {
     appSession.isInsideApp = false;
     await googleSignIn.signOut();

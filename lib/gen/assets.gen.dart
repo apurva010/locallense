@@ -41,6 +41,10 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/cafe.svg
   SvgGenImage get cafe => const SvgGenImage('assets/vectors/cafe.svg');
 
+  /// File path: assets/vectors/chek_mark_filled.svg
+  SvgGenImage get chekMarkFilled =>
+      const SvgGenImage('assets/vectors/chek_mark_filled.svg');
+
   /// File path: assets/vectors/clock.svg
   SvgGenImage get clock => const SvgGenImage('assets/vectors/clock.svg');
 
@@ -100,10 +104,6 @@ class $AssetsVectorsGen {
   SvgGenImage get shoppingCenter =>
       const SvgGenImage('assets/vectors/shopping_center.svg');
 
-  /// File path: assets/vectors/splash_logo.svg
-  SvgGenImage get splashLogo =>
-      const SvgGenImage('assets/vectors/splash_logo.svg');
-
   /// File path: assets/vectors/star.svg
   SvgGenImage get star => const SvgGenImage('assets/vectors/star.svg');
 
@@ -114,6 +114,7 @@ class $AssetsVectorsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         cafe,
+        chekMarkFilled,
         clock,
         close,
         googleIcon,
@@ -131,7 +132,6 @@ class $AssetsVectorsGen {
         profileFilled,
         restaurant,
         shoppingCenter,
-        splashLogo,
         star,
         userActivityUpload
       ];

@@ -17,6 +17,14 @@ extension ContextExtension on BuildContext {
   /// returns object of type [T] from provider
   T provide<T>({bool? listen}) => Provider.of<T>(this, listen: listen ?? false);
 
+  T? maybeProvide<T>({bool? listen}) {
+    try {
+      return Provider.of<T>(this, listen: listen ?? false);
+    } catch (e) {
+      return null;
+    }
+  }
+
   /// allows to change field focus from one [FocusNode] to another
   void fieldFocusChange({required FocusNode from, required FocusNode to}) {
     from.unfocus();
