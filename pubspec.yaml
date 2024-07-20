@@ -1,0 +1,53 @@
+name: locallense
+description: A new Flutter application.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2 # Dependency Injection
+  logging: 1.2.0 # Logger
+  intl: ^0.19.0 # Localization
+  connectivity_plus: 4.0.2 # Internet connection check
+  shared_preferences: 2.2.3 # Local storage
+  json_annotation: ^4.9.0 # Annotations for json generator
+  flutter_svg: 2.0.7 # Svg to widget
+  sentry_flutter: 7.7.0 # Crash analytics
+  retrofit: 4.0.1 # Network calls
+  mobx: 2.2.0 # State manager
+  flutter_mobx: 2.0.6+5 # State manager widgets
+  flutter_secure_storage: 8.0.0 # Local storage for sensitive data
+  dio: 5.3.2 # Added to avoid warning
+  device_preview: ^1.2.0 # Device Preview
+  screwdriver:
+  freezed_annotation:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  retrofit_generator: 7.0.8 # Network calls gen
+  build_runner: 2.4.6 # Code generator
+  json_serializable: ^6.8.0 # Json serialization gen
+  mobx_codegen: 2.3.0 # Mobx state manager gen
+  flutter_gen_runner: 5.3.1 # Asset code gen
+  very_good_analysis: 5.0.0+1 # Linter
+  freezed:
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
+flutter_intl:
+  enabled: true
+  class_name: Str
