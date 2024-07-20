@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:locallense/modules/loginScreen/login_screen.dart';
+import 'package:locallense/modules/loginScreen/login_screen_store.dart';
 
 import 'modules/splashScreen/splash_screen.dart';
 import 'modules/splashScreen/splash_screen_store.dart';
@@ -23,6 +25,11 @@ class Routes {
       case AppRoutes.txtAfterSplash:
         return getRoute(
           widget: const HomeScreen().withProvider(SplashScreenStore()),
+        );
+
+      case AppRoutes.loginScreen:
+        return getRoute(
+          widget: const LoginScreen().withProvider(LoginScreenStore()),
         );
 
       /// An invalid route. User shouldn't see this, it's for debugging purpose
