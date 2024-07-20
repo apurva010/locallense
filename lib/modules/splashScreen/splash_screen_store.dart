@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/utils/network/network_state_store.dart';
 import 'package:mobx/mobx.dart';
@@ -13,7 +12,7 @@ abstract class _SplashScreenStore extends NetworkStateStore with Store {
   _SplashScreenStore() {
     hasInternet = networkService.hasConnection;
     connectivitySubscription = networkService.connectionChange.listen((event) {
-      hasInternet = event != ConnectivityResult.none;
+      hasInternet = bool.tryParse(event.toString()) ?? false;
     });
   }
 
