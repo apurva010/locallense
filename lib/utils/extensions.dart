@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:locallense/values/app_theme/text_style_theme.dart';
+import 'package:locallense/values/app_theme/them_color.dart';
 import 'package:provider/provider.dart';
 
 import '../flavors/flavor.dart';
@@ -42,6 +44,13 @@ extension ContextExtension on BuildContext {
   bool get isPortrait => MediaQuery.orientationOf(this) == Orientation.portrait;
 
   Size get screenSize => MediaQuery.sizeOf(this);
+
+  /// Theme Extension
+  ThemeColor get themeColor =>
+      Theme.of(this).extension<ThemeColor>() ?? ThemeColor();
+
+  TextStyleTheme get textStyleTheme =>
+      Theme.of(this).extension<TextStyleTheme>() ?? TextStyleTheme();
 }
 
 /// provides extension to get a dependency from provider
