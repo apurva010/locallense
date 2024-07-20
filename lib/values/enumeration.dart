@@ -16,3 +16,15 @@ enum NetworkState {
 enum SharedPrefsKeys { isLoggedIn }
 
 enum SecureStorageKeys { kAccessToken }
+
+enum ButtonType {
+  primaryButton,
+  secondaryButton;
+
+  bool get isPrimaryBtn => this == ButtonType.primaryButton;
+}
+
+enum SnackBarType {
+  success,
+  error;
+}

@@ -22,14 +22,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "andAcknowledgeOur":
+            MessageLookupByLibrary.simpleMessage("and acknowledge our"),
         "badGatewayExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We are experiencing temporary problems. Please try again later."),
         "badRequestExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "There was a problem with your request. Please check and try again."),
+        "byLoggingInOrRegisteringYouAgreeToOur":
+            MessageLookupByLibrary.simpleMessage(
+                "By logging in or registering, you agree to our"),
         "conflictExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The request could not be completed due to a conflict."),
         "connectionTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We couldn’t connect. Please check your internet connection and try again"),
+        "continueWithGoogle":
+            MessageLookupByLibrary.simpleMessage("Continue with Google"),
         "errorUserIsSignedOut": MessageLookupByLibrary.simpleMessage(
             "Session expired. Please sign in again."),
         "forbiddenExceptionMsg": MessageLookupByLibrary.simpleMessage(
@@ -40,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "The request took too long to complete. Please try again later"),
         "internalServerErrorExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We are experiencing technical difficulties. Please try again later."),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginSubtitleText": MessageLookupByLibrary.simpleMessage(
+            "Find places that fit your lifestyle and preferences perfectly."),
         "modelParsingExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Something went wrong with the data parsing"),
         "noDataFound": MessageLookupByLibrary.simpleMessage("No data found"),
@@ -47,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "notFoundExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The page you requested could not be found."),
+        "privacyPolicy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy."),
         "receiveTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We didn’t receive a response. Please try again."),
         "requestCancelledExceptionMsg": MessageLookupByLibrary.simpleMessage(
@@ -59,8 +71,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "The service is unavailable. Please try again later."),
         "sessionExpiredExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Your session expired due to password change. Please login again"),
+        "signInToYourAccount":
+            MessageLookupByLibrary.simpleMessage("Sign in to your account"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
+        "termsConditions":
+            MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
         "unauthorisedRequestExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "You are not authorized to access this resource. please sign in."),
         "unexpectedErrorExceptionMsg":

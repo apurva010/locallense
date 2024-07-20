@@ -12,34 +12,35 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
-class $AssetsIconGen {
-  const $AssetsIconGen();
-
-  /// File path: assets/icon/icon.png
-  AssetGenImage get icon => const AssetGenImage('assets/icon/icon.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [icon];
-}
-
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/icon.png
+  AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
 
   /// File path: assets/images/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splash];
+  List<AssetGenImage> get values => [icon, splash];
 }
 
 class $AssetsVectorsGen {
   const $AssetsVectorsGen();
+
+  /// File path: assets/vectors/google_icon.svg
+  SvgGenImage get googleIcon =>
+      const SvgGenImage('assets/vectors/google_icon.svg');
 
   /// File path: assets/vectors/home.svg
   SvgGenImage get home => const SvgGenImage('assets/vectors/home.svg');
 
   /// File path: assets/vectors/location.svg
   SvgGenImage get location => const SvgGenImage('assets/vectors/location.svg');
+
+  /// File path: assets/vectors/login_screen.svg
+  SvgGenImage get loginScreen =>
+      const SvgGenImage('assets/vectors/login_screen.svg');
 
   /// File path: assets/vectors/placeholder_icon.svg
   SvgGenImage get placeholderIcon =>
@@ -49,13 +50,13 @@ class $AssetsVectorsGen {
   SvgGenImage get profile => const SvgGenImage('assets/vectors/profile.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [home, location, placeholderIcon, profile];
+  List<SvgGenImage> get values =>
+      [googleIcon, home, location, loginScreen, placeholderIcon, profile];
 }
 
 class Assets {
   Assets._();
 
-  static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsVectorsGen vectors = $AssetsVectorsGen();
 }

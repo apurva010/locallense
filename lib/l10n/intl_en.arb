@@ -22,5 +22,12 @@
   "gatewayTimeoutExceptionMsg": "The request took too long to complete. Please try again later",
   "somethingWentWrong": "Something went wrong",
   "errorUserIsSignedOut": "Session expired. Please sign in again.",
-  "login": "Login"
+  "login": "Login",
+  "loginSubtitleText": "Find places that fit your lifestyle and preferences perfectly.",
+  "continueWithGoogle": "Continue with Google",
+  "byLoggingInOrRegisteringYouAgreeToOur": "By logging in or registering, you agree to our",
+  "termsConditions": "Terms & Conditions",
+  "andAcknowledgeOur": "and acknowledge our",
+  "privacyPolicy": "Privacy Policy.",
+  "signInToYourAccount": "Sign in to your account"
 }

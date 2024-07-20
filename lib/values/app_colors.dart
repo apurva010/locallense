@@ -8,6 +8,7 @@ class AppColors {
   static const Color primaryColor2 = Color(0XFF1A3064);
 
   static const Color whiteColor = Color(0XFFFFFFFF);
+  static const Color blackColor = Color(0XFF000000);
   static const Color neutrals3 = Color(0XFF353945);
   static const Color neutrals4 = Color(0XFF777E90);
 
@@ -31,4 +32,6 @@ class AppColors {
   static const Color bodyXSmallMedium = Color(0XFF777E90);
   static const Color bodySmallRegular = Color(0XFF141416);
   static const Color primaryButtonTextColor = Color(0XFFFCFCFD);
+
+  static const Color neutrals11 = Color(0xFFC3C2D1);
 }
