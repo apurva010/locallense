@@ -34,7 +34,7 @@ abstract class _UserActivityUploadStore with Store {
         Env.gptKey,
       );
       unawaited(
-        navigation.pushNamed(
+        navigation.pushReplacementNamed(
           AppRoutes.selectPreference,
           arguments: response,
         ),

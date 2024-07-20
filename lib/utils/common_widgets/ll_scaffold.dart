@@ -24,6 +24,7 @@ class LLScaffold extends StatelessWidget {
     this.safeAreaRight = true,
     this.enableSafeArea = true,
     this.centerTitle = true,
+    this.automaticallyImplyLeading = true,
   });
 
   final Widget body;
@@ -44,6 +45,7 @@ class LLScaffold extends StatelessWidget {
   final bool safeAreaRight;
   final bool enableSafeArea;
   final bool centerTitle;
+  final bool automaticallyImplyLeading;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +77,7 @@ class LLScaffold extends StatelessWidget {
                   child: AppBar(
                     centerTitle: centerTitle,
                     backgroundColor: context.themeColor.appbarBackgroundColor,
+                    automaticallyImplyLeading: automaticallyImplyLeading,
                     leading: backButtonVisibility
                         // TODO(Janak): Add custom view here
                         ? InkWell(
