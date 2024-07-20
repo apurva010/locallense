@@ -29,5 +29,8 @@
   "termsConditions": "Terms & Conditions",
   "andAcknowledgeOur": "and acknowledge our",
   "privacyPolicy": "Privacy Policy.",
-  "signInToYourAccount": "Sign in to your account"
+  "signInToYourAccount": "Sign in to your account",
+  "home": "Home",
+  "discover": "Discover",
+  "profile": "Profile"
 }
