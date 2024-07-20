@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app.dart';
 import 'utils/extensions.dart';
-import 'values/app_theme_store.dart';
+import 'values/app_theme/app_theme_store.dart';
 
 class AppConfig extends StatelessWidget {
   const AppConfig({super.key});

@@ -1,10 +1,32 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppColors {
   const AppColors._();
 
-  static const Color colorAccent = Color(0xff068CDE);
-  static const Color colorPrimary = Color(0xff1A1B1D);
-  static const Color colorAlpha50Primary = Color(0x801A1B1D);
-  static const Color colorWeightTheme = Color(0xFFEDB55B);
+  static const Color primaryColor = Color(0XFF2FA2B9);
+  static const Color secondaryColor1 = Color(0XFF4BC9F0);
+  static const Color primaryColor2 = Color(0XFF1A3064);
+
+  static const Color whiteColor = Color(0XFFFFFFFF);
+
+  // Text Color
+  static const Color heroTextColor = Color(0XFF23262F);
+  static const Color headLine1 = Color(0XFF23262F);
+  static const Color headLine2 = Color(0XFF23262F);
+  static const Color headLine3 = Color(0XFF23262F);
+  static const Color headLine4 = Color(0XFF23262F);
+  static const Color headLine5 = Color(0XFF23262F);
+  static const Color headLine6 = Color(0XFF23262F);
+  static const Color bodyTextLarge = Color(0XFF23262F);
+  static const Color bodyTextMedium = Color(0XFF23262F);
+  static const Color bodyTextBold = Color(0XFF23262F);
+  static const Color bodyTextRegular = Color(0XFF23262F);
+  static const Color bodyTextSmall = Color(0XFF23262F);
+
+  static const Color bodyMediumRegular = Color(0XFF777E90);
+  static const Color bodyXLargeSemiBold = Color(0XFF141416);
+  static const Color bodyMediumSemiBold = Color(0XFF23262F);
+  static const Color bodyXSmallMedium = Color(0XFF777E90);
+  static const Color bodySmallRegular = Color(0XFF141416);
+  static const Color primaryButtonTextColor = Color(0XFFFCFCFD);
 }

@@ -5,7 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../utils/extensions.dart';
-import '../../values/app_theme_store.dart';
+import '../../values/app_theme/app_theme_store.dart';
 import '../../values/strings.dart';
 import 'splash_screen_store.dart';
 

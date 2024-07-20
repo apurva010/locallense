@@ -5,8 +5,8 @@ import 'package:locallense/app_global_variables.dart';
 import 'modules/splashScreen/splash_screen.dart';
 import 'routes.dart';
 import 'utils/extensions.dart';
-import 'values/app_theme.dart';
-import 'values/app_theme_store.dart';
+import 'values/app_theme/app_theme.dart';
+import 'values/app_theme/app_theme_store.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
@@ -33,8 +33,8 @@ class _LocalLensAppState extends State<LocalLensApp> {
       builder: (context) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.instance.getLightTheme(),
-          darkTheme: AppTheme.instance.getDarkTheme(),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
           themeMode: themeStore.themeMode,
           home: const SplashScreen(),
           onGenerateRoute: Routes.generateRoute,
