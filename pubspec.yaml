@@ -60,6 +60,25 @@ flutter:
     - assets/images/
     - assets/vectors/
 
+  fonts:
+    - family: Jost
+      fonts:
+        - asset: assets/fonts/Jost-Black.ttf
+        - asset: assets/fonts/Jost-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Jost-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Jost-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Jost-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Jost-Light.ttf
+          weight: 200
+        - asset: assets/fonts/Jost-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Jost-SemiBold.ttf
+          weight: 500
+
 flutter_gen:
   integrations:
     flutter_svg: true
