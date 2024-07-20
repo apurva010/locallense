@@ -5,4 +5,5 @@ class Constants {
 
   static const String empty = '';
   static const String forwardSlash = '/';
+  static const String apiTokenKey = 'API_TOKEN_KEY';
 }

@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:locallense/apibase/repository/auth_repository.dart';
 import 'package:locallense/app_global_variables.dart';
+import 'package:locallense/services/secure_storage.dart';
 import 'package:locallense/services/shared_prefs.dart';
 import 'package:locallense/values/enumeration.dart';
-import 'package:screwdriver/screwdriver.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../utils/extensions.dart';
@@ -31,19 +31,18 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> navigationPage() async {
-    final currentUser = GoogleSignIn().currentUser;
+    final currentUser = await AuthRepository.instance.googleSignIn.isSignedIn();
     final isLoggedIn = await SharedPrefs.getSharedProperty(
       keyEnum: SharedPrefsKeys.isLoggedIn,
     ) as bool?;
-    if (currentUser.isNotNull) {
-      if (isLoggedIn ?? false) {
-        await navigation.pushNamedAndRemoveUntil(
-          AppRoutes.homeScreen,
-          (route) => false,
-        );
-      }
-      await authRepository.logOut();
+    if (currentUser && (isLoggedIn ?? false)) {
+      await navigation.pushNamedAndRemoveUntil(
+        AppRoutes.homeScreen,
+        (route) => false,
+      );
     } else {
+      await SecureStorage.deleteAll();
+      await SharedPrefs.clearPreferences();
       await navigation.pushNamedAndRemoveUntil(
         AppRoutes.loginScreen,
         (route) => false,
@@ -55,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return ColoredBox(
       color: const Color(0xffF9FAFB),
-      child: Assets.icon.icon.image(
+      child: Assets.images.icon.image(
         height: context.screenSize.height,
         width: context.screenSize.width,
       ),

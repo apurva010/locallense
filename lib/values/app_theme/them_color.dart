@@ -6,23 +6,31 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     this.primaryColor,
     this.primaryColor2,
     this.secondaryColor1,
+    this.scaffoldBackGroundColor,
+    this.naturalBorderColor,
   });
 
   factory ThemeColor.light() => ThemeColor(
         primaryColor: AppColors.primaryColor,
         primaryColor2: AppColors.primaryColor2,
         secondaryColor1: AppColors.secondaryColor1,
+        scaffoldBackGroundColor: AppColors.whiteColor,
+        naturalBorderColor: AppColors.neutrals11,
       );
 
   factory ThemeColor.dark() => ThemeColor(
         primaryColor: AppColors.primaryColor,
         primaryColor2: AppColors.primaryColor2,
         secondaryColor1: AppColors.secondaryColor1,
+        scaffoldBackGroundColor: AppColors.blackColor,
+        naturalBorderColor: AppColors.neutrals11,
       );
 
   final Color? primaryColor;
   final Color? primaryColor2;
   final Color? secondaryColor1;
+  final Color? scaffoldBackGroundColor;
+  final Color? naturalBorderColor;
 
   @override
   ThemeExtension<ThemeColor> copyWith({

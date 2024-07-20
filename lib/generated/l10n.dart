@@ -279,6 +279,86 @@ class Str {
       args: [],
     );
   }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find places that fit your lifestyle and preferences perfectly.`
+  String get loginSubtitleText {
+    return Intl.message(
+      'Find places that fit your lifestyle and preferences perfectly.',
+      name: 'loginSubtitleText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue with Google`
+  String get continueWithGoogle {
+    return Intl.message(
+      'Continue with Google',
+      name: 'continueWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By logging in or registering, you agree to our`
+  String get byLoggingInOrRegisteringYouAgreeToOur {
+    return Intl.message(
+      'By logging in or registering, you agree to our',
+      name: 'byLoggingInOrRegisteringYouAgreeToOur',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms & Conditions`
+  String get termsConditions {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'termsConditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `and acknowledge our`
+  String get andAcknowledgeOur {
+    return Intl.message(
+      'and acknowledge our',
+      name: 'andAcknowledgeOur',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy.`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy Policy.',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in to your account`
+  String get signInToYourAccount {
+    return Intl.message(
+      'Sign in to your account',
+      name: 'signInToYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Str> {

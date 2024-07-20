@@ -21,6 +21,8 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
     this.bodyMediumSemiBold,
     this.bodyXSmallMedium,
     this.bodySmallRegular,
+    this.bodyLargeMedium,
+    this.bodySmallMedium,
   });
 
   factory TextStyleTheme.light() => TextStyleTheme(
@@ -84,6 +86,12 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
           height: 1.5,
           color: AppColors.primaryButtonTextColor,
         ),
+        bodyLargeMedium: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.bodyXLargeSemiBold,
+          letterSpacing: 0.2,
+        ),
         bodyMediumRegular: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
@@ -105,9 +113,16 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
           color: AppColors.bodyXSmallMedium,
         ),
         bodySmallRegular: const TextStyle(
-          fontSize: 10,
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+          color: AppColors.bodySmallRegular,
+          letterSpacing: 0.4,
+        ),
+        bodySmallMedium: const TextStyle(
+          fontSize: 12,
           fontWeight: FontWeight.w500,
           color: AppColors.bodySmallRegular,
+          letterSpacing: 0.4,
         ),
       );
 
@@ -132,6 +147,8 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
   final TextStyle? bodySmallRegular;
 
   final TextStyle? primaryButtonText;
+  final TextStyle? bodyLargeMedium;
+  final TextStyle? bodySmallMedium;
 
   @override
   TextStyleTheme copyWith({
