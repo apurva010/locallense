@@ -1,7 +1,8 @@
 class AppRoutes {
   const AppRoutes._();
 
-  static const String txtAfterSplash = '/AfterSplash';
+  static const String forwardSlash = '/';
+  static const String homeScreen = '/homeScreen';
   static const String loginScreen = '/loginScreen';
 }
 

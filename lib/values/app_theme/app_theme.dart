@@ -6,6 +6,9 @@ import 'package:locallense/values/app_theme/them_color.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: AppColors.primaryColor,
+    highlightColor: Colors.transparent,
+    splashColor: Colors.transparent,
+    splashFactory: NoSplash.splashFactory,
     extensions: [
       ThemeColor.light(),
       TextStyleTheme.light(),

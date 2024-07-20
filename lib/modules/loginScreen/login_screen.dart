@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locallense/app_global_variables.dart';
 import 'package:provider/provider.dart';
 
 import 'login_screen_store.dart';
@@ -17,7 +18,7 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () {
                   context.read<LoginScreenStore>().loginWithGoogleOnPress();
                 },
-                child: const Text('Login'),
+                child: Text(str.login),
               ),
             ),
           ],

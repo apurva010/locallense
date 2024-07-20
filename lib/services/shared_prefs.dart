@@ -19,7 +19,7 @@ class SharedPrefs {
   }) {
     return switch (keyEnum) {
       SharedPrefsKeys.isLoggedIn =>
-        _prefs.getString(SharedPrefsKeys.isLoggedIn.name),
+        _prefs.getBool(SharedPrefsKeys.isLoggedIn.name),
     };
   }
 
