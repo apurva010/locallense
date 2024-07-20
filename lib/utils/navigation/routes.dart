@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:locallense/modules/home/home_screen.dart';
+import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
 
-import 'modules/splashScreen/splash_screen.dart';
-import 'modules/splashScreen/splash_screen_store.dart';
-import 'utils/common_widgets/invalid_route.dart';
-import 'utils/extensions.dart';
-import 'values/strings.dart';
+import '../../values/strings.dart';
+import '../common_widgets/invalid_route.dart';
+import '../extensions.dart';
 
 class Routes {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic> generateRoute(RouteSettings settings, Widget root) {
     Route<dynamic> getRoute({
       required Widget widget,
       bool fullscreenDialog = false,
@@ -22,9 +22,11 @@ class Routes {
     }
 
     switch (settings.name) {
-      case AppRoutes.txtAfterSplash:
+      case AppRoutes.forwardSlash:
+        return getRoute(widget: root);
+      case AppRoutes.homeScreen:
         return getRoute(
-          widget: const HomeScreen().withProvider(SplashScreenStore()),
+          widget: const HomeScreen().withProvider(HomeScreenStore()),
         );
 
       case AppRoutes.loginScreen:

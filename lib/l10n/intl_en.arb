@@ -21,5 +21,6 @@
   "serviceUnavailableExceptionMsg": "The service is unavailable. Please try again later.",
   "gatewayTimeoutExceptionMsg": "The request took too long to complete. Please try again later",
   "somethingWentWrong": "Something went wrong",
-  "errorUserIsSignedOut": "Session expired. Please sign in again."
+  "errorUserIsSignedOut": "Session expired. Please sign in again.",
+  "login": "Login"
 }
