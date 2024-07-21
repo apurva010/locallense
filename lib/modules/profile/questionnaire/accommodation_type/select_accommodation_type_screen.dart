@@ -7,6 +7,8 @@ import 'package:locallense/modules/profile/questionnaire/flow_screens/widgets/qu
 import 'package:locallense/utils/common_widgets/ll_scaffold.dart';
 import 'package:locallense/utils/common_widgets/local_lens_button.dart';
 import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/values/app_colors.dart';
+import 'package:locallense/values/enumeration.dart';
 
 class SelectAccommodationTypeScreen extends StatelessObserverWidget {
   const SelectAccommodationTypeScreen({super.key});
@@ -40,27 +42,47 @@ class SelectAccommodationTypeScreen extends StatelessObserverWidget {
               height: 10,
             ),
             Expanded(
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                padEnds: false,
-                controller: store.pageController,
-                onPageChanged: store.onPageChanged,
-                children: List.generate(
-                  store.pgReferenceForm.length,
-                  (index) {
-                    return QuestionnaireFlowWidget(
-                      title: store.pgReferenceForm[index].value.question,
-                      questionnaire: store.pgReferenceForm[index].value,
-                      onTap: store.selectOption,
-                    );
-                  },
-                ),
-              ),
+              child: store.pgQuestionState.isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryColor,
+                      ),
+                    )
+                  : store.pgQuestionState.isFailed
+                      ? Center(
+                          child: Column(
+                            children: [
+                              const Text('Something went wrong'),
+                              LocalLensButton(
+                                onTap: store.getPGQuestions,
+                                btnText: 'Retry',
+                                buttonType: ButtonType.secondaryButton,
+                              )
+                            ],
+                          ),
+                        )
+                      : PageView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          padEnds: false,
+                          controller: store.pageController,
+                          onPageChanged: store.onPageChanged,
+                          children: List.generate(
+                            store.pgForm.value.length,
+                            (index) {
+                              return QuestionnaireFlowWidget(
+                                title: store.pgForm.value[index].text,
+                                questionnaire: store.pgForm.value[index],
+                                onTap: store.selectOption,
+                              );
+                            },
+                          ),
+                        ),
             ),
             LocalLensButton(
               onTap: store.nextPage,
               btnText: str.continueTxt,
               enabled: store.continueBtnEnabled,
+              isLoading: store.submitPGQuestionState.isLoading,
             ),
             const SizedBox(
               height: 10,

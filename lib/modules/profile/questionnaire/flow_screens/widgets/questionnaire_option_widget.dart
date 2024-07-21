@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:locallense/model/questionnaire_dm/questionnaire_dm.dart';
+import 'package:locallense/model/response/questions/questions_res.dart';
 import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/utils/typedefs.dart';
 import 'package:locallense/values/app_colors.dart';
@@ -18,8 +18,8 @@ class QuestionnaireOptionWidget extends StatelessWidget {
     super.key,
   });
 
-  final QuestionnaireDm questionnaire;
-  final OptionDm option;
+  final QuestionsRes questionnaire;
+  final OptionData option;
   final bool enableCheckIcon;
   final Color? selectedColor;
   final Color? unSelectedColor;
@@ -45,13 +45,13 @@ class QuestionnaireOptionWidget extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: option.isSelected
+                  color: option.selected
                       ? context.themeColor.primaryColor ??
                           AppColors.primaryColor
                       : context.themeColor.unFilledProgressColor ??
                           AppColors.unFilledProgressColor,
                 ),
-                color: option.isSelected
+                color: option.selected
                     ? selectedColor ?? context.themeColor.primaryColor
                     : unSelectedColor ?? context.themeColor.whiteColor,
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -64,7 +64,7 @@ class QuestionnaireOptionWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 20),
                       child: Icon(
                         size: 24,
-                        option.isSelected
+                        option.selected
                             ? Icons.check_circle
                             : Icons.circle_outlined,
                         color: AppColors.primaryColor,
@@ -72,10 +72,10 @@ class QuestionnaireOptionWidget extends StatelessWidget {
                     ),
                   Expanded(
                     child: Text(
-                      option.option,
+                      option.text,
                       style:
                           context.textStyleTheme.bodyMediumSemiBold?.copyWith(
-                        color: option.isSelected
+                        color: option.selected
                             ? selectedTxtColor ?? context.themeColor.whiteColor
                             : unSelectedTxtColor ??
                                 context.themeColor.blackColor,

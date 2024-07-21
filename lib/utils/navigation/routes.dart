@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:locallense/modules/edit_profile/edit_profile_screen.dart';
+import 'package:locallense/model/question_flow_navigation_dm.dart';
 import 'package:locallense/model/response/preferences/preferences_res.dart';
+import 'package:locallense/modules/edit_profile/edit_profile_screen.dart';
 import 'package:locallense/modules/home/home_screen.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
@@ -16,7 +17,6 @@ import 'package:locallense/modules/profile/questionnaire/flow_screens/questionna
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_screen.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_store.dart';
 import 'package:locallense/modules/splashScreen/intro_screen.dart';
-import 'package:locallense/values/enumeration.dart';
 import 'package:provider/provider.dart';
 
 import '../../values/strings.dart';
@@ -89,8 +89,8 @@ class Routes {
         return getRoute(
           widget: const QuestionnaireFlowScreen().withProvider(
             QuestionnaireFlowStore(
-              selectedPreferenceLocation:
-                  settings.arguments as LocationPreferences?,
+              questionFlowNavigationDm:
+                  settings.arguments as QuestionFlowNavigationDm?,
             ),
           ),
         );

@@ -82,7 +82,7 @@ LocationPreferences? parseLocationPref(String location) {
       return LocationPreferences.hospital;
     case 'Cafe/Restaurant':
       return LocationPreferences.cafeRestaurant;
-    case 'Tourist attraction':
+    case 'Tourist Attraction':
       return LocationPreferences.touristAttraction;
   }
   return null;

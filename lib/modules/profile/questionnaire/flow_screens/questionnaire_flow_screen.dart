@@ -22,7 +22,6 @@ class _QuestionnaireFlowScreenState extends State<QuestionnaireFlowScreen> {
   @override
   void initState() {
     store = context.provide<QuestionnaireFlowStore>();
-    store.initialize();
     super.initState();
   }
 
@@ -43,11 +42,15 @@ class _QuestionnaireFlowScreenState extends State<QuestionnaireFlowScreen> {
             ),
             Observer(
               builder: (context) {
-                return ProcessHeaderWidget(
-                  title: store.questionnaireFlowName,
-                  step: store.currentPage,
-                  totalStep: store.totalPage,
-                );
+                if (store.totalPage > 0) {
+                  return ProcessHeaderWidget(
+                    title: store.questionnaireFlowName,
+                    step: store.currentPage,
+                    totalStep: store.totalPage,
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
               },
             ),
             const SizedBox(
@@ -59,12 +62,12 @@ class _QuestionnaireFlowScreenState extends State<QuestionnaireFlowScreen> {
                 controller: store.pageController,
                 onPageChanged: store.onPageChanged,
                 children: List.generate(
-                  store.questionnaire.length,
+                  store.questionnaire.value.length,
                   (index) {
                     final questionnaire = store.questionnaire;
                     return QuestionnaireFlowWidget(
-                      title: questionnaire[index].value.question,
-                      questionnaire: questionnaire[index].value,
+                      title: questionnaire.value[index].text,
+                      questionnaire: questionnaire.value[index],
                       onTap: store.selectOption,
                     );
                   },
@@ -75,6 +78,7 @@ class _QuestionnaireFlowScreenState extends State<QuestionnaireFlowScreen> {
               onTap: store.nextPage,
               btnText: str.continueTxt,
               enabled: store.continueBtnEnabled,
+              isLoading: store.submitQuestionnaireState.isLoading,
             ),
             const SizedBox(
               height: 10,
