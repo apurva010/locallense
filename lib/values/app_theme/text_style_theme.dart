@@ -170,6 +170,7 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
     TextStyle? bodyMediumSemiBold,
     TextStyle? bodyXSmallMedium,
     TextStyle? bodySmallRegular,
+    TextStyle? bodySmallMedium,
   }) {
     return TextStyleTheme(
       heroTextStyle: heroTextStyle ?? this.heroTextStyle,
@@ -190,6 +191,7 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
       bodyMediumSemiBold: bodyMediumSemiBold ?? this.bodyMediumSemiBold,
       bodyXSmallMedium: bodyXSmallMedium ?? this.bodyXSmallMedium,
       bodySmallRegular: bodySmallRegular ?? this.bodySmallRegular,
+      bodySmallMedium: bodySmallMedium ?? this.bodySmallMedium,
     );
   }
 
@@ -287,6 +289,11 @@ class TextStyleTheme extends ThemeExtension<TextStyleTheme> {
       bodySmallRegular: TextStyle.lerp(
         bodySmallRegular,
         other.bodySmallRegular,
+        t,
+      ),
+      bodySmallMedium: TextStyle.lerp(
+        bodySmallMedium,
+        other.bodySmallMedium,
         t,
       ),
     );

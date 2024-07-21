@@ -7,6 +7,8 @@ import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/home/profile/edit_pref/edit_pref_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
+import 'package:locallense/modules/place_details/place_details_screen.dart';
+import 'package:locallense/modules/place_details/place_details_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_screen.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/select_preferences/select_preference_store.dart';
@@ -70,6 +72,11 @@ class Routes {
           widget: const UserActivityUploadScreen().withProvider(
             UserActivityUploadStore(),
           ),
+        );
+
+      case AppRoutes.placeDetailScreen:
+        return getRoute(
+          widget: const PlaceDetailsScreen().withProvider(PlaceDetailsStore()),
         );
 
       case AppRoutes.selectAccommodationType:

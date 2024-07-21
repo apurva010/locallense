@@ -149,7 +149,7 @@ abstract class _UserActivityUploadStore with Store {
   void skipToNextScreen() {
     navigation.pushReplacementNamed(
       AppRoutes.selectPreference,
-      arguments: <String>[],
+      arguments: <PreferencesRes>[],
     );
   }
 

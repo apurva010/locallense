@@ -15,11 +15,17 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/home.png
+  AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
   /// File path: assets/images/icon.png
   AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
 
   /// File path: assets/images/intro.jpeg
   AssetGenImage get intro => const AssetGenImage('assets/images/intro.jpeg');
+
+  /// File path: assets/images/pin.png
+  AssetGenImage get pin => const AssetGenImage('assets/images/pin.png');
 
   /// File path: assets/images/profile.png
   AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
@@ -36,11 +42,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [icon, intro, profile, splash, splashLogo, user];
+      [home, icon, intro, pin, profile, splash, splashLogo, user];
 }
 
 class $AssetsVectorsGen {
   const $AssetsVectorsGen();
+
+  /// File path: assets/vectors/bed.svg
+  SvgGenImage get bed => const SvgGenImage('assets/vectors/bed.svg');
 
   /// File path: assets/vectors/cafe.svg
   SvgGenImage get cafe => const SvgGenImage('assets/vectors/cafe.svg');
@@ -84,6 +93,9 @@ class $AssetsVectorsGen {
   SvgGenImage get hospitalPrefIcon =>
       const SvgGenImage('assets/vectors/hospital_pref_icon.svg');
 
+  /// File path: assets/vectors/kitchen.svg
+  SvgGenImage get kitchen => const SvgGenImage('assets/vectors/kitchen.svg');
+
   /// File path: assets/vectors/location.svg
   SvgGenImage get location => const SvgGenImage('assets/vectors/location.svg');
 
@@ -94,6 +106,9 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/login_screen.svg
   SvgGenImage get loginScreen =>
       const SvgGenImage('assets/vectors/login_screen.svg');
+
+  /// File path: assets/vectors/markIcon.svg
+  SvgGenImage get markIcon => const SvgGenImage('assets/vectors/markIcon.svg');
 
   /// File path: assets/vectors/museum.svg
   SvgGenImage get museum => const SvgGenImage('assets/vectors/museum.svg');
@@ -108,6 +123,9 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/pg_pref_icon.svg
   SvgGenImage get pgPrefIcon =>
       const SvgGenImage('assets/vectors/pg_pref_icon.svg');
+
+  /// File path: assets/vectors/pin.svg
+  SvgGenImage get pin => const SvgGenImage('assets/vectors/pin.svg');
 
   /// File path: assets/vectors/pin_bg.svg
   SvgGenImage get pinBg => const SvgGenImage('assets/vectors/pin_bg.svg');
@@ -152,6 +170,7 @@ class $AssetsVectorsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        bed,
         cafe,
         chekMarkFilled,
         clock,
@@ -164,13 +183,16 @@ class $AssetsVectorsGen {
         homeFilled,
         hospital,
         hospitalPrefIcon,
+        kitchen,
         location,
         locationFilled,
         loginScreen,
+        markIcon,
         museum,
         myPrefsIcon,
         pg,
         pgPrefIcon,
+        pin,
         pinBg,
         placeholderIcon,
         profile,

@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/modules/home/map/map_screen_store.dart';
 import 'package:locallense/modules/home/map/widget/chip_scroll_view.dart';
 import 'package:locallense/modules/home/map/widget/grabbing_widget.dart';
@@ -7,6 +7,7 @@ import 'package:locallense/modules/home/map/widget/place_card.dart';
 import 'package:locallense/utils/common_widgets/sliding_up_panel.dart';
 import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/values/app_colors.dart';
+import 'package:locallense/values/strings.dart';
 
 class MapSlidingPanel extends StatelessWidget {
   const MapSlidingPanel({super.key});
@@ -46,9 +47,17 @@ class MapSlidingPanel extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               itemBuilder: (context, index) {
                 final item = store.places[index];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: PlaceCard(place: item),
+                return InkWell(
+                  splashColor: Colors.transparent,
+                  splashFactory: NoSplash.splashFactory,
+                  highlightColor: Colors.transparent,
+                  onTap: () => navigation.pushNamed(
+                    AppRoutes.placeDetailScreen,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: PlaceCard(place: item),
+                  ),
                 );
               },
             ),
