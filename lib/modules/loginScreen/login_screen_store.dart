@@ -7,6 +7,7 @@ import 'package:locallense/model/response/user/user_data_res.dart';
 import 'package:locallense/services/secure_storage.dart';
 import 'package:locallense/services/shared_prefs.dart';
 import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/utils/helpers/helpers.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:mobx/mobx.dart';
 
@@ -25,7 +26,7 @@ abstract class _LoginScreenStore with Store {
       final googleAuth = await signInResponse?.authentication;
 
       if (googleAuth?.idToken == null) {
-        // TODO(Sahil): Show SnakBar
+        showErrorToast('Something went wrong while sign in with google');
         isGoogleLoginLoading = false;
         return false;
       }
@@ -49,7 +50,7 @@ abstract class _LoginScreenStore with Store {
 
       return true;
     } catch (e) {
-      // TODO(Sahil): Show SnakBar
+      showErrorToast('Something went wrong while sign in with google');
       return false;
     } finally {
       isGoogleLoginLoading = false;

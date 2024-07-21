@@ -10,6 +10,7 @@ class UserDataRes {
     required this.profileUrl,
     required this.email,
     required this.loginProvider,
+    this.isPreferencesCompleted = false,
   });
 
   factory UserDataRes.fromJson(Map<String, dynamic> json) =>
@@ -21,6 +22,7 @@ class UserDataRes {
   final String profileUrl;
   final String email;
   final int loginProvider;
+  final bool isPreferencesCompleted;
 
   Map<String, dynamic> toJson() => _$UserDataResToJson(this);
 }

@@ -6,6 +6,7 @@ import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/model/request/update_user/update_user_info_req.dart';
 import 'package:locallense/model/response/user/user_data_res.dart';
 import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/utils/helpers/helpers.dart';
 import 'package:locallense/utils/network/network_state_store.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:locallense/values/strings.dart';
@@ -45,7 +46,7 @@ abstract class _BasicDetailsStore extends NetworkStateStore with Store {
       profilePicture = data.profileUrl;
       networkState = NetworkState.success;
     } catch (e) {
-      // TODO(Sahil): Show Error snackBar
+      showErrorToast('Something went wrong while updating profile data');
       networkState = NetworkState.error;
     }
   }

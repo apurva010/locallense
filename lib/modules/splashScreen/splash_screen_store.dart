@@ -19,6 +19,9 @@ abstract class _SplashScreenStore extends NetworkStateStore with Store {
   late StreamSubscription<dynamic> connectivitySubscription;
 
   @observable
+  bool isContinueBtnLoading = false;
+
+  @observable
   bool hasInternet = false;
 
   void cancelSubscription() {
