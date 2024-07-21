@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:locallense/utils/common_widgets/ll_toast.dart';
+import 'package:locallense/values/enumeration.dart';
 import 'package:logging/logging.dart';
 
 /// allows to set system icon theme (light | dark)
@@ -9,7 +10,8 @@ void setSystemIcons({required bool dark}) {
   SystemChrome.setSystemUIOverlayStyle(
     (dark ? SystemUiOverlayStyle.dark : SystemUiOverlayStyle.light).copyWith(
       statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
@@ -72,4 +74,15 @@ void showSuccessToast(
     },
     duration: Duration(seconds: duration),
   );
+}
+
+LocationPreferences? parseLocationPref(String location) {
+  switch (location) {
+    case 'Hospitals':
+      return LocationPreferences.hospital;
+    case 'Cafe/Restaurant':
+      return LocationPreferences.cafeRestaurant;
+    case 'Tourist attraction':
+      return LocationPreferences.touristAttraction;
+  }
 }

@@ -13,6 +13,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     this.textFieldLabelColor,
     this.appbarBackgroundColor,
     this.preferenceChipBorderColor,
+    this.blackColor,
   });
 
   factory ThemeColor.light() => ThemeColor(
@@ -26,6 +27,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         textFieldLabelColor: AppColors.textFieldLabelColor,
         appbarBackgroundColor: AppColors.whiteColor,
         preferenceChipBorderColor: AppColors.preferenceChipBorderColor,
+        blackColor: AppColors.blackColor,
       );
 
   factory ThemeColor.dark() => ThemeColor(
@@ -38,6 +40,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         scaffoldBackGroundColor: AppColors.blackColor,
         naturalBorderColor: AppColors.neutrals11,
         preferenceChipBorderColor: AppColors.preferenceChipBorderColor,
+        blackColor: AppColors.blackColor,
       );
 
   final Color? primaryColor;
@@ -51,6 +54,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
   final Color? appbarBackgroundColor;
 
   final Color? whiteColor;
+  final Color? blackColor;
 
   @override
   ThemeExtension<ThemeColor> copyWith({
@@ -61,6 +65,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     Color? unFilledProgressColor,
     Color? textFieldLabelColor,
     Color? preferenceChipBorderColor,
+    Color? blackColor,
   }) {
     return ThemeColor(
       primaryColor: primaryColor ?? this.primaryColor,
@@ -72,6 +77,7 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
       textFieldLabelColor: textFieldLabelColor ?? this.textFieldLabelColor,
       preferenceChipBorderColor:
           preferenceChipBorderColor ?? this.preferenceChipBorderColor,
+      blackColor: blackColor ?? this.blackColor,
     );
   }
 

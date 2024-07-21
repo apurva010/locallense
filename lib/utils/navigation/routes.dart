@@ -7,8 +7,14 @@ import 'package:locallense/modules/profile/complete_your_profile/basic_details_s
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/select_preferences/select_preference_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/select_preferences/select_your_preference.dart';
+import 'package:locallense/modules/profile/questionnaire/accommodation_type/select_accommodation_store.dart';
+import 'package:locallense/modules/profile/questionnaire/accommodation_type/select_accommodation_type_screen.dart';
+import 'package:locallense/modules/profile/questionnaire/flow_screens/questionnaire_flow_screen.dart';
+import 'package:locallense/modules/profile/questionnaire/flow_screens/questionnaire_flow_store.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_screen.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_store.dart';
+import 'package:locallense/values/enumeration.dart';
+import 'package:provider/provider.dart';
 
 import '../../values/strings.dart';
 import '../common_widgets/invalid_route.dart';
@@ -55,6 +61,30 @@ class Routes {
         return getRoute(
           widget: const UserActivityUploadScreen().withProvider(
             UserActivityUploadStore(),
+          ),
+        );
+
+      case AppRoutes.selectAccommodationType:
+        return getRoute(
+          widget: const SelectAccommodationTypeScreen().withProviders(
+            [
+              Provider(
+                create: (context) => SelectAccommodationStore(),
+              ),
+              Provider(
+                create: (context) => QuestionnaireFlowStore(),
+              ),
+            ],
+          ),
+        );
+
+      case AppRoutes.questionnaireFlowScreen:
+        return getRoute(
+          widget: const QuestionnaireFlowScreen().withProvider(
+            QuestionnaireFlowStore(
+              selectedPreferenceLocation:
+                  settings.arguments as LocationPreferences?,
+            ),
           ),
         );
 

@@ -22,15 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "airConditioning":
+            MessageLookupByLibrary.simpleMessage("Air conditioning"),
         "andAcknowledgeOur":
             MessageLookupByLibrary.simpleMessage("and acknowledge our"),
         "badGatewayExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We are experiencing temporary problems. Please try again later."),
         "badRequestExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "There was a problem with your request. Please check and try again."),
+        "bothWillWork": MessageLookupByLibrary.simpleMessage("Both will work"),
         "byLoggingInOrRegisteringYouAgreeToOur":
             MessageLookupByLibrary.simpleMessage(
                 "By logging in or registering, you agree to our"),
+        "cafeRestaurantFirstQue": MessageLookupByLibrary.simpleMessage(
+            "What type of dining options are you interested in having nearby?"),
+        "caferestaurant":
+            MessageLookupByLibrary.simpleMessage("Cafe/Restaurant"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "completeProfileTitle":
             MessageLookupByLibrary.simpleMessage("Complete your profile"),
@@ -52,19 +59,42 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong with the data format"),
         "gatewayTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The request took too long to complete. Please try again later"),
+        "generalPractitioner":
+            MessageLookupByLibrary.simpleMessage("General practitioner"),
+        "gymFitness": MessageLookupByLibrary.simpleMessage("Gym fitness"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "hospitalFirstQuestion": MessageLookupByLibrary.simpleMessage(
+            "How important is it for you to live near a hospital or medical center?"),
+        "hospitalQuestionnaire":
+            MessageLookupByLibrary.simpleMessage("Hospital questionnaire"),
+        "hospitalSecondQuestion": MessageLookupByLibrary.simpleMessage(
+            "Do you have any specific medical requirements or conditions that require nearby medical attention?"),
+        "hospitalThirdQuestion": MessageLookupByLibrary.simpleMessage(
+            "If you need medical consultation or assistance, what level of consultant would you prefer?"),
+        "hospitals": MessageLookupByLibrary.simpleMessage("Hospitals"),
         "internalServerErrorExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "We are experiencing technical difficulties. Please try again later."),
+        "kitchenAccess": MessageLookupByLibrary.simpleMessage("Kitchen access"),
+        "laundryService":
+            MessageLookupByLibrary.simpleMessage("Laundry service"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginSubtitleText": MessageLookupByLibrary.simpleMessage(
             "Find places that fit your lifestyle and preferences perfectly."),
         "modelParsingExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Something went wrong with the data parsing"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "noDataFound": MessageLookupByLibrary.simpleMessage("No data found"),
         "noInternetConnectionExceptionMsg":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
+        "noPreferences": MessageLookupByLibrary.simpleMessage("No preferences"),
         "notFoundExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The page you requested could not be found."),
+        "notImportant": MessageLookupByLibrary.simpleMessage("Not important"),
+        "otherNearByLocationPreference": MessageLookupByLibrary.simpleMessage(
+            "What are your other nearby location preferences"),
+        "parkingSpace": MessageLookupByLibrary.simpleMessage("Parking space"),
+        "pgReferenceForm":
+            MessageLookupByLibrary.simpleMessage("PG reference form"),
         "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Privacy Policy."),
@@ -75,21 +105,36 @@ class MessageLookup extends MessageLookupByLibrary {
             "Action you requested was cancelled."),
         "requestTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Request took too long to reach the server. Please try again later."),
+        "selectAccommodationTxt": MessageLookupByLibrary.simpleMessage(
+            "Select the type of accommodation you prefer"),
+        "selectAmenitiesAndFacilitiesTxt": MessageLookupByLibrary.simpleMessage(
+            "Please select amenities and facilities that are important to you"),
         "selectYourPreferences":
             MessageLookupByLibrary.simpleMessage("Select your preferences"),
         "sendTimeoutExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "It took too long to send your request. Please try again."),
+        "seniorConsultant":
+            MessageLookupByLibrary.simpleMessage("Senior consultant"),
         "serviceUnavailableExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "The service is unavailable. Please try again later."),
         "sessionExpiredExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "Your session expired due to password change. Please login again"),
+        "sharedRoom": MessageLookupByLibrary.simpleMessage("Shared room"),
         "signInToYourAccount":
             MessageLookupByLibrary.simpleMessage("Sign in to your account"),
+        "singleRoom": MessageLookupByLibrary.simpleMessage("Single room"),
         "skipForNow": MessageLookupByLibrary.simpleMessage("Skip for now"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
+        "somewhatImportant":
+            MessageLookupByLibrary.simpleMessage("Somewhat important"),
+        "specialist": MessageLookupByLibrary.simpleMessage("Specialist"),
+        "studyworkDesk":
+            MessageLookupByLibrary.simpleMessage("Study/Work desk"),
         "termsConditions":
             MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+        "touristAttraction":
+            MessageLookupByLibrary.simpleMessage("Tourist attraction"),
         "unauthorisedRequestExceptionMsg": MessageLookupByLibrary.simpleMessage(
             "You are not authorized to access this resource. please sign in."),
         "unexpectedErrorExceptionMsg":
@@ -99,6 +144,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "uploadActivityText":
             MessageLookupByLibrary.simpleMessage("Upload your activity"),
         "userDeletedExceptionMsg": MessageLookupByLibrary.simpleMessage(
-            "Your account has been deleted. If this was unintended, please contact the admin.")
+            "Your account has been deleted. If this was unintended, please contact the admin."),
+        "veryImportant": MessageLookupByLibrary.simpleMessage("Very important"),
+        "wifi": MessageLookupByLibrary.simpleMessage("Wifi"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

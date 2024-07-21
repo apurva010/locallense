@@ -79,7 +79,7 @@ extension StatefulWidgetExtension on State {
 
 /// allows to create [MultiProvider] with less boilerplate
 extension ProviderExtension<T> on Widget {
-  Widget withProviders(List<Provider<T>> providers) => MultiProvider(
+  Widget withProviders<T>(List<Provider<T>> providers) => MultiProvider(
         providers: providers,
         child: this,
       );

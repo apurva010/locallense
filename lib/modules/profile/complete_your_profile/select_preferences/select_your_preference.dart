@@ -5,6 +5,7 @@ import 'package:locallense/modules/profile/complete_your_profile/widgets/process
 import 'package:locallense/utils/common_widgets/ll_scaffold.dart';
 import 'package:locallense/utils/common_widgets/local_lens_button.dart';
 import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/values/strings.dart';
 
 class SelectYourPreference extends StatelessWidget {
   const SelectYourPreference({super.key});
@@ -42,8 +43,10 @@ class SelectYourPreference extends StatelessWidget {
             const PreferenceChips(),
             const Spacer(),
             LocalLensButton(
-              onTap: () {},
-              btnText: str.complete,
+              onTap: () => navigation.pushNamed(
+                AppRoutes.selectAccommodationType,
+              ),
+              btnText: str.continueTxt,
             ),
             const SizedBox(
               height: 20,

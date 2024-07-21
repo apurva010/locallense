@@ -31,7 +31,8 @@ class ProcessHeaderWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            // TODO(Apurva): progress count code
+            /*Container(
               decoration: BoxDecoration(
                 color: context.themeColor.primaryColor2,
                 borderRadius: const BorderRadius.all(
@@ -50,7 +51,7 @@ class ProcessHeaderWidget extends StatelessWidget {
                   color: AppColors.whiteColor,
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
         const SizedBox(
