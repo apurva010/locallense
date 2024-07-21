@@ -44,7 +44,7 @@ class EditProfileScreen extends StatelessWidget {
                     onTap: () => _updateUserData(store),
                     btnText: 'Retry',
                     buttonType: ButtonType.secondaryButton,
-                  )
+                  ),
                 ],
               ),
             );
@@ -52,7 +52,8 @@ class EditProfileScreen extends StatelessWidget {
           return Column(
             children: [
               const Expanded(
-                  child: SingleChildScrollView(child: ProfileSection())),
+                child: SingleChildScrollView(child: ProfileSection()),
+              ),
               LocalLensButton(
                 onTap: () => _updateUserData(store),
                 btnText: 'Update Details',

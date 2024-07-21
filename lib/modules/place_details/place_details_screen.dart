@@ -39,7 +39,9 @@ class PlaceDetailsScreen extends StatelessWidget {
                       height: 16,
                     ),
                     Text(
-                      'Sunshine Residency offers comfortable living with modern amenities in a prime location, ideal for students and professionals.',
+                      'Sunshine Residency offers comfortable living with'
+                      ' modern amenities in a prime location, ideal for '
+                      'students and professionals.',
                       style: context.textStyleTheme.bodyMediumRegular?.copyWith(
                         color: AppColors.neutrals3,
                       ),
@@ -59,7 +61,7 @@ class PlaceDetailsScreen extends StatelessWidget {
                       height: 16,
                     ),
                     const PreferenceChips().withProvider(
-                      SelectPreferenceStore([]),
+                      SelectPreferenceStore(preSelectPreferences: []),
                     ),
                     const SizedBox(
                       height: 24,

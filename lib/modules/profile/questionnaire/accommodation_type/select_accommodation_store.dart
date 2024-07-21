@@ -20,6 +20,7 @@ class SelectAccommodationStore = _SelectAccommodationStore
 
 abstract class _SelectAccommodationStore with Store {
   _SelectAccommodationStore({
+    // ignore: unused_element
     this.isEditScreen = false,
   }) {
     initialize();
@@ -98,6 +99,7 @@ abstract class _SelectAccommodationStore with Store {
     }
   }
 
+  // ignore: use_setters_to_change_properties
   void onPageChanged(int index) => currentPage = index;
 
   Future<void> nextPage() async {
@@ -167,7 +169,7 @@ abstract class _SelectAccommodationStore with Store {
   Future<void> postPGForm() async {
     try {
       submitPGQuestionState = NetworkState.loading;
-      PostUserQuestionReq questionAnswer = PostUserQuestionReq(
+      const questionAnswer = PostUserQuestionReq(
         questionsAndOptions: [],
       );
       for (final x in pgForm.value) {

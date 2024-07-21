@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:locallense/modules/home/map/model/place_dm.dart';
 import 'package:locallense/utils/common_widgets/sliding_up_panel.dart';
+import 'package:locallense/utils/permission_helper.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:mobx/mobx.dart';
 
@@ -9,6 +13,12 @@ part 'map_screen_store.g.dart';
 class MapScreenStore = _MapScreenStore with _$MapScreenStore;
 
 abstract class _MapScreenStore with Store {
+  _MapScreenStore() {
+    // identifyCurrentLocation();
+  }
+
+  MapController mapController = MapController();
+
   /// Sliding Panel params..............................................
   PanelController panelController = PanelController();
 
@@ -74,4 +84,20 @@ abstract class _MapScreenStore with Store {
       type: PrefType.shoppingCenter,
     ),
   ];
+
+  @observable
+  Position? currentLocation;
+
+  Future<void> identifyCurrentLocation() async {
+    await PermissionHelper.checkLocationPermission();
+    currentLocation = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    if (currentLocation != null) {
+      mapController.move(
+        LatLng(currentLocation!.latitude, currentLocation!.longitude),
+        14,
+      );
+    }
+  }
 }

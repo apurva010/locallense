@@ -58,7 +58,7 @@ class SelectAccommodationTypeScreen extends StatelessObserverWidget {
                                 onTap: store.getPGQuestions,
                                 btnText: 'Retry',
                                 buttonType: ButtonType.secondaryButton,
-                              )
+                              ),
                             ],
                           ),
                         )

@@ -17,6 +17,7 @@ class QuestionnaireFlowStore = _QuestionnaireFlowStore
 
 abstract class _QuestionnaireFlowStore with Store {
   _QuestionnaireFlowStore({
+    // ignore: unused_element
     this.questionFlowNavigationDm,
   }) {
     initialize();
@@ -78,6 +79,7 @@ abstract class _QuestionnaireFlowStore with Store {
     questionnaire.reportChanged();
   }
 
+  // ignore: use_setters_to_change_properties
   void onPageChanged(int index) => currentPage = index;
 
   Future<void> nextPage() async {
@@ -137,7 +139,7 @@ abstract class _QuestionnaireFlowStore with Store {
   Future<void> postQuestionnaire() async {
     try {
       submitQuestionnaireState = NetworkState.loading;
-      PostUserQuestionReq questionAnswer = PostUserQuestionReq(
+      const questionAnswer = PostUserQuestionReq(
         questionsAndOptions: [],
       );
       for (final x in questionnaire.value) {

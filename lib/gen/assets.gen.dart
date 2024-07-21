@@ -107,9 +107,6 @@ class $AssetsVectorsGen {
   SvgGenImage get loginScreen =>
       const SvgGenImage('assets/vectors/login_screen.svg');
 
-  /// File path: assets/vectors/markIcon.svg
-  SvgGenImage get markIcon => const SvgGenImage('assets/vectors/markIcon.svg');
-
   /// File path: assets/vectors/museum.svg
   SvgGenImage get museum => const SvgGenImage('assets/vectors/museum.svg');
 
@@ -123,9 +120,6 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/pg_pref_icon.svg
   SvgGenImage get pgPrefIcon =>
       const SvgGenImage('assets/vectors/pg_pref_icon.svg');
-
-  /// File path: assets/vectors/pin.svg
-  SvgGenImage get pin => const SvgGenImage('assets/vectors/pin.svg');
 
   /// File path: assets/vectors/pin_bg.svg
   SvgGenImage get pinBg => const SvgGenImage('assets/vectors/pin_bg.svg');
@@ -187,12 +181,10 @@ class $AssetsVectorsGen {
         location,
         locationFilled,
         loginScreen,
-        markIcon,
         museum,
         myPrefsIcon,
         pg,
         pgPrefIcon,
-        pin,
         pinBg,
         placeholderIcon,
         profile,

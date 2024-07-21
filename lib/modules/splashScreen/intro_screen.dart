@@ -52,7 +52,8 @@ class IntroScreen extends StatelessWidget {
                   height: 16,
                 ),
                 Text(
-                  'Find places that fit your lifestyle and preferences perfectly.',
+                  'Find places that fit your lifestyle'
+                  ' and preferences perfectly.',
                   textAlign: TextAlign.center,
                   style: context.textStyleTheme.bodyMediumRegular?.copyWith(
                     color: AppColors.chipColor,
