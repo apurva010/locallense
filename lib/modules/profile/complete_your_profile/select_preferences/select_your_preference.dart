@@ -51,7 +51,7 @@ class SelectYourPreference extends StatelessWidget {
             ),
             const Spacer(),
             LocalLensButton(
-              onTap: () => navigation.pushNamed(
+              onTap: () => navigation.pushReplacementNamed(
                 AppRoutes.selectAccommodationType,
               ),
               btnText: str.continueTxt,

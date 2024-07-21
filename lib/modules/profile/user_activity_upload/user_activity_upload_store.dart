@@ -149,7 +149,10 @@ abstract class _UserActivityUploadStore with Store {
   }
 
   void skipToNextScreen() {
-    authRepository.navigateToHomeScreen();
+    navigation.pushReplacementNamed(
+      AppRoutes.selectPreference,
+      arguments: <String>[],
+    );
   }
 
   Future<void> uploadUserActivity() async {
