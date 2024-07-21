@@ -142,7 +142,7 @@ class LocalLensButton extends StatelessWidget {
         return buttonColor ?? AppColors.neutrals1;
       case ButtonType.secondaryButton:
         return AppColors.whiteColor;
-      case ButtonType.textOnly:
+      case ButtonType.textOnly || ButtonType.border:
         return Colors.transparent;
     }
   }
@@ -153,7 +153,7 @@ class LocalLensButton extends StatelessWidget {
         return buttonColor ?? Colors.grey;
       case ButtonType.secondaryButton:
         return AppColors.whiteColor;
-      case ButtonType.textOnly:
+      case ButtonType.textOnly || ButtonType.border:
         return Colors.transparent;
     }
   }
@@ -164,6 +164,7 @@ class LocalLensButton extends StatelessWidget {
         return context.textStyleTheme.primaryButtonText;
       case ButtonType.secondaryButton:
       case ButtonType.textOnly:
+      case ButtonType.border:
         return context.textStyleTheme.primaryButtonText?.copyWith(
           color: fontColor ?? AppColors.primaryColor2,
           height: 0,
@@ -182,6 +183,8 @@ class LocalLensButton extends StatelessWidget {
           return AppColors.primaryColor2;
         case ButtonType.textOnly:
           return Colors.transparent;
+        case ButtonType.border:
+          return Color(0xff111827);
       }
     }
   }

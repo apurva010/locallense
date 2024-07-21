@@ -55,7 +55,7 @@ abstract class _BasicDetailsStore extends NetworkStateStore with Store {
     try {
       if (formKey.currentState?.validate() ?? false) {
         if (userDataRes?.firstName != firstNameController.text ||
-            lastNameController.text != lastNameController.text) {
+            lastNameController.text != userDataRes?.lastName) {
           await APIRepository.instance
               .updateUserData(
                 UpdateUserInfoReq(

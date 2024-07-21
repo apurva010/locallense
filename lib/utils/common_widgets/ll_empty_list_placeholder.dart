@@ -33,6 +33,7 @@ class LLEmptyListPlaceHolder extends StatelessWidget {
     this.buttonIcon,
     this.buttonType = ButtonType.primaryButton,
     this.imagePadding,
+    this.getNote,
   });
 
   final bool expanded;
@@ -58,6 +59,7 @@ class LLEmptyListPlaceHolder extends StatelessWidget {
   final Widget? buttonIcon;
   final ButtonType buttonType;
   final EdgeInsets? imagePadding;
+  final Widget? getNote;
 
   bool get isImageOrSVGAvailable =>
       svgPlaceholder.isNotNullOrEmpty || imagePlaceholder.isNotNullOrEmpty;
@@ -165,6 +167,10 @@ class LLEmptyListPlaceHolder extends StatelessWidget {
                       buttonType: buttonType,
                     ),
                   },
+                  if (getNote != null) ...[
+                    SizedBox(height: 16),
+                    getNote!,
+                  ],
                 ],
               ),
       ),

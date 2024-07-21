@@ -213,6 +213,38 @@ class _UserActivityUploadScreenState extends State<UserActivityUploadScreen> {
                       child: Observer(
                         builder: (context) => LLEmptyListPlaceHolder(
                           state: store.fileState,
+                          getNote: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            child: RichText(
+                              text: TextSpan(
+                                text: 'Note :',
+                                style: context.textStyleTheme.bodySmallMedium
+                                    ?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.4,
+                                  color: AppColors.blackColor,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text:
+                                        'Uploaded activity files are used solely '
+                                        'to personalize your experience. '
+                                        'We do not store or track your data '
+                                        'beyond enhancing your preferences.',
+                                    style: context
+                                        .textStyleTheme.bodyMediumSemiBold
+                                        ?.copyWith(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.4,
+                                      color: AppColors.neutrals4,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                           svgPlaceholder: store.fileState.isSuccessful
                               ? Assets.vectors.fileAdded.path
                               : Assets.vectors.userActivityUpload.path,
@@ -225,6 +257,7 @@ class _UserActivityUploadScreenState extends State<UserActivityUploadScreen> {
                               ? 'Change file'
                               : 'Upload File now',
                           buttonType: ButtonType.secondaryButton,
+                          padding: EdgeInsets.symmetric(horizontal: 24),
                           imagePadding:
                               const EdgeInsets.symmetric(horizontal: 64),
                           onButtonClick: store.uploadUserActivity,

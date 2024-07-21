@@ -161,6 +161,9 @@ class $AssetsVectorsGen {
   SvgGenImage get touriestPrefIcon =>
       const SvgGenImage('assets/vectors/touriest_pref_icon.svg');
 
+  /// File path: assets/vectors/upload.svg
+  SvgGenImage get upload => const SvgGenImage('assets/vectors/upload.svg');
+
   /// File path: assets/vectors/user_activity_upload.svg
   SvgGenImage get userActivityUpload =>
       const SvgGenImage('assets/vectors/user_activity_upload.svg');
@@ -199,6 +202,7 @@ class $AssetsVectorsGen {
         sideArrowIcon,
         star,
         touriestPrefIcon,
+        upload,
         userActivityUpload
       ];
 }
