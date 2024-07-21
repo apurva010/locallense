@@ -1,10 +1,13 @@
-import 'package:locallense/apibase/repository/api_repository.dart';
-import 'package:locallense/model/preference_dm/preference_dm.dart';
-import 'package:locallense/model/response/preferences/preferences_res.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:locallense/app_global_variables.dart';
+import 'package:locallense/model/request/pref/pref_req_dm.dart';
 import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/utils/helpers/helpers.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:mobx/mobx.dart';
-import 'package:screwdriver/screwdriver.dart';
+
+import '../../../../model/response/preferences/preferences_res.dart';
 
 part 'select_preference_store.g.dart';
 
@@ -12,125 +15,75 @@ class SelectPreferenceStore = _SelectPreferenceStore
     with _$SelectPreferenceStore;
 
 abstract class _SelectPreferenceStore with Store {
-  _SelectPreferenceStore(List<PreferencesRes> preSelectPreferences) {
-    loadPreferences(preSelectPreferences);
+  _SelectPreferenceStore({
+    required List<PreferencesRes> preSelectPreferences,
+    // ignore: unused_element
+    this.fetchSelectedData = false,
+  }) {
+    getPref(preSelectPreferences);
   }
 
-  @observable
-  NetworkState screenState = NetworkState.idle;
+  final bool fetchSelectedData;
 
   @observable
-  List<Observable<PreferenceDm>> preferenceList = [
-    Observable(
-      PreferenceDm(
-        preference: 'Food',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Gym',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Scenery',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Restaurant',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Sports',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Shopping',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Healthcare',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Cafe',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Parking Spot',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Outdoor activities',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Budget friendly',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Amusement park',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'museum',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'tourist attraction',
-      ),
-    ),
-    Observable(
-      PreferenceDm(
-        preference: 'Family Health Center',
-      ),
-    ),
-  ];
+  NetworkState fetchNetworkState = NetworkState.idle;
+
+  @observable
+  NetworkState postNetworkState = NetworkState.idle;
+
+  ObservableList<Observable<PreferencesRes>> preferenceList = ObservableList();
+
+  Future<void> getPref(List<PreferencesRes> preSelectPreferences) async {
+    try {
+      var selectedPref = preSelectPreferences;
+      fetchNetworkState = NetworkState.loading;
+      if (fetchSelectedData) {
+        selectedPref = await apiRepository.getSelectedPreferences().getResult();
+      }
+      final result = await apiRepository.getPreferences().getResult();
+      preferenceList.addAll(result.map(Observable.new));
+      preSelectUserPreferences(selectedPref);
+      fetchNetworkState = NetworkState.success;
+    } catch (e, s) {
+      fetchNetworkState = NetworkState.error;
+      showErrorToast(e.toString());
+      debugPrint(e.toString());
+      debugPrintStack(label: s.toString());
+    }
+  }
 
   void preSelectUserPreferences(List<PreferencesRes> preSelect) {
     for (final element in preSelect) {
       for (final value in preferenceList) {
-        if (value.value.preference.capitalized ==
-            element.preferenceName.capitalized) {
+        if (value.value.preference == element.preference) {
           value.value.isSelected = true;
           value.reportChanged();
           break;
         }
       }
     }
-    screenState = NetworkState.success;
-  }
-
-  Future<void> loadPreferences(List<PreferencesRes> preSelect) async {
-    screenState = NetworkState.loading;
-    final resPreference =
-        await APIRepository.instance.getPreferences().getResult();
-    preferenceList = resPreference
-        .map(
-          (e) => Observable(
-            PreferenceDm(
-              preference: e.preferenceName,
-            ),
-          ),
-        )
-        .toList();
-    preSelectUserPreferences(preSelect);
   }
 
   void selectPreference(int index) {
     final preference = preferenceList.elementAt(index);
     preference.value.isSelected = !preference.value.isSelected;
     preference.reportChanged();
+  }
+
+  Future<void> postSelectPref() async {
+    try {
+      postNetworkState = NetworkState.loading;
+      final pref = preferenceList
+          .where((e) => e.value.isSelected)
+          .map((e) => e.value.id)
+          .toList();
+      await apiRepository.postUserPrefs(PrefReqDm(preferences: pref));
+      postNetworkState = NetworkState.success;
+    } catch (e, s) {
+      postNetworkState = NetworkState.error;
+      showErrorToast(e.toString());
+      debugPrint(e.toString());
+      debugPrintStack(label: s.toString());
+    }
   }
 }

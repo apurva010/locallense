@@ -7,6 +7,7 @@ import 'package:locallense/apibase/model/api_response_model.dart';
 import 'package:locallense/apibase/model/api_result.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/model/request/login/google_login_req.dart';
+import 'package:locallense/model/request/pref/pref_req_dm.dart';
 import 'package:locallense/model/request/update_user/update_user_info_req.dart';
 import 'package:locallense/model/request/user_question/post_user_question_req.dart';
 import 'package:locallense/model/response/login/google_login_res.dart';
@@ -147,7 +148,7 @@ class APIRepository {
     }
   }
 
-  Future<ApiResult<String>> postUserPrefs(List<String> preferences) async {
+  Future<ApiResult<String>> postUserPrefs(PrefReqDm preferences) async {
     try {
       final response = await _apiCall<String>(
         () => apiService.postUserPreferences(preferences),
@@ -196,6 +197,17 @@ class APIRepository {
           str.somethingWentWrong,
         ),
       );
+    }
+  }
+
+  Future<ApiResult<List<PreferencesRes>>> getSelectedPreferences() async {
+    try {
+      final response = await _apiCall(
+        () => apiService.getSelectedPreferences(),
+      );
+      return response;
+    } catch (e) {
+      return getSimplifiedError<List<PreferencesRes>>(e);
     }
   }
 }

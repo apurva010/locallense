@@ -66,7 +66,7 @@ abstract class _UserActivityUploadStore with Store {
       final finalPreference = <PreferencesRes>[];
       for (final choice in response) {
         final validChoice = preferences.firstWhereOrNull(
-          (element) => element.preferenceName.capitalized == choice.capitalized,
+          (element) => element.preference.capitalized == choice.capitalized,
         );
         if (validChoice != null) {
           finalPreference.add(validChoice);
@@ -101,7 +101,7 @@ abstract class _UserActivityUploadStore with Store {
             Identify my lifestyle from given my map activity data and let aleast 3 even if it is somewhat relatable
              preference like as given: ${preferences.implode(
               joinWith: ',',
-              withValue: (e) => e.preferenceName,
+              withValue: (e) => e.preference,
             )}.
              Your output should be in this json format only : { "preference" : [ "Healthcare", "Restaurant"]}.
              Do not add any other text just json format. my Map activity: $usersearch
