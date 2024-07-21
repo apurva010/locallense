@@ -13,13 +13,13 @@ class ProfileScreenStore = _ProfileScreenStore with _$ProfileScreenStore;
 
 abstract class _ProfileScreenStore with Store {
   _ProfileScreenStore() {
-    _initState();
+    initState();
   }
 
   @observable
   UserDataRes? userDataRes;
 
-  Future<void> _initState() async {
+  Future<void> initState() async {
     final data =
         SharedPrefs.getSharedProperty(keyEnum: SharedPrefsKeys.userData);
     if (data is String? && data.isNotNullAndNotEmpty) {

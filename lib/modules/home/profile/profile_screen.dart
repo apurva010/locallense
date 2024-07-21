@@ -150,10 +150,6 @@ class ProfileScreen extends StatelessWidget {
                 primaryButton: LocalLensButton(
                   onTap: () async {
                     await AuthRepository.instance.logOut();
-                    await navigation.pushNamedAndRemoveUntil(
-                      AppRoutes.loginScreen,
-                      (route) => true,
-                    );
                   },
                   btnText: 'LogOut',
                 ),
@@ -182,14 +178,10 @@ class ProfileScreen extends StatelessWidget {
                 primaryButton: LocalLensButton(
                   onTap: () async {
                     try {
-                      await AuthRepository.instance.logOut();
                       await APIRepository.instance.deleteUserData().getResult();
                       await SecureStorage.deleteAll();
                       await SharedPrefs.clearPreferences();
-                      await navigation.pushNamedAndRemoveUntil(
-                        AppRoutes.loginScreen,
-                        (route) => true,
-                      );
+                      await AuthRepository.instance.logOut();
                     } catch (e) {
                       showErrorToast(
                         'Something went wrong while deleting account',
@@ -230,8 +222,11 @@ class ProfileScreen extends StatelessWidget {
     required BuildContext context,
   }) {
     return InkWell(
-      onTap: () {
-        navigation.pushNamed(navigationPath);
+      onTap: () async {
+        await navigation.pushNamed(navigationPath);
+        if (navigationPath == AppRoutes.editProfileScreen && context.mounted) {
+          await context.read<ProfileScreenStore>().initState();
+        }
       },
       child: Row(
         children: [
