@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locallense/modules/edit_profile/edit_profile_screen.dart';
+import 'package:locallense/model/response/preferences/preferences_res.dart';
 import 'package:locallense/modules/home/home_screen.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
@@ -57,7 +58,7 @@ class Routes {
           widget: const IntroScreen(),
         );
       case AppRoutes.selectPreference:
-        final perferences = settings.arguments! as List<String>;
+        final perferences = settings.arguments! as List<PreferencesRes>;
         return getRoute(
           widget: const SelectYourPreference()
               .withProvider(SelectPreferenceStore(perferences)),

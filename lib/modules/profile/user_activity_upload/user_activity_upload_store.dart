@@ -4,15 +4,22 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:file_picker/file_picker.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:html/parser.dart' show parse;
+
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
+import 'package:locallense/apibase/repository/api_repository.dart';
 import 'package:locallense/app_global_variables.dart';
+import 'package:locallense/model/response/preferences/preferences_res.dart';
+import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/utils/helpers/helpers.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:locallense/values/env.dart';
 import 'package:locallense/values/strings.dart';
 import 'package:mobx/mobx.dart';
+import 'package:screwdriver/screwdriver.dart';
 
 part 'user_activity_upload_store.g.dart';
 
@@ -20,12 +27,37 @@ class UserActivityUploadStore = _UserActivityUploadStore
     with _$UserActivityUploadStore;
 
 abstract class _UserActivityUploadStore with Store {
+  _UserActivityUploadStore() {
+    loadPreferences();
+  }
+
+  @observable
+  NetworkState screenState = NetworkState.idle;
+
   @observable
   NetworkState fileState = NetworkState.error;
+
+  @observable
+  NetworkState apiState = NetworkState.idle;
 
   FilePickerResult? userActivityFile;
 
   String? userFileContent;
+
+  List<PreferencesRes> preferences = [];
+
+  Future<void> loadPreferences() async {
+    try {
+      screenState = NetworkState.loading;
+      final response =
+          await APIRepository.instance.getPreferences().getResult();
+      preferences = response;
+      screenState = NetworkState.success;
+    } catch (e) {
+      screenState = NetworkState.error;
+      showErrorToast(e.toString());
+    }
+  }
 
   Future<void> continueToNextScreen() async {
     if (userFileContent != null) {
@@ -33,17 +65,29 @@ abstract class _UserActivityUploadStore with Store {
         userFileContent!,
         Env.gptKey,
       );
-      unawaited(
-        navigation.pushReplacementNamed(
-          AppRoutes.selectPreference,
-          arguments: response,
-        ),
-      );
+      final finalPreference = <PreferencesRes>[];
+      for (final choice in response) {
+        final validChoice = preferences.firstWhereOrNull(
+          (element) => element.preferenceName.capitalized == choice.capitalized,
+        );
+        if (validChoice != null) {
+          finalPreference.add(validChoice);
+        }
+      }
+      if (apiState.isSuccessful) {
+        unawaited(
+          navigation.pushReplacementNamed(
+            AppRoutes.selectPreference,
+            arguments: finalPreference,
+          ),
+        );
+      }
     }
   }
 
   Future<List<String>> generateText(String userActivity, String key) async {
     try {
+      apiState = NetworkState.loading;
       final data = extractLinksFromHtml(userActivity);
       var usersearch = data.join(',');
       usersearch = usersearch.substring(0, min(usersearch.length, 13000));
@@ -57,7 +101,10 @@ abstract class _UserActivityUploadStore with Store {
             'role': 'user',
             'content': '''
             Identify my lifestyle from given my map activity data and let aleast 3 even if it is somewhat relatable
-             preference like as given: HealthCare, Restaurant, Veg Only, Cafe, Shopping, Movie, Parking spot, Outdoor activities, Budget friendly.
+             preference like as given: ${preferences.implode(
+              joinWith: ',',
+              withValue: (e) => e.preferenceName,
+            )}.
              Your output should be in this json format only : { "preference" : [ "Healthcare", "Restaurant"]}.
              Do not add any other text just json format. my Map activity: $usersearch
              ''',
@@ -86,6 +133,7 @@ abstract class _UserActivityUploadStore with Store {
         ) as Map)
                 .cast<String, dynamic>();
         // ignore: avoid_dynamic_calls
+        apiState = NetworkState.success;
         return (data['preference'] as List).cast<String>();
         //return (data['preference'] as List).cast<String>();
       } else {
@@ -94,6 +142,8 @@ abstract class _UserActivityUploadStore with Store {
         );
       }
     } catch (e) {
+      apiState = NetworkState.error;
+      showErrorToast(e.toString());
       return [];
     }
   }

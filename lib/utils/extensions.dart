@@ -158,3 +158,16 @@ extension APIResultExtenstion<T> on Future<ApiResult<T>> {
     );
   }
 }
+
+extension ListExtension<E> on List<E> {
+  String implode({
+    required String joinWith,
+    required Object? Function(E) withValue,
+  }) =>
+      fold(
+        '',
+        (value, element) => value.isEmpty
+            ? '${withValue(element)}'
+            : '$value$joinWith${withValue(element)}',
+      );
+}

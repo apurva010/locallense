@@ -19,7 +19,10 @@ class PlaceCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: AppColors.chipColor,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: const Color(0xFFE6E8EC),
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

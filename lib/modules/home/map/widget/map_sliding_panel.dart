@@ -46,7 +46,10 @@ class MapSlidingPanel extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               itemBuilder: (context, index) {
                 final item = store.places[index];
-                return PlaceCard(place: item);
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: PlaceCard(place: item),
+                );
               },
             ),
           ),
