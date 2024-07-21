@@ -45,16 +45,24 @@ class SelectYourPreference extends StatelessWidget {
               height: 16,
             ),
             Observer(
-              builder: (context) => store.screenState.isLoading
-                  ? LLEmptyListPlaceHolder(state: store.screenState)
+              builder: (context) => store.fetchNetworkState.isLoading
+                  ? LLEmptyListPlaceHolder(state: store.fetchNetworkState)
                   : const PreferenceChips(),
             ),
             const Spacer(),
-            LocalLensButton(
-              onTap: () => navigation.pushReplacementNamed(
-                AppRoutes.selectAccommodationType,
-              ),
-              btnText: str.continueTxt,
+            Observer(
+              builder: (context) {
+                return LocalLensButton(
+                  onTap: () async {
+                    await store.postSelectPref();
+                    await navigation.pushReplacementNamed(
+                      AppRoutes.selectAccommodationType,
+                    );
+                  },
+                  btnText: str.continueTxt,
+                  isLoading: store.postNetworkState.isLoading,
+                );
+              },
             ),
             const SizedBox(
               height: 20,

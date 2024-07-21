@@ -12,52 +12,63 @@ class PreferenceChips extends StatelessWidget {
     final store = context.provide<SelectPreferenceStore>();
     return Observer(
       builder: (context) {
-        return Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: store.preferenceList
-              .map(
-                (e) => InkWell(
-                  onTap: () => store.selectPreference(
-                    store.preferenceList.indexOf(
-                      e,
-                    ),
-                  ),
-                  highlightColor: Colors.transparent,
-                  splashFactory: NoSplash.splashFactory,
-                  splashColor: Colors.transparent,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(
-                          32,
-                        ),
-                      ),
-                      color: e.value.isSelected
-                          ? context.themeColor.primaryColor
-                          : AppColors.whiteColor,
-                      border: Border.all(
-                        color: context.themeColor.preferenceChipBorderColor ??
-                            AppColors.preferenceChipBorderColor,
-                      ),
-                    ),
-                    child: Text(
-                      e.value.preference,
-                      style: context.textStyleTheme.bodyMediumRegular?.copyWith(
-                        color: e.value.isSelected
-                            ? AppColors.whiteColor
-                            : AppColors.blackColor,
-                      ),
-                    ),
+        return store.fetchNetworkState.isLoading
+            ? const SizedBox(
+                height: 200,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primaryColor,
                   ),
                 ),
               )
-              .toList(),
-        );
+            : Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: store.preferenceList
+                    .map(
+                      (e) => InkWell(
+                        onTap: () => store.selectPreference(
+                          store.preferenceList.indexOf(
+                            e,
+                          ),
+                        ),
+                        highlightColor: Colors.transparent,
+                        splashFactory: NoSplash.splashFactory,
+                        splashColor: Colors.transparent,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                32,
+                              ),
+                            ),
+                            color: e.value.isSelected
+                                ? context.themeColor.primaryColor
+                                : AppColors.whiteColor,
+                            border: Border.all(
+                              color: context
+                                      .themeColor.preferenceChipBorderColor ??
+                                  AppColors.preferenceChipBorderColor,
+                            ),
+                          ),
+                          child: Text(
+                            e.value.preference,
+                            style: context.textStyleTheme.bodyMediumRegular
+                                ?.copyWith(
+                              color: e.value.isSelected
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              );
       },
     );
   }

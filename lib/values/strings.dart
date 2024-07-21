@@ -11,6 +11,7 @@ class AppRoutes {
   static const String selectAccommodationType = '/selectAccommodationType';
   static const String questionnaireFlowScreen = '/questionnaireFlowScreen';
   static const String editProfileScreen = '/editProfileScreen';
+  static const String editPrefScreen = '/editPrefScreen';
   static const String introScreen = '/introScreen';
 }
 

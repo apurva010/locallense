@@ -1,6 +1,9 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:locallense/gen/assets.gen.dart';
+import 'package:locallense/utils/common_widgets/dialog/ll_dialog.dart';
+import 'package:locallense/utils/common_widgets/ll_svg_picture.dart';
 import 'package:locallense/utils/common_widgets/ll_toast.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:logging/logging.dart';
@@ -86,4 +89,15 @@ LocationPreferences? parseLocationPref(String location) {
       return LocationPreferences.touristAttraction;
   }
   return null;
+}
+
+Future<void> showSuccessDialog() async {
+  await LLDialog(
+    header: LLSvgPicture(
+      Assets.vectors.chekMarkFilled.path,
+      size: 42,
+    ),
+    title: 'Successfully Updated',
+    msg: 'Your information about the preferences has been successfully updated',
+  ).show();
 }

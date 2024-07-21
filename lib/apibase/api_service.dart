@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:locallense/apibase/model/api_response_model.dart';
 import 'package:locallense/model/request/login/google_login_req.dart';
+import 'package:locallense/model/request/pref/pref_req_dm.dart';
 import 'package:locallense/model/request/update_user/update_user_info_req.dart';
 import 'package:locallense/model/request/user_question/post_user_question_req.dart';
 import 'package:locallense/model/response/login/google_login_res.dart';
@@ -46,11 +47,14 @@ abstract class ApiService {
 
   @POST('/preferences/user')
   Future<APIResponse<String>> postUserPreferences(
-    @Body() List<String> userPrefs,
+    @Body() PrefReqDm userPrefs,
   );
+
+  @GET('/preferences/selected')
+  Future<APIResponse<List<PreferencesRes>>> getSelectedPreferences();
 
   @POST('/questions/user')
   Future<APIResponse<String>> postUserQuestionAnswer(
-    @Body() List<PostUserQuestionReq> userQuestionAnswer,
+    @Body() PostUserQuestionReq userQuestionAnswer,
   );
 }

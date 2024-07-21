@@ -107,7 +107,7 @@ class ProfileScreen extends StatelessWidget {
                     context: context,
                     title: 'My Preferences',
                     iconPath: Assets.vectors.myPrefsIcon.path,
-                    navigationPath: AppRoutes.editProfileScreen,
+                    navigationPath: AppRoutes.editPrefScreen,
                   ),
                   const SizedBox(height: 16),
                   _getListTileWidget(
@@ -263,13 +263,18 @@ class ProfileScreen extends StatelessWidget {
 }
 
 // LLDialog(
-//   header: LLSvgPicture(
-//     Assets.vectors.chekMarkFilled.path,
-//     size: 42,
+//   title: 'Update Details',
+//   msg: 'Are you sure you want to update the Preferences details?',
+//   primaryButton: LocalLensButton(
+//     onTap: () {},
+//     btnText: 'Update',
 //   ),
-//   title: 'Successfully Updated',
-//   msg:
-//       'Your information about the preferences has been successfully updated',
+//   secondaryButton: LocalLensButton(
+//     onTap: () {},
+//     btnText: 'Cancel',
+//     buttonType: ButtonType.secondaryButton,
+//   ),
 // ).show();
+
 //
 // showSuccessToast("Single line message placeholder.");

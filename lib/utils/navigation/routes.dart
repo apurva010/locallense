@@ -3,6 +3,7 @@ import 'package:locallense/modules/edit_profile/edit_profile_screen.dart';
 import 'package:locallense/model/response/preferences/preferences_res.dart';
 import 'package:locallense/modules/home/home_screen.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
+import 'package:locallense/modules/home/profile/edit_pref/edit_pref_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_screen.dart';
@@ -60,8 +61,8 @@ class Routes {
       case AppRoutes.selectPreference:
         final perferences = settings.arguments! as List<PreferencesRes>;
         return getRoute(
-          widget: const SelectYourPreference()
-              .withProvider(SelectPreferenceStore(perferences)),
+          widget: const SelectYourPreference().withProvider(
+              SelectPreferenceStore(preSelectPreferences: perferences)),
         );
 
       case AppRoutes.userActivityUpload:
@@ -93,6 +94,14 @@ class Routes {
                   settings.arguments as LocationPreferences?,
             ),
           ),
+        );
+
+      case AppRoutes.editPrefScreen:
+        return getRoute(
+          widget: const EditPrefScreen().withProvider(SelectPreferenceStore(
+            preSelectPreferences: [],
+            fetchSelectedData: true,
+          )),
         );
 
       case AppRoutes.editProfileScreen:
