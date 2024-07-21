@@ -22,6 +22,14 @@
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
+		<key>NSPhotoLibraryUsageDescription</key>
+        <string>To pick and upload user activity to LocalLens.</string>
+		<key>NSLocationUsageDescription</key>
+        <string>LocalLens uses your location to give you recommendations for popular peoples in your area.</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>LocalLens uses your location to give you recommendations for popular peoples in your area.</string>
+        <key>NSLocationWhenInUseUsageDescription</key>
+        <string>LocalLens uses your location to give you recommendations for popular peoples in your area.</string>
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
