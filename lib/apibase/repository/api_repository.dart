@@ -14,6 +14,7 @@ import 'package:locallense/model/response/login/google_login_res.dart';
 import 'package:locallense/model/response/place_type/place_type_res.dart';
 import 'package:locallense/model/response/preferences/preferences_res.dart';
 import 'package:locallense/model/response/questions/questions_res.dart';
+import 'package:locallense/model/response/questions/selected_question_res.dart';
 import 'package:locallense/model/response/user/user_data_res.dart';
 
 typedef ApiCallback<T> = Future<APIResponse<T>> Function();
@@ -208,6 +209,17 @@ class APIRepository {
       return response;
     } catch (e) {
       return getSimplifiedError<List<PreferencesRes>>(e);
+    }
+  }
+
+  Future<ApiResult<List<SelectedQuestionRes>>> getSelectedQuestion() async {
+    try {
+      final response = await _apiCall(
+        () => apiService.getSelectedQuestion(),
+      );
+      return response;
+    } catch (e) {
+      return getSimplifiedError<List<SelectedQuestionRes>>(e);
     }
   }
 }

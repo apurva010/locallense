@@ -17,9 +17,10 @@ class SelectAccommodationTypeScreen extends StatelessObserverWidget {
   Widget build(BuildContext context) {
     final store = context.provide<SelectAccommodationStore>();
     return LLScaffold(
-      appBarTitle: str.completeYourProfile,
-      automaticallyImplyLeading: false,
-      backButtonVisibility: false,
+      appBarTitle:
+          store.isEditScreen ? 'PG Questionnaire' : str.completeYourProfile,
+      automaticallyImplyLeading: store.isEditScreen,
+      backButtonVisibility: store.isEditScreen,
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 24,

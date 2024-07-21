@@ -14,6 +14,7 @@ class AppRoutes {
   static const String questionnaireFlowScreen = '/questionnaireFlowScreen';
   static const String editProfileScreen = '/editProfileScreen';
   static const String editPrefScreen = '/editPrefScreen';
+  static const String editQueScreen = '/editQueScreen';
   static const String introScreen = '/introScreen';
 }
 

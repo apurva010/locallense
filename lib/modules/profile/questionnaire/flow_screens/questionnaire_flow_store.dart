@@ -89,11 +89,15 @@ abstract class _QuestionnaireFlowStore with Store {
     }
     if (currentPage == totalPage - 1) {
       await postQuestionnaire();
-      unawaited(
-        navigation.pushReplacementNamed(
-          AppRoutes.homeScreen,
-        ),
-      );
+      if (questionFlowNavigationDm?.isEdit ?? false) {
+        navigation.pop();
+      } else {
+        unawaited(
+          navigation.pushReplacementNamed(
+            AppRoutes.homeScreen,
+          ),
+        );
+      }
     }
     unawaited(
       pageController.nextPage(
