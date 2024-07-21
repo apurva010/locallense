@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:locallense/modules/home/profile/edit_page_view.dart';
 import 'package:locallense/modules/profile/questionnaire/accommodation_type/select_accommodation_store.dart';
 import 'package:locallense/modules/profile/questionnaire/accommodation_type/select_accommodation_type_screen.dart';
 import 'package:locallense/modules/profile/questionnaire/flow_screens/questionnaire_flow_store.dart';

@@ -20,11 +20,11 @@ class EditPrefScreen extends StatelessObserverWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Update your preferences",
+            'Update your preferences',
             style: context.textStyleTheme.bodyXLargeSemiBold,
           ),
           Text(
-            "Personalize your experience by updating your preferences.",
+            'Personalize your experience by updating your preferences.',
             style: context.textStyleTheme.bodyMediumRegular,
           ),
           const SizedBox(

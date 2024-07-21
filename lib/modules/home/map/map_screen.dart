@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:locallense/gen/assets.gen.dart';
 import 'package:locallense/modules/home/map/map_config/tile_providers.dart';
 import 'package:locallense/modules/home/map/map_screen_store.dart';
 import 'package:locallense/modules/home/map/widget/map_sliding_panel.dart';
+import 'package:locallense/modules/home/map/widget/ripple_pointer.dart';
 import 'package:locallense/utils/common_validator/common_validator.dart';
 import 'package:locallense/utils/common_widgets/ll_svg_picture.dart';
 import 'package:locallense/utils/common_widgets/ll_text_form_field.dart';
@@ -21,28 +23,31 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  late final store = context.provide<MapScreenStore>();
+
   @override
   Widget build(BuildContext context) {
-    final store = context.provide<MapScreenStore>();
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Stack(
         children: [
           Positioned.fill(
             child: FlutterMap(
-              mapController: MapController(),
+              mapController: store.mapController,
               options: MapOptions(
                 onTap: (_, __) {
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
-                initialCenter: store.places[0].latLng,
-                initialZoom: 12,
-                cameraConstraint: CameraConstraint.contain(
-                  bounds: LatLngBounds(
-                    const LatLng(23.229875, 72.404805),
-                    const LatLng(22.794896, 72.771987),
-                  ),
-                ),
+                onMapReady: () {
+                  store.identifyCurrentLocation();
+                },
+                // initialZoom: 14,
+                // cameraConstraint: CameraConstraint.contain(
+                //   bounds: LatLngBounds(
+                //     const LatLng(23.229875, 72.404805),
+                //     const LatLng(22.794896, 72.771987),
+                //   ),
+                // ),
                 interactionOptions: const InteractionOptions(
                   flags: InteractiveFlag.pinchMove |
                       InteractiveFlag.drag |
@@ -104,6 +109,21 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                       )
                       .toList(),
+                ),
+                Observer(
+                  builder: (context) => MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: LatLng(
+                          store.currentLocation?.latitude ?? 00,
+                          store.currentLocation?.longitude ?? 00,
+                        ),
+                        child: const Center(
+                          child: RippleContainer(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
