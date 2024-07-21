@@ -26,49 +26,66 @@ class _UserActivityUploadScreenState extends State<UserActivityUploadScreen> {
     return LLScaffold(
       appBarTitle: str.completeProfileTitle,
       backButtonVisibility: false,
-      body: Column(
-        children: [
-          const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: ProcessHeaderWidget(
-              title: str.uploadActivityText,
-              step: 2,
-            ),
-          ),
-          Expanded(
-            child: Observer(
-              builder: (context) => LLEmptyListPlaceHolder(
-                state: store.fileState,
-                svgPlaceholder: Assets.vectors.userActivityUpload.path,
-                errorTitle: str.uploadActivityFileTxt,
-                emptyTitle: 'We have received your activities and can start '
-                    "processing it. Click 'Continue' to process",
-                buttonIcon: const Icon(Icons.add),
-                buttonText: 'Upload File now',
-                buttonType: ButtonType.secondaryButton,
-                imagePadding: const EdgeInsets.symmetric(horizontal: 64),
-                onButtonClick: store.uploadUserActivity,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: LocalLensButton(
-              btnText: str.continueTxt,
-              onTap: store.continueToNextScreen,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: LocalLensButton(
-              btnText: str.skipForNow,
-              buttonType: ButtonType.textOnly,
-              onTap: store.skipToNextScreen,
-            ),
-          ),
-        ],
+      body: Observer(
+        builder: (context) {
+          return store.screenState.isLoading
+              ? LLEmptyListPlaceHolder(
+                  state: store.screenState,
+                )
+              : Column(
+                  children: [
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: ProcessHeaderWidget(
+                        title: str.uploadActivityText,
+                        step: 2,
+                      ),
+                    ),
+                    Expanded(
+                      child: Observer(
+                        builder: (context) => LLEmptyListPlaceHolder(
+                          state: store.fileState,
+                          svgPlaceholder: store.fileState.isSuccessful
+                              ? Assets.vectors.fileAdded.path
+                              : Assets.vectors.userActivityUpload.path,
+                          errorTitle: str.uploadActivityFileTxt,
+                          emptyTitle:
+                              'We have received your activities and can start '
+                              "processing it. Click 'Continue' to process",
+                          buttonIcon: const Icon(Icons.add),
+                          buttonText: store.fileState.isSuccessful
+                              ? 'Change file'
+                              : 'Upload File now',
+                          buttonType: ButtonType.secondaryButton,
+                          imagePadding:
+                              const EdgeInsets.symmetric(horizontal: 64),
+                          onButtonClick: store.uploadUserActivity,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Observer(
+                        builder: (context) => LocalLensButton(
+                          btnText: str.continueTxt,
+                          isLoading: store.apiState.isLoading,
+                          onTap: store.continueToNextScreen,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: LocalLensButton(
+                        btnText: str.skipForNow,
+                        buttonType: ButtonType.textOnly,
+                        onTap: store.skipToNextScreen,
+                      ),
+                    ),
+                  ],
+                );
+        },
       ),
     );
   }

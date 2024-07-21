@@ -55,6 +55,13 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/close.svg
   SvgGenImage get close => const SvgGenImage('assets/vectors/close.svg');
 
+  /// File path: assets/vectors/document.svg
+  SvgGenImage get document => const SvgGenImage('assets/vectors/document.svg');
+
+  /// File path: assets/vectors/file_added.svg
+  SvgGenImage get fileAdded =>
+      const SvgGenImage('assets/vectors/file_added.svg');
+
   /// File path: assets/vectors/general_info_icon.svg
   SvgGenImage get generalInfoIcon =>
       const SvgGenImage('assets/vectors/general_info_icon.svg');
@@ -149,6 +156,8 @@ class $AssetsVectorsGen {
         chekMarkFilled,
         clock,
         close,
+        document,
+        fileAdded,
         generalInfoIcon,
         googleIcon,
         home,
