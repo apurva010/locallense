@@ -18,6 +18,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/icon.png
   AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
 
+  /// File path: assets/images/intro.jpeg
+  AssetGenImage get intro => const AssetGenImage('assets/images/intro.jpeg');
+
   /// File path: assets/images/profile.png
   AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
 
@@ -32,7 +35,8 @@ class $AssetsImagesGen {
   AssetGenImage get user => const AssetGenImage('assets/images/user.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [icon, profile, splash, splashLogo, user];
+  List<AssetGenImage> get values =>
+      [icon, intro, profile, splash, splashLogo, user];
 }
 
 class $AssetsVectorsGen {
