@@ -51,6 +51,6 @@ abstract class ApiService {
 
   @POST('/questions/user')
   Future<APIResponse<String>> postUserQuestionAnswer(
-    @Body() List<PostUserQuestionReq> userQuestionAnswer,
+    @Body() PostUserQuestionReq userQuestionAnswer,
   );
 }

@@ -159,7 +159,7 @@ class APIRepository {
   }
 
   Future<ApiResult<String>> postUserQuestionAnswer(
-    List<PostUserQuestionReq> preferences,
+    PostUserQuestionReq preferences,
   ) async {
     try {
       final response = await _apiCall<String>(

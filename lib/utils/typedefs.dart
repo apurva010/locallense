@@ -1,6 +1,6 @@
-import 'package:locallense/model/questionnaire_dm/questionnaire_dm.dart';
+import 'package:locallense/model/response/questions/questions_res.dart';
 
 typedef SelectOption = void Function(
   int index,
-  QuestionnaireDm questionnaireDm,
+  QuestionsRes questionnaireDm,
 );

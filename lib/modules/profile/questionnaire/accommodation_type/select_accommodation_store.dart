@@ -1,6 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:locallense/apibase/repository/api_repository.dart';
 import 'package:locallense/app_global_variables.dart';
-import 'package:locallense/model/questionnaire_dm/questionnaire_dm.dart';
+import 'package:locallense/model/question_flow_navigation_dm.dart';
+import 'package:locallense/model/request/user_question/post_user_question_req.dart';
+import 'package:locallense/model/response/questions/questions_res.dart';
+import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/utils/helpers/helpers.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:locallense/values/strings.dart';
@@ -12,6 +18,10 @@ class SelectAccommodationStore = _SelectAccommodationStore
     with _$SelectAccommodationStore;
 
 abstract class _SelectAccommodationStore with Store {
+  _SelectAccommodationStore() {
+    initialize();
+  }
+
   @observable
   int currentPage = 0;
 
@@ -25,115 +35,133 @@ abstract class _SelectAccommodationStore with Store {
 
   PageController pageController = PageController();
 
-  List<Observable<QuestionnaireDm>> pgReferenceForm = [
-    Observable(
-      QuestionnaireDm(
-        question: 'Select the type of accommodation you prefer',
-        optionDm: [
-          OptionDm(
-            option: str.singleRoom,
-          ),
-          OptionDm(
-            option: str.sharedRoom,
-          ),
-          OptionDm(
-            option: str.bothWillWork,
-          ),
-        ],
-      ),
-    ),
-    Observable(
-      QuestionnaireDm(
-        question:
-            'Please select amenities and facilities that are important to you',
-        optionDm: [
-          OptionDm(
-            option: str.wifi,
-          ),
-          OptionDm(
-            option: str.airConditioning,
-          ),
-          OptionDm(
-            option: str.kitchenAccess,
-          ),
-          OptionDm(
-            option: str.laundryService,
-          ),
-          OptionDm(
-            option: str.parkingSpace,
-          ),
-          OptionDm(
-            option: str.gymFitness,
-          ),
-          OptionDm(
-            option: str.studyworkDesk,
-          ),
-        ],
-        isMultiSelected: true,
-      ),
-    ),
-    Observable(
-      QuestionnaireDm(
-        question: 'What are your other nearby location preferences',
-        optionDm: [
-          OptionDm(
-            option: str.hospitals,
-          ),
-          OptionDm(
-            option: str.caferestaurant,
-          ),
-          OptionDm(
-            option: str.touristAttraction,
-          ),
-        ],
-      ),
-    ),
-  ];
+  Observable<List<QuestionsRes>> pgForm = Observable([]);
+  Observable<List<QuestionsRes>> hospitalForm = Observable([]);
+  Observable<List<QuestionsRes>> cafeForm = Observable([]);
+  Observable<List<QuestionsRes>> touristForm = Observable([]);
+
+  @observable
+  NetworkState pgQuestionState = NetworkState.idle;
+
+  @observable
+  NetworkState submitPGQuestionState = NetworkState.idle;
+
+  Future<void> initialize() async {
+    await getPGQuestions();
+  }
+
+  Future<void> getPGQuestions() async {
+    try {
+      pgQuestionState = NetworkState.loading;
+      final result = await APIRepository.instance.getQuestions().getResult();
+
+      for (final i in result) {
+        if (i.type == 1) {
+          hospitalForm.value.add(i);
+        } else if (i.type == 2) {
+          cafeForm.value.add(i);
+        } else if (i.type == 3) {
+          touristForm.value.add(i);
+        } else {
+          pgForm.value.add(i);
+        }
+      }
+      totalPage = pgForm.value.length;
+      pgForm.reportChanged();
+      pgQuestionState = NetworkState.success;
+    } catch (e) {
+      pgQuestionState = NetworkState.error;
+      showErrorToast(e.toString());
+    }
+  }
 
   void onPageChanged(int index) => currentPage = index;
 
-  void nextPage() {
-    final isAnyValueSelected = pgReferenceForm[currentPage].value.optionDm.any(
-          (element) => element.isSelected,
-        );
+  Future<void> nextPage() async {
+    final isAnyValueSelected = pgForm.value[currentPage].options.any(
+      (element) => element.selected,
+    );
     if (isAnyValueSelected) {
       continueBtnEnabled = false;
     }
     if (currentPage == totalPage - 1) {
+      await postPGForm();
       navigateToFlow();
     }
-    pageController.nextPage(
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.linear,
+    unawaited(
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.linear,
+      ),
     );
   }
 
-  void selectOption(int index, QuestionnaireDm questionnaireDm) {
-    final option = questionnaireDm.optionDm.elementAt(index);
+  void selectOption(int index, QuestionsRes questionnaireDm) {
+    final option = questionnaireDm.options.elementAt(index);
     if (currentPage == totalPage - 1) {
-      selectedPreferenceLocation = parseLocationPref(option.option);
+      selectedPreferenceLocation = parseLocationPref(option.text);
     }
-    if (questionnaireDm.isMultiSelected) {
-      option.isSelected = !option.isSelected;
-      final isAnyValueSelected = questionnaireDm.optionDm.any(
-        (element) => element.isSelected,
+    if (questionnaireDm.isMultiChoice ?? false) {
+      option.selected = !option.selected;
+      final isAnyValueSelected = questionnaireDm.options.any(
+        (element) => element.selected,
       );
       continueBtnEnabled = isAnyValueSelected;
     } else {
-      for (final i in questionnaireDm.optionDm) {
-        i.isSelected = false;
+      for (final i in questionnaireDm.options) {
+        i.selected = false;
       }
-      option.isSelected = !option.isSelected;
-      continueBtnEnabled = option.isSelected;
+      option.selected = !option.selected;
+      continueBtnEnabled = option.selected;
     }
 
-    pgReferenceForm.first.reportChanged();
+    pgForm.reportChanged();
   }
 
   void navigateToFlow() {
-    navigation.pushNamed(
+    navigation.pushReplacementNamed(
       AppRoutes.questionnaireFlowScreen,
-      arguments: selectedPreferenceLocation,
+      arguments: QuestionFlowNavigationDm(
+        questions: getFormQuestion(),
+        locationPreferences: selectedPreferenceLocation,
+      ),
     );
+  }
+
+  List<QuestionsRes> getFormQuestion() {
+    if (selectedPreferenceLocation?.isHospital ?? false) {
+      return hospitalForm.value;
+    } else if (selectedPreferenceLocation?.isCafeRestaurant ?? false) {
+      return cafeForm.value;
+    } else if (selectedPreferenceLocation?.isTouristAttraction ?? false) {
+      return touristForm.value;
+    } else {
+      return <QuestionsRes>[];
+    }
+  }
+
+  Future<void> postPGForm() async {
+    try {
+      submitPGQuestionState = NetworkState.loading;
+      PostUserQuestionReq questionAnswer = PostUserQuestionReq(
+        questionsAndOptions: [],
+      );
+      for (final x in pgForm.value) {
+        for (final y in x.options) {
+          questionAnswer.questionsAndOptions.add(
+            UserQuestionAndOption(
+              questionId: x.id,
+              optionId: y.id,
+            ),
+          );
+        }
+      }
+      await APIRepository.instance.postUserQuestionAnswer(
+        questionAnswer,
+      );
+      submitPGQuestionState = NetworkState.success;
+    } catch (e) {
+      submitPGQuestionState = NetworkState.error;
+    }
   }
 }

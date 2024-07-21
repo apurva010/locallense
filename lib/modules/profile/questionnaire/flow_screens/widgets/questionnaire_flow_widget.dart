@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:locallense/model/questionnaire_dm/questionnaire_dm.dart';
+import 'package:locallense/model/response/questions/questions_res.dart';
 import 'package:locallense/modules/profile/questionnaire/flow_screens/questionnaire_flow_store.dart';
 import 'package:locallense/modules/profile/questionnaire/flow_screens/widgets/questionnaire_option_widget.dart';
 import 'package:locallense/utils/extensions.dart';
@@ -18,7 +18,7 @@ class QuestionnaireFlowWidget extends StatelessObserverWidget {
   });
 
   final String title;
-  final QuestionnaireDm questionnaire;
+  final QuestionsRes questionnaire;
   final SelectOption onTap;
   final bool enableCheckIcon;
 
@@ -38,20 +38,20 @@ class QuestionnaireFlowWidget extends StatelessObserverWidget {
           height: 20,
         ),
         ...List.generate(
-          questionnaire.optionDm.length,
+          questionnaire.options.length,
           (index) {
             return Observer(
               builder: (context) {
                 return QuestionnaireOptionWidget(
                   questionnaire: questionnaire,
-                  option: questionnaire.optionDm[index],
+                  option: questionnaire.options[index],
                   onTap: onTap,
                   index: index,
-                  enableCheckIcon: questionnaire.isMultiSelected,
-                  selectedTxtColor: questionnaire.isMultiSelected
+                  enableCheckIcon: questionnaire.isMultiChoice ?? false,
+                  selectedTxtColor: questionnaire.isMultiChoice ?? false
                       ? context.themeColor.blackColor
                       : null,
-                  selectedColor: questionnaire.isMultiSelected
+                  selectedColor: questionnaire.isMultiChoice ?? false
                       ? context.themeColor.whiteColor
                       : null,
                 );
@@ -59,8 +59,9 @@ class QuestionnaireFlowWidget extends StatelessObserverWidget {
             );
           },
         ),
-        if ((store.selectedPreferenceLocation?.isHospital ?? false) &&
-            questionnaire.isFilterChipContent &&
+        if ((store.questionFlowNavigationDm?.locationPreferences?.isHospital ??
+                false) &&
+            (questionnaire.isDropDown ?? false) &&
             store.yesSelected) ...{
           Wrap(
             spacing: 5,
@@ -99,9 +100,10 @@ class QuestionnaireFlowWidget extends StatelessObserverWidget {
                   )}',
             ),
           ),
-        } else if ((store.selectedPreferenceLocation?.isCafeRestaurant ??
+        } else if ((store.questionFlowNavigationDm?.locationPreferences
+                    ?.isCafeRestaurant ??
                 false) &&
-            questionnaire.isFilterChipContent &&
+            (questionnaire.isDropDown ?? false) &&
             store.yesSelected) ...{
           Wrap(
             spacing: 5,

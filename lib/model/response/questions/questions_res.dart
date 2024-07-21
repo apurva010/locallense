@@ -8,6 +8,9 @@ class QuestionsRes {
     required this.id,
     required this.text,
     required this.options,
+    required this.type,
+    this.isMultiChoice,
+    this.isDropDown,
   });
 
   factory QuestionsRes.fromJson(Map<String, dynamic> json) =>
@@ -15,16 +18,20 @@ class QuestionsRes {
 
   final String id;
   final String text;
+  final int type;
   final List<OptionData> options;
+  final bool? isMultiChoice;
+  final bool? isDropDown;
 
   Map<String, dynamic> toJson() => _$QuestionsResToJson(this);
 }
 
 @JsonSerializable()
 class OptionData {
-  const OptionData({
+  OptionData({
     required this.id,
     required this.text,
+    this.selected = false,
   });
 
   factory OptionData.fromJson(Map<String, dynamic> json) =>
@@ -32,6 +39,7 @@ class OptionData {
 
   final String id;
   final String text;
+  bool selected;
 
   Map<String, dynamic> toJson() => _$OptionDataToJson(this);
 }
