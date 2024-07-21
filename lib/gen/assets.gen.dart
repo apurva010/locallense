@@ -64,6 +64,9 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/close.svg
   SvgGenImage get close => const SvgGenImage('assets/vectors/close.svg');
 
+  /// File path: assets/vectors/cross.svg
+  SvgGenImage get cross => const SvgGenImage('assets/vectors/cross.svg');
+
   /// File path: assets/vectors/document.svg
   SvgGenImage get document => const SvgGenImage('assets/vectors/document.svg');
 
@@ -169,6 +172,7 @@ class $AssetsVectorsGen {
         chekMarkFilled,
         clock,
         close,
+        cross,
         document,
         fileAdded,
         generalInfoIcon,
