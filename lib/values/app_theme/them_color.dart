@@ -11,6 +11,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     this.whiteColor,
     this.unFilledProgressColor,
     this.textFieldLabelColor,
+    this.ratingChipBgColor,
+    this.secondaryColor3,
     this.appbarBackgroundColor,
     this.preferenceChipBorderColor,
     this.blackColor,
@@ -25,6 +27,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         whiteColor: AppColors.whiteColor,
         unFilledProgressColor: AppColors.unFilledProgressColor,
         textFieldLabelColor: AppColors.textFieldLabelColor,
+        ratingChipBgColor: AppColors.ratingChipBgColor,
+        secondaryColor3: AppColors.secondaryColor3,
         appbarBackgroundColor: AppColors.whiteColor,
         preferenceChipBorderColor: AppColors.preferenceChipBorderColor,
         blackColor: AppColors.blackColor,
@@ -37,6 +41,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
         whiteColor: AppColors.whiteColor,
         unFilledProgressColor: AppColors.unFilledProgressColor,
         textFieldLabelColor: AppColors.textFieldLabelColor,
+        ratingChipBgColor: AppColors.ratingChipBgColor,
+        secondaryColor3: AppColors.secondaryColor3,
         scaffoldBackGroundColor: AppColors.blackColor,
         naturalBorderColor: AppColors.neutrals11,
         preferenceChipBorderColor: AppColors.preferenceChipBorderColor,
@@ -51,6 +57,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
   final Color? naturalBorderColor;
   final Color? unFilledProgressColor;
   final Color? textFieldLabelColor;
+  final Color? ratingChipBgColor;
+  final Color? secondaryColor3;
   final Color? appbarBackgroundColor;
 
   final Color? whiteColor;
@@ -64,6 +72,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
     Color? whiteColor,
     Color? unFilledProgressColor,
     Color? textFieldLabelColor,
+    Color? ratingChipBgColor,
+    Color? secondaryColor3,
     Color? preferenceChipBorderColor,
     Color? blackColor,
   }) {
@@ -75,6 +85,8 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
       unFilledProgressColor:
           unFilledProgressColor ?? this.unFilledProgressColor,
       textFieldLabelColor: textFieldLabelColor ?? this.textFieldLabelColor,
+      ratingChipBgColor: ratingChipBgColor ?? this.ratingChipBgColor,
+      secondaryColor3: secondaryColor3 ?? this.secondaryColor3,
       preferenceChipBorderColor:
           preferenceChipBorderColor ?? this.preferenceChipBorderColor,
       blackColor: blackColor ?? this.blackColor,
@@ -118,6 +130,16 @@ class ThemeColor extends ThemeExtension<ThemeColor> {
       textFieldLabelColor: Color.lerp(
         textFieldLabelColor,
         other.textFieldLabelColor,
+        t,
+      ),
+      ratingChipBgColor: Color.lerp(
+        ratingChipBgColor,
+        other.ratingChipBgColor,
+        t,
+      ),
+      secondaryColor3: Color.lerp(
+        secondaryColor3,
+        other.secondaryColor3,
         t,
       ),
       preferenceChipBorderColor: Color.lerp(

@@ -17,6 +17,9 @@ class AppColors {
   static const Color preferenceChipBorderColor = Color(0XFFE6E8EC);
   static const Color neutrals5 = Color(0XFFB1B5C3);
 
+  static const Color ratingChipBgColor = Color(0XFFFABE3C);
+  static const Color secondaryColor3 = Color(0XFFFABE3C);
+
   // Text Color
   static const Color heroTextColor = Color(0XFF23262F);
   static const Color headLine1 = Color(0XFF23262F);
