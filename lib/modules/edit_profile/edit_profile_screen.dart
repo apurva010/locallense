@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/apibase/repository/api_repository.dart';
 import 'package:locallense/app_global_variables.dart';
+import 'package:locallense/gen/assets.gen.dart';
 import 'package:locallense/model/request/update_user/update_user_info_req.dart';
 import 'package:locallense/model/response/user/user_data_res.dart';
 import 'package:locallense/modules/profile/complete_your_profile/basic_details_store.dart';
@@ -11,6 +12,7 @@ import 'package:locallense/modules/profile/complete_your_profile/widgets/profile
 import 'package:locallense/services/shared_prefs.dart';
 import 'package:locallense/utils/common_widgets/dialog/ll_dialog.dart';
 import 'package:locallense/utils/common_widgets/ll_scaffold.dart';
+import 'package:locallense/utils/common_widgets/ll_svg_picture.dart';
 import 'package:locallense/utils/common_widgets/local_lens_button.dart';
 import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/utils/helpers/helpers.dart';
@@ -34,72 +36,25 @@ class EditProfileScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (store.networkState.isFailed) {
-            return const Text('Something went wrong');
+            Center(
+              child: Column(
+                children: [
+                  const Text('Something went wrong'),
+                  LocalLensButton(
+                    onTap: () => _updateUserData(store),
+                    btnText: 'Retry',
+                    buttonType: ButtonType.secondaryButton,
+                  )
+                ],
+              ),
+            );
           }
           return Column(
             children: [
               const Expanded(
                   child: SingleChildScrollView(child: ProfileSection())),
               LocalLensButton(
-                onTap: () {
-                  if (store.firstNameController.text ==
-                          store.userDataRes?.firstName &&
-                      store.lastNameController.text ==
-                          store.userDataRes?.lastName) {
-                    return;
-                  }
-
-                  LLDialog(
-                    title: 'Update Details',
-                    msg:
-                        'Are you sure you want to update the my profile details ?',
-                    primaryButton: LocalLensButton(
-                      onTap: () async {
-                        try {
-                          await APIRepository.instance
-                              .updateUserData(
-                                UpdateUserInfoReq(
-                                  lastName: store.lastNameController.text,
-                                  firstName: store.firstNameController.text,
-                                ),
-                              )
-                              .getResult();
-                          store.userDataRes = UserDataRes(
-                            lastName: store.lastNameController.text,
-                            firstName: store.firstNameController.text,
-                            email: store.userDataRes!.email,
-                            loginProvider: store.userDataRes!.loginProvider,
-                            profileUrl: store.userDataRes!.profileUrl,
-                          );
-                          await SharedPrefs.setSharedProperty(
-                            value: jsonEncode(
-                              UserDataRes(
-                                lastName: store.lastNameController.text,
-                                firstName: store.firstNameController.text,
-                                email: store.userDataRes!.email,
-                                loginProvider: store.userDataRes!.loginProvider,
-                                profileUrl: store.userDataRes!.profileUrl,
-                              ).toJson(),
-                            ),
-                            keyEnum: SharedPrefsKeys.userData,
-                          );
-                          navigation.pop();
-                          // TODO(Sahil): Show Success dialog
-                        } catch (e) {
-                          showErrorToast(
-                            'Error occurred while updating profile',
-                          );
-                        }
-                      },
-                      btnText: 'Update',
-                    ),
-                    secondaryButton: LocalLensButton(
-                      onTap: navigation.pop,
-                      btnText: 'Cancel',
-                      buttonType: ButtonType.secondaryButton,
-                    ),
-                  ).show();
-                },
+                onTap: () => _updateUserData(store),
                 btnText: 'Update Details',
               ),
               InkWell(
@@ -122,5 +77,70 @@ class EditProfileScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Future<void> _updateUserData(BasicDetailsStore store) async {
+    if (store.firstNameController.text == store.userDataRes?.firstName &&
+        store.lastNameController.text == store.userDataRes?.lastName) {
+      return;
+    }
+
+    await LLDialog(
+      title: 'Update Details',
+      msg: 'Are you sure you want to update the my profile details ?',
+      primaryButton: LocalLensButton(
+        onTap: () async {
+          try {
+            await APIRepository.instance
+                .updateUserData(
+                  UpdateUserInfoReq(
+                    lastName: store.lastNameController.text,
+                    firstName: store.firstNameController.text,
+                  ),
+                )
+                .getResult();
+            store.userDataRes = UserDataRes(
+              lastName: store.lastNameController.text,
+              firstName: store.firstNameController.text,
+              email: store.userDataRes!.email,
+              loginProvider: store.userDataRes!.loginProvider,
+              profileUrl: store.userDataRes!.profileUrl,
+            );
+            await SharedPrefs.setSharedProperty(
+              value: jsonEncode(
+                UserDataRes(
+                  lastName: store.lastNameController.text,
+                  firstName: store.firstNameController.text,
+                  email: store.userDataRes!.email,
+                  loginProvider: store.userDataRes!.loginProvider,
+                  profileUrl: store.userDataRes!.profileUrl,
+                ).toJson(),
+              ),
+              keyEnum: SharedPrefsKeys.userData,
+            );
+            navigation.pop();
+            await LLDialog(
+              header: LLSvgPicture(
+                Assets.vectors.chekMarkFilled.path,
+                size: 42,
+              ),
+              title: 'Successfully Updated',
+              msg: 'Your my profile details has been '
+                  'successfully updated.',
+            ).show();
+          } catch (e) {
+            showErrorToast(
+              'Error occurred while updating profile',
+            );
+          }
+        },
+        btnText: 'Update',
+      ),
+      secondaryButton: LocalLensButton(
+        onTap: navigation.pop,
+        btnText: 'Cancel',
+        buttonType: ButtonType.secondaryButton,
+      ),
+    ).show();
   }
 }

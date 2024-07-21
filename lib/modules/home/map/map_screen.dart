@@ -11,6 +11,7 @@ import 'package:locallense/utils/common_widgets/ll_text_form_field.dart';
 import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/values/app_colors.dart';
 import 'package:locallense/values/constants.dart';
+import 'package:screwdriver/screwdriver.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -54,44 +55,50 @@ class _MapScreenState extends State<MapScreen> {
                 mapLayer,
                 MarkerLayer(
                   markers: store.places
-                      .map(
-                        (e) => Marker(
+                      .mapIndexed(
+                        (i, e) => Marker(
                           point: e.latLng,
                           width: 25,
                           alignment: Alignment.centerLeft,
-                          child: Center(
-                            child: Stack(
-                              children: [
-                                Positioned.fill(
-                                  child: LLSvgPicture(
-                                    Assets.vectors.pinBg.path,
-                                    color: e.type.iconColor,
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 4,
-                                  left: 4,
-                                  right: 4,
-                                  bottom: 9,
-                                  child: Container(
-                                    width: 17,
-                                    height: 17,
-                                    padding: const EdgeInsets.all(4),
-                                    decoration: const BoxDecoration(
-                                      color: AppColors.whiteColor,
-                                      shape: BoxShape.circle,
+                          child: InkWell(
+                            onTap: () {
+                              store.panelController.animatePanelToPosition(0.5);
+                              store.scrollController.jumpTo((265 * i) + 16);
+                            },
+                            child: Center(
+                              child: Stack(
+                                children: [
+                                  Positioned.fill(
+                                    child: LLSvgPicture(
+                                      Assets.vectors.pinBg.path,
+                                      color: e.type.iconColor,
                                     ),
-                                    child: Center(
-                                      child: LLSvgPicture(
-                                        e.type.icon,
-                                        color: e.type.iconColor,
-                                        // width: 14,
-                                        // height: 14,
+                                  ),
+                                  Positioned(
+                                    top: 4,
+                                    left: 4,
+                                    right: 4,
+                                    bottom: 9,
+                                    child: Container(
+                                      width: 17,
+                                      height: 17,
+                                      padding: const EdgeInsets.all(4),
+                                      decoration: const BoxDecoration(
+                                        color: AppColors.whiteColor,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Center(
+                                        child: LLSvgPicture(
+                                          e.type.icon,
+                                          color: e.type.iconColor,
+                                          // width: 14,
+                                          // height: 14,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

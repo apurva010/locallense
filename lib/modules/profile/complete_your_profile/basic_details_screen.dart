@@ -7,6 +7,7 @@ import 'package:locallense/modules/profile/complete_your_profile/widgets/profile
 import 'package:locallense/utils/common_widgets/ll_scaffold.dart';
 import 'package:locallense/utils/common_widgets/local_lens_button.dart';
 import 'package:locallense/utils/extensions.dart';
+import 'package:locallense/values/enumeration.dart';
 
 class BasicDetailsScreen extends StatelessWidget {
   const BasicDetailsScreen({super.key});
@@ -27,7 +28,18 @@ class BasicDetailsScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (store.networkState.isFailed) {
-            return const Text('Something went wrong');
+            return Center(
+              child: Column(
+                children: [
+                  const Text('Something went wrong'),
+                  LocalLensButton(
+                    onTap: store.nextPage,
+                    btnText: 'Retry',
+                    buttonType: ButtonType.secondaryButton,
+                  ),
+                ],
+              ),
+            );
           }
           return Padding(
             padding: const EdgeInsets.symmetric(

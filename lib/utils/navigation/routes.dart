@@ -20,6 +20,7 @@ import 'package:locallense/modules/profile/questionnaire/flow_screens/questionna
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_screen.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_store.dart';
 import 'package:locallense/modules/splashScreen/intro_screen.dart';
+import 'package:locallense/modules/splashScreen/splash_screen_store.dart';
 import 'package:provider/provider.dart';
 
 import '../../values/strings.dart';
@@ -58,7 +59,7 @@ class Routes {
         );
       case AppRoutes.introScreen:
         return getRoute(
-          widget: const IntroScreen(),
+          widget: const IntroScreen().withProvider(SplashScreenStore()),
         );
       case AppRoutes.selectPreference:
         final perferences = settings.arguments! as List<PreferencesRes>;

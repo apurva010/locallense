@@ -43,6 +43,7 @@ class MapSlidingPanel extends StatelessWidget {
           ),
           SliverFillRemaining(
             child: ListView.builder(
+              controller: store.scrollController,
               itemCount: store.places.length,
               padding: const EdgeInsets.all(16),
               itemBuilder: (context, index) {

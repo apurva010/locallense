@@ -12,6 +12,8 @@ abstract class _MapScreenStore with Store {
   /// Sliding Panel params..............................................
   PanelController panelController = PanelController();
 
+  ScrollController scrollController = ScrollController();
+
   List<String> labels = [
     'All',
     ...PrefType.values.map((e) => e.title),
