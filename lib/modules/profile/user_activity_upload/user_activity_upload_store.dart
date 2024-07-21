@@ -4,10 +4,8 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:file_picker/file_picker.dart';
-
 // ignore: depend_on_referenced_packages
 import 'package:html/parser.dart' show parse;
-
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:locallense/apibase/repository/api_repository.dart';
@@ -160,7 +158,7 @@ abstract class _UserActivityUploadStore with Store {
       dialogTitle: 'Please pick you activity file',
       withData: true,
       type: FileType.custom,
-      allowedExtensions: ['.html'],
+      allowedExtensions: ['html'],
     );
     if (userActivityFile?.isSinglePick ?? false) {
       final file = File(userActivityFile!.files.single.path!);

@@ -97,7 +97,9 @@ class Routes {
 
       case AppRoutes.editProfileScreen:
         return getRoute(
-          widget: const EditProfileScreen(),
+          widget: const EditProfileScreen().withProvider(
+            BasicDetailsStore()..getUserData(),
+          ),
         );
 
       /// An invalid route. User shouldn't see this, it's for debugging purpose
