@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locallense/modules/edit_profile/edit_profile_screen.dart';
 import 'package:locallense/modules/home/home_screen.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
@@ -86,6 +87,11 @@ class Routes {
                   settings.arguments as LocationPreferences?,
             ),
           ),
+        );
+
+      case AppRoutes.editProfileScreen:
+        return getRoute(
+          widget: const EditProfileScreen(),
         );
 
       /// An invalid route. User shouldn't see this, it's for debugging purpose

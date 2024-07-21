@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/modules/home/map/map_screen.dart';
 import 'package:locallense/modules/home/map/map_screen_store.dart';
+import 'package:locallense/modules/home/profile/profile_screen_store.dart';
 import 'package:locallense/modules/home/utils/home_navigator_page.dart';
 import 'package:locallense/modules/home/utils/home_utils.dart';
 import 'package:locallense/utils/extensions.dart';
@@ -34,7 +35,9 @@ abstract class _HomeScreenStore with Store {
       ),
       HomeNavigatorPage(
         navigatorKey: homeKeyManager.keys[1],
-        child: const ProfileScreen(),
+        child: const ProfileScreen().withProvider<ProfileScreenStore>(
+          ProfileScreenStore(),
+        ),
       ),
     ];
   }
@@ -52,13 +55,13 @@ abstract class _HomeScreenStore with Store {
     homeKeyManager.selectedTab = tab;
   }
 
-  // TODO(Happy): Get User Data
-  // Future<void> getUserDetails() async {
-  //   try {
-  //     await authRepository.getUserProfile();
-  //   } catch (e, st) {
-  //     debugPrint(e.toString());
-  //     debugPrintStack(stackTrace: st);
-  //   }
-  // }
+// TODO(Happy): Get User Data
+// Future<void> getUserDetails() async {
+//   try {
+//     await authRepository.getUserProfile();
+//   } catch (e, st) {
+//     debugPrint(e.toString());
+//     debugPrintStack(stackTrace: st);
+//   }
+// }
 }

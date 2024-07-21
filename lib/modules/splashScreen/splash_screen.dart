@@ -31,7 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> navigationPage() async {
-    await authRepository.logOut();
     final currentUser = await authRepository.googleSignIn.isSignedIn();
     final isLoggedIn = await SharedPrefs.getSharedProperty(
       keyEnum: SharedPrefsKeys.isLoggedIn,

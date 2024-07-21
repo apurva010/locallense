@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:locallense/apibase/repository/api_repository.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/model/request/update_user/update_user_info_req.dart';
@@ -23,8 +22,6 @@ abstract class _BasicDetailsStore extends NetworkStateStore with Store {
   @observable
   NetworkState buttonLoading = NetworkState.idle;
   final formKey = GlobalKey<FormState>();
-
-  final TextEditingController datePickerController = TextEditingController();
 
   @observable
   String? profilePicture;
@@ -51,17 +48,6 @@ abstract class _BasicDetailsStore extends NetworkStateStore with Store {
       // TODO(Sahil): Show Error snackBar
       networkState = NetworkState.error;
     }
-  }
-
-  Future<void> onTapFunction({required BuildContext context}) async {
-    final pickedDate = await showDatePicker(
-      context: context,
-      lastDate: DateTime.now(),
-      firstDate: DateTime(2015),
-      initialDate: DateTime.now(),
-    );
-    if (pickedDate == null) return;
-    datePickerController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
   }
 
   Future<void> nextPage() async {
