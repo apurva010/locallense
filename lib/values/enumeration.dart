@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:locallense/gen/assets.gen.dart';
+import 'package:screwdriver/screwdriver.dart';
 
 enum NetworkState {
   idle,
@@ -69,6 +70,15 @@ enum PrefType {
         museum => const Color(0xffF77F00),
         pg => const Color(0xff2FA2B9),
       };
+
+  static PrefType getMatchedPref(List<String> strPref) {
+    for (final pref in strPref) {
+      final prefType =
+          PrefType.values.where((e) => e.name.equalsIgnoreCase(pref));
+      if (prefType.isNotNullOrEmpty) return prefType.first;
+    }
+    return PrefType.pg;
+  }
 }
 
 enum LocationPreferences {

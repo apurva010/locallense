@@ -4,7 +4,7 @@ import 'package:locallense/modules/home/map/model/place_dm.dart';
 import 'package:locallense/utils/common_widgets/ll_svg_picture.dart';
 import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/values/app_colors.dart';
-import 'package:screwdriver/screwdriver.dart';
+import 'package:locallense/values/constants.dart';
 
 class PlaceCard extends StatelessWidget {
   const PlaceCard({
@@ -30,7 +30,7 @@ class PlaceCard extends StatelessWidget {
         children: [
           SizedBox(
             height: 150,
-            child: place.imgUrl.isNotNullOrBlank
+            child: place.imgUrl.isNotNullAndNotEmpty
                 ? Image.network(
                     place.imgUrl!,
                     height: 150,
@@ -57,7 +57,7 @@ class PlaceCard extends StatelessWidget {
                     /// DATA - Location Name
                     Expanded(
                       child: Text(
-                        place.name,
+                        place.name ?? Constants.empty,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: context.textStyleTheme.bodyXLargeSemiBold,
@@ -99,6 +99,17 @@ class PlaceCard extends StatelessWidget {
                   height: 8,
                 ),
 
+                /// DATA - Open hours
+                if (place.reason.isNotNullAndNotEmpty) ...[
+                  Text(
+                    place.reason.toString(),
+                    style: context.textStyleTheme.bodySmallRegular,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                ],
+
                 /// DATA - Address
                 Row(
                   children: [
@@ -119,7 +130,7 @@ class PlaceCard extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        place.address,
+                        place.address ?? '',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: context.textStyleTheme.bodySmallRegular,
@@ -127,35 +138,66 @@ class PlaceCard extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 4),
 
                 /// DATA - Open hours
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor.withOpacity(0.15),
-                        shape: BoxShape.circle,
+                if (place.openHours.isNotNullAndNotEmpty)
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor.withOpacity(0.15),
+                          shape: BoxShape.circle,
+                        ),
+                        child: LLSvgPicture(
+                          Assets.vectors.clock.path,
+                          color: AppColors.primaryColor,
+                          size: 14,
+                        ),
                       ),
-                      child: LLSvgPicture(
-                        Assets.vectors.clock.path,
-                        color: AppColors.primaryColor,
-                        size: 14,
+                      const SizedBox(
+                        width: 8,
                       ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Flexible(
-                      child: Text(
-                        place.openHours,
-                        style: context.textStyleTheme.bodySmallRegular,
+                      Flexible(
+                        child: Text(
+                          place.openHours!,
+                          style: context.textStyleTheme.bodySmallRegular,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                if ((place.types?.length ?? 2) > 1)
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor.withOpacity(0.15),
+                          shape: BoxShape.circle,
+                        ),
+                        child: LLSvgPicture(
+                          Assets.vectors.myPrefsIcon.path,
+                          color: AppColors.primaryColor,
+                          size: 14,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Flexible(
+                        child: Text(
+                          place.types
+                                  ?.map((e) => e.replaceAll("_", " "))
+                                  .join(', ') ??
+                              '',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: context.textStyleTheme.bodySmallRegular,
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),

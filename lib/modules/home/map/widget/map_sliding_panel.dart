@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/modules/home/map/map_screen_store.dart';
 import 'package:locallense/modules/home/map/widget/chip_scroll_view.dart';
@@ -9,7 +10,7 @@ import 'package:locallense/utils/extensions.dart';
 import 'package:locallense/values/app_colors.dart';
 import 'package:locallense/values/strings.dart';
 
-class MapSlidingPanel extends StatelessWidget {
+class MapSlidingPanel extends StatelessObserverWidget {
   const MapSlidingPanel({super.key});
 
   @override
@@ -44,10 +45,10 @@ class MapSlidingPanel extends StatelessWidget {
           SliverFillRemaining(
             child: ListView.builder(
               controller: store.scrollController,
-              itemCount: store.places.length,
+              itemCount: appSession.places.length,
               padding: const EdgeInsets.all(16),
               itemBuilder: (context, index) {
-                final item = store.places[index];
+                final item = appSession.places[index];
                 return InkWell(
                   splashColor: Colors.transparent,
                   splashFactory: NoSplash.splashFactory,

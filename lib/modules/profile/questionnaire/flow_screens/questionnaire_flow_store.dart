@@ -95,10 +95,8 @@ abstract class _QuestionnaireFlowStore with Store {
       if (questionFlowNavigationDm?.isEdit ?? false) {
         navigation.pop();
       } else {
-        unawaited(
-          navigation.pushReplacementNamed(
-            AppRoutes.homeScreen,
-          ),
+        await navigation.pushReplacementNamed(
+          AppRoutes.homeScreen,
         );
       }
     }
