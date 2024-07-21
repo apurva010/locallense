@@ -52,6 +52,7 @@ abstract class _QuestionnaireFlowStore with Store {
 
   Future<void> initialize() async {
     questionnaire.value.addAll(questionFlowNavigationDm?.questions ?? []);
+    selectedPreferenceLocation = questionFlowNavigationDm?.locationPreferences;
     questionnaireFlowName = (selectedPreferenceLocation?.isHospital ?? false)
         ? str.hospitalQuestionnaire
         : (selectedPreferenceLocation?.isCafeRestaurant ?? false)
