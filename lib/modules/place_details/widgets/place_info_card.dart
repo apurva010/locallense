@@ -99,15 +99,15 @@ class PlaceInfoCard extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Text(
-                  '789 Sunshine Blvd, Bright City, CA 90210',
-                  style: context.textStyleTheme.bodyMediumRegular,
+                Expanded(
+                  child: Text(
+                    '789 Sunshine Blvd, Bright City, CA 90210',
+                    style: context.textStyleTheme.bodyMediumRegular,
+                  ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(
