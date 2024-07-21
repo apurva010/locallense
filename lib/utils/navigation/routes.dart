@@ -5,6 +5,7 @@ import 'package:locallense/modules/edit_profile/edit_profile_screen.dart';
 import 'package:locallense/modules/home/home_screen.dart';
 import 'package:locallense/modules/home/home_screen_store.dart';
 import 'package:locallense/modules/home/profile/edit_pref/edit_pref_screen.dart';
+import 'package:locallense/modules/home/profile/edit_que/edit_que_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen.dart';
 import 'package:locallense/modules/loginScreen/login_screen_store.dart';
 import 'package:locallense/modules/place_details/place_details_screen.dart';
@@ -65,7 +66,8 @@ class Routes {
         final perferences = settings.arguments! as List<PreferencesRes>;
         return getRoute(
           widget: const SelectYourPreference().withProvider(
-              SelectPreferenceStore(preSelectPreferences: perferences)),
+            SelectPreferenceStore(preSelectPreferences: perferences),
+          ),
         );
 
       case AppRoutes.userActivityUpload:
@@ -106,11 +108,15 @@ class Routes {
 
       case AppRoutes.editPrefScreen:
         return getRoute(
-          widget: const EditPrefScreen().withProvider(SelectPreferenceStore(
-            preSelectPreferences: [],
-            fetchSelectedData: true,
-          )),
+          widget: const EditPrefScreen().withProvider(
+            SelectPreferenceStore(
+              preSelectPreferences: [],
+              fetchSelectedData: true,
+            ),
+          ),
         );
+      case AppRoutes.editQueScreen:
+        return getRoute(widget: const EditQueScreen());
 
       case AppRoutes.editProfileScreen:
         return getRoute(

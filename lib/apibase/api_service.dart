@@ -8,6 +8,7 @@ import 'package:locallense/model/response/login/google_login_res.dart';
 import 'package:locallense/model/response/place_type/place_type_res.dart';
 import 'package:locallense/model/response/preferences/preferences_res.dart';
 import 'package:locallense/model/response/questions/questions_res.dart';
+import 'package:locallense/model/response/questions/selected_question_res.dart';
 import 'package:locallense/model/response/user/user_data_res.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
@@ -57,4 +58,7 @@ abstract class ApiService {
   Future<APIResponse<String>> postUserQuestionAnswer(
     @Body() PostUserQuestionReq userQuestionAnswer,
   );
+
+  @GET('/questions/selected')
+  Future<APIResponse<List<SelectedQuestionRes>>> getSelectedQuestion();
 }
