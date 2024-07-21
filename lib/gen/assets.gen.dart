@@ -51,6 +51,10 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/close.svg
   SvgGenImage get close => const SvgGenImage('assets/vectors/close.svg');
 
+  /// File path: assets/vectors/general_info_icon.svg
+  SvgGenImage get generalInfoIcon =>
+      const SvgGenImage('assets/vectors/general_info_icon.svg');
+
   /// File path: assets/vectors/google_icon.svg
   SvgGenImage get googleIcon =>
       const SvgGenImage('assets/vectors/google_icon.svg');
@@ -64,6 +68,10 @@ class $AssetsVectorsGen {
 
   /// File path: assets/vectors/hospital.svg
   SvgGenImage get hospital => const SvgGenImage('assets/vectors/hospital.svg');
+
+  /// File path: assets/vectors/hospital_pref_icon.svg
+  SvgGenImage get hospitalPrefIcon =>
+      const SvgGenImage('assets/vectors/hospital_pref_icon.svg');
 
   /// File path: assets/vectors/location.svg
   SvgGenImage get location => const SvgGenImage('assets/vectors/location.svg');
@@ -79,8 +87,16 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/museum.svg
   SvgGenImage get museum => const SvgGenImage('assets/vectors/museum.svg');
 
+  /// File path: assets/vectors/my_prefs_icon.svg
+  SvgGenImage get myPrefsIcon =>
+      const SvgGenImage('assets/vectors/my_prefs_icon.svg');
+
   /// File path: assets/vectors/pg.svg
   SvgGenImage get pg => const SvgGenImage('assets/vectors/pg.svg');
+
+  /// File path: assets/vectors/pg_pref_icon.svg
+  SvgGenImage get pgPrefIcon =>
+      const SvgGenImage('assets/vectors/pg_pref_icon.svg');
 
   /// File path: assets/vectors/pin_bg.svg
   SvgGenImage get pinBg => const SvgGenImage('assets/vectors/pin_bg.svg');
@@ -100,12 +116,24 @@ class $AssetsVectorsGen {
   SvgGenImage get restaurant =>
       const SvgGenImage('assets/vectors/restaurant.svg');
 
+  /// File path: assets/vectors/restaurnat_pref_icon.svg
+  SvgGenImage get restaurnatPrefIcon =>
+      const SvgGenImage('assets/vectors/restaurnat_pref_icon.svg');
+
   /// File path: assets/vectors/shopping_center.svg
   SvgGenImage get shoppingCenter =>
       const SvgGenImage('assets/vectors/shopping_center.svg');
 
+  /// File path: assets/vectors/side_arrow_icon.svg
+  SvgGenImage get sideArrowIcon =>
+      const SvgGenImage('assets/vectors/side_arrow_icon.svg');
+
   /// File path: assets/vectors/star.svg
   SvgGenImage get star => const SvgGenImage('assets/vectors/star.svg');
+
+  /// File path: assets/vectors/touriest_pref_icon.svg
+  SvgGenImage get touriestPrefIcon =>
+      const SvgGenImage('assets/vectors/touriest_pref_icon.svg');
 
   /// File path: assets/vectors/user_activity_upload.svg
   SvgGenImage get userActivityUpload =>
@@ -117,22 +145,29 @@ class $AssetsVectorsGen {
         chekMarkFilled,
         clock,
         close,
+        generalInfoIcon,
         googleIcon,
         home,
         homeFilled,
         hospital,
+        hospitalPrefIcon,
         location,
         locationFilled,
         loginScreen,
         museum,
+        myPrefsIcon,
         pg,
+        pgPrefIcon,
         pinBg,
         placeholderIcon,
         profile,
         profileFilled,
         restaurant,
+        restaurnatPrefIcon,
         shoppingCenter,
+        sideArrowIcon,
         star,
+        touriestPrefIcon,
         userActivityUpload
       ];
 }

@@ -46,4 +46,5 @@ class AppColors {
   static const Color mapSlidingBGColor = Color(0XFFF4F5F6);
   static const Color chipColor = Color(0XFFF9FAFB);
   static const Color rattingColor = Color(0XFFFABE3C);
+  static const Color redColor = Color(0XFFEB5A5A);
 }
