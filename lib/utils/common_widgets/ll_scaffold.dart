@@ -99,6 +99,7 @@ class LLScaffold extends StatelessWidget {
                                 ?.copyWith(fontWeight: FontWeight.w500),
                           )
                         : null,
+                    actions: actions,
                   ),
                 ),
           body: Padding(
