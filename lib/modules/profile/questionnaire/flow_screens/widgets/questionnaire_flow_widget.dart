@@ -139,7 +139,7 @@ class QuestionnaireFlowWidget extends StatelessObserverWidget {
                   )}',
             ),
           ),
-        }
+        },
       ],
     );
   }

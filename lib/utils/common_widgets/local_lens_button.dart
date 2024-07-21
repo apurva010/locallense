@@ -139,7 +139,7 @@ class LocalLensButton extends StatelessWidget {
   Color _getBackgroundColor(ButtonType type) {
     switch (type) {
       case ButtonType.primaryButton:
-        return buttonColor ?? AppColors.primaryColor2;
+        return buttonColor ?? AppColors.neutrals1;
       case ButtonType.secondaryButton:
         return AppColors.whiteColor;
       case ButtonType.textOnly:

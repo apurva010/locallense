@@ -12,6 +12,7 @@ class QuestionnaireFlowStore = _QuestionnaireFlowStore
 
 abstract class _QuestionnaireFlowStore with Store {
   _QuestionnaireFlowStore({
+    // ignore: unused_element
     this.selectedPreferenceLocation,
   });
 

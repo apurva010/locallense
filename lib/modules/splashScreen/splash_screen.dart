@@ -3,9 +3,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:locallense/app_global_variables.dart';
-import 'package:locallense/services/secure_storage.dart';
-import 'package:locallense/services/shared_prefs.dart';
-import 'package:locallense/values/enumeration.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../utils/extensions.dart';
@@ -27,27 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _loadWidget() {
     // This will remove splash screen after 3 seconds and push next screen.
-    Timer(const Duration(seconds: 3), navigationPage);
+    Timer(const Duration(seconds: 2), navigationPage);
   }
 
   Future<void> navigationPage() async {
-    final currentUser = await authRepository.googleSignIn.isSignedIn();
-    final isLoggedIn = await SharedPrefs.getSharedProperty(
-      keyEnum: SharedPrefsKeys.isLoggedIn,
-    ) as bool?;
-    if (currentUser && (isLoggedIn ?? false)) {
-      await navigation.pushNamedAndRemoveUntil(
-        AppRoutes.homeScreen,
-        (route) => false,
-      );
-    } else {
-      await SecureStorage.deleteAll();
-      await SharedPrefs.clearPreferences();
-      await navigation.pushNamedAndRemoveUntil(
-        AppRoutes.loginScreen,
-        (route) => false,
-      );
-    }
+    await navigation.pushNamedAndRemoveUntil(
+      AppRoutes.introScreen,
+      (route) => false,
+    );
   }
 
   @override

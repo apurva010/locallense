@@ -14,6 +14,7 @@ import 'package:locallense/modules/profile/questionnaire/flow_screens/questionna
 import 'package:locallense/modules/profile/questionnaire/flow_screens/questionnaire_flow_store.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_screen.dart';
 import 'package:locallense/modules/profile/user_activity_upload/user_activity_upload_store.dart';
+import 'package:locallense/modules/splashScreen/intro_screen.dart';
 import 'package:locallense/values/enumeration.dart';
 import 'package:provider/provider.dart';
 
@@ -50,6 +51,10 @@ class Routes {
       case AppRoutes.loginScreen:
         return getRoute(
           widget: const LoginScreen().withProvider(LoginScreenStore()),
+        );
+      case AppRoutes.introScreen:
+        return getRoute(
+          widget: const IntroScreen(),
         );
       case AppRoutes.selectPreference:
         final perferences = settings.arguments! as List<String>;

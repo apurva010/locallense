@@ -61,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The request took too long to complete. Please try again later"),
         "generalPractitioner":
             MessageLookupByLibrary.simpleMessage("General practitioner"),
+        "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
         "gymFitness": MessageLookupByLibrary.simpleMessage("Gym fitness"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hospitalFirstQuestion": MessageLookupByLibrary.simpleMessage(

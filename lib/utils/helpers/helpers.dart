@@ -85,4 +85,5 @@ LocationPreferences? parseLocationPref(String location) {
     case 'Tourist attraction':
       return LocationPreferences.touristAttraction;
   }
+  return null;
 }
