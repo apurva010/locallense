@@ -69,3 +69,48 @@ enum PrefType {
         pg => const Color(0xff2FA2B9),
       };
 }
+
+enum LocationPreferences {
+  hospital('Hospitals'),
+  cafeRestaurant('Cafe/Restaurant'),
+  touristAttraction('Tourist attraction');
+
+  const LocationPreferences(
+    this.title,
+  );
+
+  final String title;
+
+  bool get isHospital => this == LocationPreferences.hospital;
+
+  bool get isCafeRestaurant => this == LocationPreferences.cafeRestaurant;
+
+  bool get isTouristAttraction => this == LocationPreferences.touristAttraction;
+}
+
+enum Cuisine {
+  indian('Indian'),
+  italian('Italian'),
+  chinese('Chinese'),
+  maxican('Maxican'),
+  thai('Thai');
+
+  const Cuisine(
+    this.title,
+  );
+
+  final String title;
+}
+
+enum DoctorSpecialization {
+  cardiology('Cardiology'),
+  dermatology('Dermatology'),
+  neurology('Neurology'),
+  gastroenterology('Gastroenterology');
+
+  const DoctorSpecialization(
+    this.title,
+  );
+
+  final String title;
+}

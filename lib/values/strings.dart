@@ -8,6 +8,8 @@ class AppRoutes {
   static const String userActivityUpload = '/userActivityUpload';
 
   static const String selectPreference = '/selectPreference';
+  static const String selectAccommodationType = '/selectAccommodationType';
+  static const String questionnaireFlowScreen = '/questionnaireFlowScreen';
 }
 
 class ApiErrorStrings {

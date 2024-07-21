@@ -479,6 +479,316 @@ class Str {
       args: [],
     );
   }
+
+  /// `PG reference form`
+  String get pgReferenceForm {
+    return Intl.message(
+      'PG reference form',
+      name: 'pgReferenceForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select the type of accommodation you prefer`
+  String get selectAccommodationTxt {
+    return Intl.message(
+      'Select the type of accommodation you prefer',
+      name: 'selectAccommodationTxt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select amenities and facilities that are important to you`
+  String get selectAmenitiesAndFacilitiesTxt {
+    return Intl.message(
+      'Please select amenities and facilities that are important to you',
+      name: 'selectAmenitiesAndFacilitiesTxt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What are your other nearby location preferences`
+  String get otherNearByLocationPreference {
+    return Intl.message(
+      'What are your other nearby location preferences',
+      name: 'otherNearByLocationPreference',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hospitals`
+  String get hospitals {
+    return Intl.message(
+      'Hospitals',
+      name: 'hospitals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cafe/Restaurant`
+  String get caferestaurant {
+    return Intl.message(
+      'Cafe/Restaurant',
+      name: 'caferestaurant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tourist attraction`
+  String get touristAttraction {
+    return Intl.message(
+      'Tourist attraction',
+      name: 'touristAttraction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Single room`
+  String get singleRoom {
+    return Intl.message(
+      'Single room',
+      name: 'singleRoom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shared room`
+  String get sharedRoom {
+    return Intl.message(
+      'Shared room',
+      name: 'sharedRoom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Both will work`
+  String get bothWillWork {
+    return Intl.message(
+      'Both will work',
+      name: 'bothWillWork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wifi`
+  String get wifi {
+    return Intl.message(
+      'Wifi',
+      name: 'wifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Air conditioning`
+  String get airConditioning {
+    return Intl.message(
+      'Air conditioning',
+      name: 'airConditioning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kitchen access`
+  String get kitchenAccess {
+    return Intl.message(
+      'Kitchen access',
+      name: 'kitchenAccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Laundry service`
+  String get laundryService {
+    return Intl.message(
+      'Laundry service',
+      name: 'laundryService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Parking space`
+  String get parkingSpace {
+    return Intl.message(
+      'Parking space',
+      name: 'parkingSpace',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gym fitness`
+  String get gymFitness {
+    return Intl.message(
+      'Gym fitness',
+      name: 'gymFitness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Study/Work desk`
+  String get studyworkDesk {
+    return Intl.message(
+      'Study/Work desk',
+      name: 'studyworkDesk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How important is it for you to live near a hospital or medical center?`
+  String get hospitalFirstQuestion {
+    return Intl.message(
+      'How important is it for you to live near a hospital or medical center?',
+      name: 'hospitalFirstQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you have any specific medical requirements or conditions that require nearby medical attention?`
+  String get hospitalSecondQuestion {
+    return Intl.message(
+      'Do you have any specific medical requirements or conditions that require nearby medical attention?',
+      name: 'hospitalSecondQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you need medical consultation or assistance, what level of consultant would you prefer?`
+  String get hospitalThirdQuestion {
+    return Intl.message(
+      'If you need medical consultation or assistance, what level of consultant would you prefer?',
+      name: 'hospitalThirdQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hospital questionnaire`
+  String get hospitalQuestionnaire {
+    return Intl.message(
+      'Hospital questionnaire',
+      name: 'hospitalQuestionnaire',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Very important`
+  String get veryImportant {
+    return Intl.message(
+      'Very important',
+      name: 'veryImportant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Somewhat important`
+  String get somewhatImportant {
+    return Intl.message(
+      'Somewhat important',
+      name: 'somewhatImportant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not important`
+  String get notImportant {
+    return Intl.message(
+      'Not important',
+      name: 'notImportant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Senior consultant`
+  String get seniorConsultant {
+    return Intl.message(
+      'Senior consultant',
+      name: 'seniorConsultant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specialist`
+  String get specialist {
+    return Intl.message(
+      'Specialist',
+      name: 'specialist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General practitioner`
+  String get generalPractitioner {
+    return Intl.message(
+      'General practitioner',
+      name: 'generalPractitioner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No preferences`
+  String get noPreferences {
+    return Intl.message(
+      'No preferences',
+      name: 'noPreferences',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What type of dining options are you interested in having nearby?`
+  String get cafeRestaurantFirstQue {
+    return Intl.message(
+      'What type of dining options are you interested in having nearby?',
+      name: 'cafeRestaurantFirstQue',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Str> {

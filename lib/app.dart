@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:locallense/app_global_variables.dart';
 import 'package:locallense/generated/l10n.dart';
 import 'package:locallense/modules/splashScreen/splash_screen_store.dart';
+import 'package:locallense/utils/helpers/helpers.dart';
 import 'package:locallense/utils/navigation/ll_navigation_observer.dart';
 
 import 'modules/splashScreen/splash_screen.dart';
@@ -23,6 +24,8 @@ class LocalLensApp extends StatefulWidget {
 class _LocalLensAppState extends State<LocalLensApp> {
   @override
   void initState() {
+    // TODO(Apurva): by default set light mode
+    setSystemIcons(dark: false);
     networkService.initialize();
     authRepository.initGoogleSignIn();
     apiRepository.initialise();
