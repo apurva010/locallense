@@ -103,7 +103,7 @@ abstract class _UserActivityUploadStore with Store {
               joinWith: ',',
               withValue: (e) => e.preference,
             )}.
-             Your output should be in this json format only e.g. : { "preference" : [ "ABC", "XYZ"]}.
+             Your output should be in this json format only : { "preference" : [ "Healthcare", "Restaurant"]}.
              Do not add any other text just json format. my Map activity: $usersearch
              ''',
           }
