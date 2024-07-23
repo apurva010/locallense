@@ -63,7 +63,7 @@ abstract class _MapScreenStore with Store {
         'prefrence': 'Restaurant',
       });
       final response = await Dio().post(
-        'https://b47f-14-99-102-226.ngrok-free.app/local_lensAI',
+        'https://221b-14-99-102-226.ngrok-free.app/local_lensAI',
         data: formData,
       );
       var data = response.data;
